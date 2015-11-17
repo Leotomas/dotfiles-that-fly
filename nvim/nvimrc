@@ -1,0 +1,230 @@
+set nocompatible              " be iMproved, required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'bling/vim-airline'
+Plugin 'lilydjwg/colorizer'
+Plugin 'scrooloose/syntastic'
+Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-surround'
+Plugin 'godlygeek/tabular'
+Plugin 'mattn/emmet-vim'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'majutsushi/tagbar'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'sumpygump/php-documentor-vim'
+" use Gtask [{name}]
+Plugin 'mklabs/grunt.vim'
+Plugin 'tpope/vim-eunuch'
+Plugin 'ervandew/supertab'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'taglist.vim'
+Bundle 'gmist/vim-palette'
+Plugin 'anyakichi/vim-autoclose'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'ajh17/Spacegray.vim'
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'mileszs/ack.vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just
+" :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to
+" auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+filetype on
+syntax on
+set nowrap
+set ignorecase
+set smartcase
+set number
+set showmode
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
+set guifont=Fira_Mono_for_Powerline:h10
+set wildmode=longest,list,full
+set wildmenu
+set scrolloff=3
+"set sidescrolloff = 5 
+"set sidescroll = 1 
+set ruler
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+set copyindent
+set linespace=12
+set backspace=indent,eol,start
+highlight Search cterm=underline 
+set visualbell
+set noerrorbells
+set hidden
+set history=1000
+set undolevels=1000
+set title
+set nobackup 
+set noswapfile
+set mouse=a
+
+" stop using escape guys
+imap jj <esc>
+colorscheme solarized
+set background=dark
+let mapleader = ","
+let g:mapleader = ","
+
+
+"leader save
+nmap <leader>w :w!<cr>
+"leader quit 
+nmap <leader>q :q!<cr>
+
+"Toggle comments with leader c 
+map <leader>/ <c-_><c-_>
+
+
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tagbar#enabled = 1
+" let g:airline_powerline_fonts=1
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "*",
+    \ "Staged"    : "+",
+    \ "Untracked" : "u",
+    \ "Renamed"   : "r",
+    \ "Unmerged"  : "=",
+    \ "Deleted"   : "x",
+    \ "Dirty"     : "d",
+    \ "Clean"     : "ok",
+    \ "Unknown"   : "?"
+    \ }
+" au BufRead,BufNewFile *.php inoremap <buffer> <C-b> :call PhpDoc()<CR>
+" au BufRead,BufNewFile *.php nnoremap <buffer> <C-b> :call PhpDoc()<CR>
+" au BufRead,BufNewFile *.php vnoremap <buffer> <C-b> :call PhpDocRange()<CR>
+map <C-b> :NERDTreeToggle<CR>
+
+" nmap <silent> <C-l> :wincmd k<CR>
+" nmap <silent> <A-l> :wincmd j<CR>
+"
+nmap <silent> <C-h> :wincmd h<CR>
+nmap <silent> <C-l> :wincmd l<CR>
+nmap <silent> <C-j> :wincmd j<CR>
+nmap <silent> <C-k> :wincmd k<CR>
+
+
+nnoremap <Left> :vertical resize -2<CR>
+nnoremap <Right> :vertical resize +2<CR>
+nnoremap <Up> :resize -2<CR>
+nnoremap <Down> :resize +2<CR>
+
+" Create split below
+set splitbelow
+set splitright
+nmap :sp :rightbelow sp<cr>
+
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
+  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+  \}
+
+let g:ctrlp_working_path_mode = 'r'
+
+" Use a leader instead of the actual named binding
+nmap <leader>p :CtrlP<cr>
+
+" Easy bindings for its various modes
+nmap <leader>b :CtrlPBuffer<cr>
+nmap <leader>bm :CtrlPMixed<cr>
+nmap <leader>bs :CtrlPMRU<cr>
+
+"toggle tagbar 
+nmap <leader>l :TagbarToggle<cr>
+
+
+
+set showcmd
+" set backupdir = ~/.vim/backup//
+" set directory= ~/.vim/swap//
+"
+"Auto change directory to match current file, cd
+" nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
+" "resizing vsplit 
+" nmap <C-v> :vertical resize +5<cr>
+" nmap 50 <c-w>=
+" nmap 25 :vertical resize 70<cr>
+" nmap 75 :vertical resize 120<cr>
+"
+
+autocmd cursorhold * set nohlsearch
+autocmd cursormoved * set hlsearch
+
+"auto remove trailing spaces on save with php files
+autocmd BufWritePre *.php :%s/\s\+$//e
+
+nnoremap <leader><leader> <c-^>
+
+" search is a bitch
+nmap <silent> ,/ :nohlsearch<CR>
+
+"when you forget to sudo
+cmap w!! w !sudo tee % >/dev/null
+
+"automatic vertical split shortcut
+nnoremap <leader>s <C-w>v<C-w>l
+" Create and edit file in the current dir
+nmap :ed :edit %:p:h/
+
+"tags
+set tags=./tags,tags;
+
+
+"save with ctrl+s
+noremap  <c-s> :update<cr>
+vnoremap <c-s> <c-c>:update<cr>
+inoremap <c-s> <c-o>:update<cr><esc>
+
+
+  "PHP DOC PLUGIN 
+  imap <C-o> <ESC>:set paste<CR>:call PhpDoc()<CR>:set nopaste<CR>
+  
+  "force ack.vim to use AG
+  let g:ackprg = 'ag --nogroup --nocolor --column'
+
+  "Syntastic stuff
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
+
+  let g:syntastic_quiet_messages = { "type" : "style" } 
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
