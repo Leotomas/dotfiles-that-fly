@@ -95,7 +95,7 @@ set mouse=a
 
 " stop using escape guys
 imap jj <esc>
-colorscheme solarized
+colorscheme atom-dark
 set background=dark
 let mapleader = ","
 let g:mapleader = ","
