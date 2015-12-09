@@ -1,0 +1,63 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+$NVIM_TUI_ENABLE_TRUE_COLOR	/Users/leo/dotfiles/nvim/nvimrc	/^let $NVIM_TUI_ENABLE_TRUE_COLOR=1$/;"	v	language:Vim
+,/	/Users/leo/dotfiles/nvim/nvimrc	/^nmap <silent> ,\/ :nohlsearch<CR>$/;"	m	language:Vim
+:ed	/Users/leo/dotfiles/nvim/nvimrc	/^nmap :ed :edit %:p:h\/$/;"	m	language:Vim
+<C-b>	/Users/leo/dotfiles/nvim/nvimrc	/^map <C-b> :NERDTreeToggle<CR>$/;"	m	language:Vim
+<C-h>	/Users/leo/dotfiles/nvim/nvimrc	/^nmap <silent> <C-h> :wincmd h<CR>$/;"	m	language:Vim
+<C-j>	/Users/leo/dotfiles/nvim/nvimrc	/^nmap <silent> <C-j> :wincmd j<CR>$/;"	m	language:Vim
+<C-k>	/Users/leo/dotfiles/nvim/nvimrc	/^nmap <silent> <C-k> :wincmd k<CR>$/;"	m	language:Vim
+<C-l>	/Users/leo/dotfiles/nvim/nvimrc	/^nmap <silent> <C-l> :wincmd l<CR>$/;"	m	language:Vim
+<Down>	/Users/leo/dotfiles/nvim/nvimrc	/^nnoremap <Down> :resize +2<CR>$/;"	m	language:Vim
+<leader><Tab>	/Users/leo/dotfiles/nvim/nvimrc	/^nnoremap <leader><Tab> <C-]>$/;"	m	language:Vim
+<leader>b	/Users/leo/dotfiles/nvim/nvimrc	/^nmap <leader>b :CtrlPBuffer<cr>$/;"	m	language:Vim
+<leader>d	/Users/leo/dotfiles/nvim/nvimrc	/^inoremap <leader>d :call PhpDocSingle()<CR>i $/;"	m	language:Vim
+<leader>d	/Users/leo/dotfiles/nvim/nvimrc	/^nnoremap <leader>d :call PhpDocSingle()<CR> $/;"	m	language:Vim
+<leader>d	/Users/leo/dotfiles/nvim/nvimrc	/^vnoremap <leader>d :call PhpDocRange()<CR> $/;"	m	language:Vim
+<leader>l	/Users/leo/dotfiles/nvim/nvimrc	/^nmap <leader>l :TagbarToggle<cr>$/;"	m	language:Vim
+<leader>p	/Users/leo/dotfiles/nvim/nvimrc	/^nmap <leader>p :CtrlP<cr>$/;"	m	language:Vim
+<leader>q	/Users/leo/dotfiles/nvim/nvimrc	/^nmap <leader>q :q!<cr>$/;"	m	language:Vim
+<leader>s	/Users/leo/dotfiles/nvim/nvimrc	/^nnoremap <leader>s <C-w>v<C-w>l$/;"	m	language:Vim
+<leader>w	/Users/leo/dotfiles/nvim/nvimrc	/^nmap <leader>w :w!<cr>$/;"	m	language:Vim
+<Left>	/Users/leo/dotfiles/nvim/nvimrc	/^nnoremap <Left> :vertical resize -2<CR>$/;"	m	language:Vim
+<Right>	/Users/leo/dotfiles/nvim/nvimrc	/^nnoremap <Right> :vertical resize +2<CR>$/;"	m	language:Vim
+<Tab>	/Users/leo/dotfiles/nvim/nvimrc	/^ inoremap <expr> <Tab> pumvisible() ? "\\<C-y>" : "\\<Tab>"$/;"	m	language:Vim
+<Up>	/Users/leo/dotfiles/nvim/nvimrc	/^nnoremap <Up> :resize -2<CR>$/;"	m	language:Vim
+g:acp_enableAtStartup	/Users/leo/dotfiles/nvim/nvimrc	/^let g:acp_enableAtStartup = 0$/;"	v	language:Vim
+g:airline#extensions#tabline#enabled	/Users/leo/dotfiles/nvim/nvimrc	/^let g:airline#extensions#tabline#enabled = 1$/;"	v	language:Vim
+g:airline#extensions#tabline#fnamemod	/Users/leo/dotfiles/nvim/nvimrc	/^let g:airline#extensions#tabline#fnamemod = ':t'$/;"	v	language:Vim
+g:airline#extensions#tagbar#enabled	/Users/leo/dotfiles/nvim/nvimrc	/^let g:airline#extensions#tagbar#enabled = 1$/;"	v	language:Vim
+g:ctrlp_custom_ignore	/Users/leo/dotfiles/nvim/nvimrc	/^let g:ctrlp_custom_ignore = {$/;"	v	language:Vim
+g:ctrlp_working_path_mode	/Users/leo/dotfiles/nvim/nvimrc	/^let g:ctrlp_working_path_mode = 'r'$/;"	v	language:Vim
+g:easytags_async	/Users/leo/dotfiles/nvim/nvimrc	/^let g:easytags_async = 1$/;"	v	language:Vim
+g:easytags_dynamic_files	/Users/leo/dotfiles/nvim/nvimrc	/^let g:easytags_dynamic_files = 1$/;"	v	language:Vim
+g:easytags_languages	/Users/leo/dotfiles/nvim/nvimrc	/^let g:easytags_languages = {$/;"	v	language:Vim
+g:mapleader	/Users/leo/dotfiles/nvim/nvimrc	/^let g:mapleader = ","$/;"	v	language:Vim
+g:neocomplete#enable_at_startup	/Users/leo/dotfiles/nvim/nvimrc	/^ let g:neocomplete#enable_at_startup = 1$/;"	v	language:Vim
+g:neocomplete#enable_auto_select	/Users/leo/dotfiles/nvim/nvimrc	/^ let g:neocomplete#enable_auto_select = 1$/;"	v	language:Vim
+g:neocomplete#enable_smart_case	/Users/leo/dotfiles/nvim/nvimrc	/^ let g:neocomplete#enable_smart_case = 1$/;"	v	language:Vim
+g:neocomplete#lock_buffer_name_pattern	/Users/leo/dotfiles/nvim/nvimrc	/^let g:neocomplete#lock_buffer_name_pattern = '\\*ku\\*'$/;"	v	language:Vim
+g:neocomplete#sources#syntax#min_keyword_length	/Users/leo/dotfiles/nvim/nvimrc	/^let g:neocomplete#sources#syntax#min_keyword_length = 2$/;"	v	language:Vim
+g:phpcomplete_cache_taglists	/Users/leo/dotfiles/nvim/nvimrc	/^let g:phpcomplete_cache_taglists = 1$/;"	v	language:Vim
+g:phpcomplete_enhance_jump_to_definition	/Users/leo/dotfiles/nvim/nvimrc	/^let g:phpcomplete_enhance_jump_to_definition = 1$/;"	v	language:Vim
+g:phpcomplete_parse_docblock_comments	/Users/leo/dotfiles/nvim/nvimrc	/^let g:phpcomplete_parse_docblock_comments = 1 $/;"	v	language:Vim
+g:PHP_autoformatcomment	/Users/leo/dotfiles/nvim/nvimrc	/^let g:PHP_autoformatcomment = 1 " Format comments automatically$/;"	v	language:Vim
+g:php_refactor_command	/Users/leo/dotfiles/nvim/nvimrc	/^let g:php_refactor_command='php ~\/dotfiles\/refactor.phar'$/;"	v	language:Vim
+g:PHP_vintage_case_default_indent	/Users/leo/dotfiles/nvim/nvimrc	/^let g:PHP_vintage_case_default_indent = 1 " Use the older style of switch\/case indentation$/;"	v	language:Vim
+g:syntastic_always_populate_loc_list	/Users/leo/dotfiles/nvim/nvimrc	/^let g:syntastic_always_populate_loc_list = 1$/;"	v	language:Vim
+g:syntastic_auto_loc_list	/Users/leo/dotfiles/nvim/nvimrc	/^let g:syntastic_auto_loc_list = 1 " Automatically open and close the location list$/;"	v	language:Vim
+g:syntastic_auto_loc_list	/Users/leo/dotfiles/nvim/nvimrc	/^let g:syntastic_auto_loc_list = 1$/;"	v	language:Vim
+g:syntastic_check_on_open	/Users/leo/dotfiles/nvim/nvimrc	/^let g:syntastic_check_on_open = 1$/;"	v	language:Vim
+g:syntastic_check_on_wq	/Users/leo/dotfiles/nvim/nvimrc	/^let g:syntastic_check_on_wq = 0$/;"	v	language:Vim
+g:syntastic_go_checkers	/Users/leo/dotfiles/nvim/nvimrc	/^let g:syntastic_go_checkers = ['go', 'gofmt', 'golint'] " Set our Go(lang) syntastic checkers$/;"	v	language:Vim
+g:syntastic_go_golint_args	/Users/leo/dotfiles/nvim/nvimrc	/^let g:syntastic_go_golint_args = "-min_confidence=0.3" " Set a lower minimum confidence than default on `golint`$/;"	v	language:Vim
+g:syntastic_json_checkers	/Users/leo/dotfiles/nvim/nvimrc	/^let g:syntastic_json_checkers = ['jsonlint'] " Use JSON linter$/;"	v	language:Vim
+g:syntastic_php_checkers	/Users/leo/dotfiles/nvim/nvimrc	/^let g:syntastic_php_checkers = ['php', 'phpcs'] " PHP Linter, PHP Code Sniffer, PHP Mess Detector$/;"	v	language:Vim
+g:syntastic_php_phpcs_post_args	/Users/leo/dotfiles/nvim/nvimrc	/^let g:syntastic_php_phpcs_post_args = "--standard=PSR2" " Use the PSR-2 standard for PHP Code Sniffer$/;"	v	language:Vim
+g:syntastic_quiet_messages	/Users/leo/dotfiles/nvim/nvimrc	/^let g:syntastic_quiet_messages = { "type": "style" }$/;"	v	language:Vim
+g:tagbar_sort	/Users/leo/dotfiles/nvim/nvimrc	/^let g:tagbar_sort = 0$/;"	v	language:Vim
+jj	/Users/leo/dotfiles/nvim/nvimrc	/^imap jj <esc>$/;"	m	language:Vim
+mapleader	/Users/leo/dotfiles/nvim/nvimrc	/^let mapleader = ","$/;"	v	language:Vim
+NERDTreeIgnore	/Users/leo/dotfiles/nvim/nvimrc	/^let NERDTreeIgnore=['^tags$[[file]]', '^tags\\.vendor$[[file]]']$/;"	v	language:Vim
+OrderUseStatements	/Users/leo/dotfiles/nvim/nvimrc	/^function! OrderUseStatements ()$/;"	f	language:Vim
+w!!	/Users/leo/dotfiles/nvim/nvimrc	/^cmap w!! w !sudo tee % >\/dev\/null$/;"	m	language:Vim
+\pn	/Users/leo/dotfiles/nvim/nvimrc	/^inoremap \\pn <C-R>=expand("%:p:h:s?.*\\\/[^A-Z]\\\\+\\\\C??:gs?\/?\\\\?")<CR>$/;"	m	language:Vim

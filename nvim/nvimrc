@@ -1,3 +1,4 @@
+"
 "NeoBundle Scripts-----------------------------
 if has('vim_starting')
     if &compatible
@@ -16,32 +17,47 @@ call neobundle#begin(expand('/Users/leo/.nvim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Add or remove your Bundles here:
-NeoBundle 'Shougo/vimproc.vim'
+NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/unite.vim'
+
+"Git
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'gmist/vim-palette'
-NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'tpope/vim-surround'
+NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
+
+"UI
+NeoBundle 'gosukiwi/vim-atom-dark'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'bling/vim-airline'
 NeoBundle 'majutsushi/tagbar'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'tpope/vim-eunuch'
-NeoBundle 'ervandew/supertab'
-NeoBundle 'anyakichi/vim-autoclose'
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'm2mdas/phpcomplete-extended'
-NeoBundle 'vim-php/phpctags'
-NeoBundle 'Rican7/php-doc-modded'
-NeoBundle 'arnaud-lb/vim-php-namespace'
-NeoBundle 'xolox/vim-easytags'
+
+"Multi Language
+NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'godlygeek/tabular'
 NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'xolox/vim-easytags'
 NeoBundle 'xolox/vim-misc'
-NeoBundle 'ntpeters/vim-better-whitespace'
-NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
-NeoBundle 'ton/vim-bufsurf'
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'tpope/vim-eunuch'
+NeoBundle 'vim-task-org'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'TaskList.vim'
+
+"PHP
+NeoBundle 'vim-php/vim-php-refactoring'
+NeoBundle 'Rican7/php-doc-modded'
+NeoBundle '2072/PHP-Indenting-for-VIm'
+NeoBundle 'shawncplus/phpcomplete.vim'
+" NeoBundle 'm2mdas/phpcomplete-extended'
+
+NeoBundle 'paulyg/Vim-PHP-Stuff'
+NeoBundle 'vim-php/tagbar-phpctags.vim'
+
+"Additional
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'joonty/vim-taggatron'
 
 " Required:
 call neobundle#end()
@@ -54,6 +70,8 @@ filetype plugin indent on
 NeoBundleCheck
 "End NeoBundle Scripts-------------------------
 
+"Nvim true colors
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 filetype on
 syntax on
 set nowrap
@@ -61,23 +79,26 @@ set ignorecase
 set smartcase
 set number
 set showmode
+set guifont=Roboto_Mono_Light:h10
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
-set guifont=Fira_Mono_for_Powerline:h10
-set wildmode=longest,list,full
+set linespace=10
 set wildmenu
+set wildmode=longest,list,full
+set wildignore+=*/vendor/**
+set wildignore+=*/public/forum/**
+set wildignore+=*/bower_components/**
+set wildignore+=*/node_modules/**
 set scrolloff=3
-"set sidescrolloff = 5
-"set sidescroll = 1
+set cursorline
 set ruler
 set tabstop=4
 set shiftwidth=4
 set expandtab
 set autoindent
 set copyindent
-set linespace=12
 set backspace=indent,eol,start
 highlight Search cterm=underline
 set visualbell
@@ -88,72 +109,56 @@ set undolevels=1000
 set title
 set nobackup
 set noswapfile
+" show partial commands in cmd
+set showcmd
+set regexpengine=0
+" Create split below
+set splitbelow
+set splitright
 
 " stop using escape guys
 imap jj <esc>
-colorscheme atom-dark
+
+"2 themes differents suivant si GUI ou Term vim
+if has('gui_running')
+      set guioptions-=T  " no toolbar
+        colorscheme atom-dark
+        else
+        colorscheme atom-dark-256
+               endif
+
 set background=dark
 let mapleader = ","
 let g:mapleader = ","
 
-"leader save
+"leader save & quit
 nmap <leader>w :w!<cr>
-"leader quit
 nmap <leader>q :q!<cr>
 
+"set tags path
+set tags+=./tags;/,./TAGS;/ " Recurse up the directory tree until finding a tags file
+set tags+=./tags.vendor;/ " Add tag files for vendor dependencies, again with recursion up the tree
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tagbar#enabled = 1
-"let g:airline_powerline_fonts=1
-
-map <C-b> :NERDTreeToggle<CR>
-
+"Change split avec ctrl + vim moves
 nmap <silent> <C-h> :wincmd h<CR>
 nmap <silent> <C-l> :wincmd l<CR>
 nmap <silent> <C-j> :wincmd j<CR>
 nmap <silent> <C-k> :wincmd k<CR>
 
-
+" remap les arrow keys sur resize des splits
 nnoremap <Left> :vertical resize -2<CR>
 nnoremap <Right> :vertical resize +2<CR>
 nnoremap <Up> :resize -2<CR>
 nnoremap <Down> :resize +2<CR>
 
-"go to definition hitting leader + tab in esc mode
-nnoremap <leader><Tab> <C-]>
-" Create split below
-set splitbelow
-set splitright
-nmap :sp :rightbelow sp<cr>
-
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
-  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
-  \}
-
 let g:ctrlp_working_path_mode = 'r'
 
 " Use a leader instead of the actual named binding
 nmap <leader>p :CtrlP<cr>
-
-" Easy bindings for its various modes
 nmap <leader>b :CtrlPBuffer<cr>
-nmap <leader>bm :CtrlPMixed<cr>
-nmap <leader>bs :CtrlPMRU<cr>
-
-"toggle tagbar
-nmap <leader>l :TagbarToggle<cr>
-
-set showcmd
-
-autocmd cursorhold * set nohlsearch
-autocmd cursormoved * set hlsearch
 
 "auto remove trailing spaces on save with php files
 autocmd BufWritePre *.php :%s/\s\+$//e
-
-nnoremap <leader><leader> <c-^>
 
 " search is a bitch
 nmap <silent> ,/ :nohlsearch<CR>
@@ -161,62 +166,72 @@ nmap <silent> ,/ :nohlsearch<CR>
 "when you forget to sudo
 cmap w!! w !sudo tee % >/dev/null
 
+"Insert current namespace according to PSR-0
+inoremap \pn <C-R>=expand("%:p:h:s?.*\/[^A-Z]\\+\\C??:gs?/?\\?")<CR>
+
 "automatic vertical split shortcut
 nnoremap <leader>s <C-w>v<C-w>l
 " Create and edit file in the current dir
 nmap :ed :edit %:p:h/
 
-set tags+=./tags;/,./TAGS;/ " Recurse up the directory tree until finding a tags file
-set tags+=./tags.vendor;/ " Add tag files for vendor dependencies, again with recursion up the tree
+"go to definition hitting leader + tab in esc mode
+nnoremap <leader><Tab> <C-]>
 
-set laststatus=2
-set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
+"CTRLP conf
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
+  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+  \}
 
-"BufSurf shortcuts
-noremap <leader>< :bp<cr>
-noremap <leader>> :bn<cr>
+"toggle tagbar
+nmap <leader>l :TagbarToggle<cr>
+autocmd cursorhold * set nohlsearch
+autocmd cursormoved * set hlsearch
 
-"save with ctrl+s
-noremap  <c-s> :update<cr>
-vnoremap <c-s> <c-c>:update<cr>
-inoremap <c-s> <c-o>:update<cr><esc>
+"Nerd Tree Toggle conf
+map <C-b> :NERDTreeToggle<CR>
+let NERDTreeIgnore=['^tags$[[file]]', '^tags\.vendor$[[file]]']
 
-  "PHP DOC PLUGIN
-  imap <C-o> <ESC>:set paste<CR>:call PhpDoc()<CR>:set nopaste<CR>
+"Airline conf
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tagbar#enabled = 1
+" let g:airline_powerline_fonts=1
 
-  "force ack.vim to use AG
-  let g:ackprg = 'ag --nogroup --nocolor --column'
+"PHP Refactor
+let g:php_refactor_command='php ~/dotfiles/refactor.phar'
 
-  "Syntastic stuff
-  set statusline+=%#warningmsg#
-  set statusline+=%{SyntasticStatuslineFlag()}
+"PHP Doc config 
+inoremap <leader>d :call PhpDocSingle()<CR>i 
+nnoremap <leader>d :call PhpDocSingle()<CR> 
+vnoremap <leader>d :call PhpDocRange()<CR> 
+" PHPComplete Options
+" enables parsing docblock comments to generate helper
+let g:phpcomplete_parse_docblock_comments = 1 
+" caches the most used parts of the taglist
+let g:phpcomplete_cache_taglists = 1
+" better jump to definition 
+let g:phpcomplete_enhance_jump_to_definition = 1
 
+"Syntastic Options
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 let g:syntastic_auto_loc_list = 1 " Automatically open and close the location list
-let g:syntastic_php_checkers = ['php'] " PHP Linter, PHP Code Sniffer, PHP Mess Detector
+let g:syntastic_php_checkers = ['php', 'phpcs'] " PHP Linter, PHP Code Sniffer, PHP Mess Detector
 let g:syntastic_php_phpcs_post_args = "--standard=PSR2" " Use the PSR-2 standard for PHP Code Sniffer
 let g:syntastic_json_checkers = ['jsonlint'] " Use JSON linter
+let g:syntastic_go_checkers = ['go', 'gofmt', 'golint'] " Set our Go(lang) syntastic checkers
 let g:syntastic_go_golint_args = "-min_confidence=0.3" " Set a lower minimum confidence than default on `golint`
+"désactive les erreurs de style
+let g:syntastic_quiet_messages = { "type": "style" }
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
- "Force php autocomplete to use supertab to chose item
-  autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
-
-  "supertab with tab
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-
-" composer default command
-let g:phpcomplete_index_composer_command = "/usr/local/bin/composer"
-
-"php doc keystrokes
-inoremap <C-o> <ESC>:call PhpDocSingle()<CR>i
-nnoremap <C-o> :call PhpDocSingle()<CR>
-vnoremap <C-o> :call PhpDocRange()<CR>
-
-"Strip Whitespaces on save
-autocmd BufWritePre * StripWhitespace
-
-
-"easytags options
- "Enable async operation
+"Easytags Options
+"" Enable async operation
 let g:easytags_async = 1
 
 " Use project specific tags files (fall back to a global)
@@ -233,28 +248,83 @@ let g:easytags_languages = {
 \   }
 \}
 
-" If 'ack' is installed, use it as the CtrlP indexer. :)
-if (1 == executable('ack'))
-    let g:ctrlp_user_command = 'ack -i --noenv --nocolor --nogroup -g "" %s'
-endif
-
+" Completion (no plugin) settings 
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType c set omnifunc=ccomplete#Complete
-autocmd FileType make set noexpandtab
-autocmd FileType json set ts=2 sts=2 sw=2
-autocmd FileType gitcommit execute "set colorcolumn=51," . join(range(73,335), ',')
-autocmd FileType go execute "set colorcolumn=81," . join(range(121,335), ',')
-
 autocmd FileType php let php_sql_query=1
 autocmd FileType php let php_htmlInStrings=1
 autocmd FileType php let php_noShortTags=0
 autocmd FileType php let php_folding=0
 
-autocmd FileType php set makeprg=php\ -l\ %
-autocmd FileType php set errorformat=%m\ in\ %f\ on\ line\ %l
+" PHP-Vim-Namespace configuration and key-mappings
+" inoremap <Leader>u <C-O>:call PhpInsertUse()<CR>
+autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
+autocmd FileType php noremap <Leader>e :call PhpExpandClass()<CR>
 
-autocmd FileType php execute "set colorcolumn=81," . join(range(121,335), ',')
+" Function for ordering PHP use statements
+function! OrderUseStatements ()
+    " Save our undo file so that we can restore it after this function runs
+    " This allows us to run this function without it being part of the history
+    let tmpundofile = tempname()
+    execute 'wundo! '. tmpundofile
+
+    " Grab our cursor's current position
+    let original_position = winsaveview()
+
+    " Set our cursor position to the top so we can normalize our search results
+    call setpos('.', [0, 0, 0, 0])
+
+    " Search for our first and last use statements
+    let first_use = search('\(^\|\r\|\n\)\s*use \(.\{-}\)\_s*;', 'n')
+    let last_use = search('use \(.\{-}\)\_s*;\(\r\|\n\)*\([^use]\)', 'n')
+
+    " Define our sort range
+    let sort_range = first_use . ',' . last_use
+
+    " Order our use statements based on our sort range
+    execute sort_range . 'sort'
+
+    " Restore our original cursor position
+    call winrestview(original_position)
+
+    " Restore our undo history
+    silent! execute 'rundo ' . tmpundofile
+    call delete(tmpundofile)
+endfunction
+
+
+" Automaticaly order `use` statements on save
+autocmd FileType php autocmd BufWritePre <buffer> call OrderUseStatements()
+
+"PHP Indent Options
+let g:PHP_autoformatcomment = 1 " Format comments automatically
+let g:PHP_vintage_case_default_indent = 1 " Use the older style of switch/case indentation
+
+"Tagbar conf 
+"" Turn off alpha-sorting of Tagbar sources by default
+let g:tagbar_sort = 0
+autocmd vimenter * if !argc() | NERDTree | endif
+
+"NeoComplete Conf
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+ let g:neocomplete#enable_at_startup = 1
+" " Use smartcase.
+ let g:neocomplete#enable_smart_case = 1
+" " Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 2
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" Plugin key-mappings.
+" inoremap <expr><C-g>     neocomplete#undo_completion()
+" inoremap <expr><C-l>     neocomplete#complete_common_string()
+ let g:neocomplete#enable_auto_select = 1
+" Recommended key-mappings.
+" <CR>: cancel popup and insert newline.
+" inoremap <silent> <CR> <C-r>=neocomplete#smart_close_popup()<CR><CR>
+" <TAB>: completion.
+ inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
+" <C-h>, <BS>: close popup and delete backword char.
+" inoremap <expr> <C-h> neocomplete#smart_close_popup()."\<C-h>"
+" inoremap <expr> <BS>  neocomplete#smart_close_popup()."\<C-h>"
+" inoremap <expr> <C-y> neocomplete#close_popup()
+" inoremap <expr> <C-e> neocomplete#cancel_popup()
