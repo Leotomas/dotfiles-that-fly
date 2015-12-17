@@ -17,8 +17,16 @@ call neobundle#begin(expand('/Users/leo/.nvim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Add or remove your Bundles here:
-NeoBundle 'Shougo/vimproc'
+" NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimproc', {
+            \ 'build' : {
+            \     'windows' : 'make -f make_mingw32.mak',
+            \     'cygwin' : 'make -f make_cygwin.mak',
+            \     'mac' : 'make -f make_mac.mak',
+            \     'unix' : 'make -f make_unix.mak',
+            \    },
+            \ }
 
 "Git
 NeoBundle 'tpope/vim-fugitive'
@@ -31,33 +39,47 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'majutsushi/tagbar'
+NeoBundle 'milkypostman/vim-togglelist'
 
 "Multi Language
 NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'scrooloose/syntastic'
+" NeoBundle 'scrooloose/syntastic'
+" NeoBundle 'joonty/vim-phpqa'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'xolox/vim-easytags'
 NeoBundle 'xolox/vim-misc'
-NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'vim-task-org'
 NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'TaskList.vim'
 
 "PHP
-NeoBundle 'vim-php/vim-php-refactoring'
+" NeoBundle 'vim-php/vim-php-refactoring'
+NeoBundle 'adoy/vim-php-refactoring-toolbox'
 NeoBundle 'Rican7/php-doc-modded'
 NeoBundle '2072/PHP-Indenting-for-VIm'
-NeoBundle 'shawncplus/phpcomplete.vim'
-" NeoBundle 'm2mdas/phpcomplete-extended'
-
+NeoBundle 'm2mdas/phpcomplete-extended'
+NeoBundle 'm2mdas/phpcomplete-extended-laravel'
 NeoBundle 'paulyg/Vim-PHP-Stuff'
-NeoBundle 'vim-php/tagbar-phpctags.vim'
+" NeoBundle 'vim-php/tagbar-phpctags.vim'
+NeoBundle 'arnaud-lb/vim-php-namespace'
+
+"Autocomplete
+" NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Valloric/YouCompleteMe'
+" NeoBundle 'ervandew/supertab'
+" NeoBundle 'othree/vim-autocomplpop'
+" NeoBundle 'eparreno/vim-l9'
 
 "Additional
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'joonty/vim-taggatron'
+
+"Search 
+NeoBundle 'mileszs/ack.vim'
+
+"Laravel
+NeoBundle 'xsbeats/vim-blade'
 
 " Required:
 call neobundle#end()
@@ -115,18 +137,12 @@ set regexpengine=0
 " Create split below
 set splitbelow
 set splitright
-
+set completeopt=longest,menuone
 " stop using escape guys
 imap jj <esc>
 
 "2 themes differents suivant si GUI ou Term vim
-if has('gui_running')
-      set guioptions-=T  " no toolbar
-        colorscheme atom-dark
-        else
-        colorscheme atom-dark-256
-               endif
-
+colorscheme atom-dark
 set background=dark
 let mapleader = ","
 let g:mapleader = ","
@@ -134,7 +150,8 @@ let g:mapleader = ","
 "leader save & quit
 nmap <leader>w :w!<cr>
 nmap <leader>q :q!<cr>
-
+" close all splits except the one focused
+nmap <leader>o :only<cr>
 "set tags path
 set tags+=./tags;/,./TAGS;/ " Recurse up the directory tree until finding a tags file
 set tags+=./tags.vendor;/ " Add tag files for vendor dependencies, again with recursion up the tree
@@ -156,6 +173,15 @@ let g:ctrlp_working_path_mode = 'r'
 " Use a leader instead of the actual named binding
 nmap <leader>p :CtrlP<cr>
 nmap <leader>b :CtrlPBuffer<cr>
+nmap <leader>t :CtrlPTag<cr>
+"Laravel Specific
+"Abbrevs
+abbrev lmm !php artisan make:model
+abbrev lmc !php artisan make:controller
+abbrev lmmig !php artisan make:migration
+abbrev lms !php artisan make:seed 
+abbrev lsc !php artisan db:seed --class=  --force -vvv <Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+
 
 "auto remove trailing spaces on save with php files
 autocmd BufWritePre *.php :%s/\s\+$//e
@@ -177,16 +203,25 @@ nmap :ed :edit %:p:h/
 "go to definition hitting leader + tab in esc mode
 nnoremap <leader><Tab> <C-]>
 
+"circle buffer avec tab
+:nnoremap <Tab> :bnext<CR>
+:nnoremap <S-Tab> :bprevious<CR>
+nmap <leader>x :bd<cr>
+
+"indent whole file and go back to current position
+nnoremap <leader>i mzgg=G`z<cr> 
+
+"align array arrows with tabularize 
+vmap <leader>a :Tab /=><cr> 
+
+
 "CTRLP conf
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
-  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
-  \}
+            \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
+            \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+            \}
 
 "toggle tagbar
-nmap <leader>l :TagbarToggle<cr>
-autocmd cursorhold * set nohlsearch
-autocmd cursormoved * set hlsearch
+map <leader>f :TagbarToggle<CR>
 
 "Nerd Tree Toggle conf
 map <C-b> :NERDTreeToggle<CR>
@@ -205,17 +240,12 @@ let g:php_refactor_command='php ~/dotfiles/refactor.phar'
 inoremap <leader>d :call PhpDocSingle()<CR>i 
 nnoremap <leader>d :call PhpDocSingle()<CR> 
 vnoremap <leader>d :call PhpDocRange()<CR> 
-" PHPComplete Options
-" enables parsing docblock comments to generate helper
-let g:phpcomplete_parse_docblock_comments = 1 
-" caches the most used parts of the taglist
-let g:phpcomplete_cache_taglists = 1
-" better jump to definition 
-let g:phpcomplete_enhance_jump_to_definition = 1
+
+
 
 "Syntastic Options
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_auto_loc_list = 1 " Automatically open and close the location list
 let g:syntastic_php_checkers = ['php', 'phpcs'] " PHP Linter, PHP Code Sniffer, PHP Mess Detector
@@ -225,10 +255,12 @@ let g:syntastic_go_checkers = ['go', 'gofmt', 'golint'] " Set our Go(lang) synta
 let g:syntastic_go_golint_args = "-min_confidence=0.3" " Set a lower minimum confidence than default on `golint`
 "désactive les erreurs de style
 let g:syntastic_quiet_messages = { "type": "style" }
+" let g:syntastic_quiet_messages = {'level': 'warnings'}
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
 
 "Easytags Options
 "" Enable async operation
@@ -239,21 +271,18 @@ let g:easytags_dynamic_files = 1
 
 " Language specific settings
 let g:easytags_languages = {
-\   'php': {
-\     'cmd': 'phpctags',
-\       'args': [],
-\       'fileoutput_opt': '-f',
-\       'stdout_opt': '-f-',
-\       'recurse_flag': '-R'
-\   }
-\}
+            \   'php': {
+            \     'cmd': 'ctags',
+            \       'args': [],
+            \       'fileoutput_opt': '-f',
+            \       'stdout_opt': '-f-',
+            \       'recurse_flag': '-R'
+            \   }
+            \}
 
-" Completion (no plugin) settings 
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType php let php_sql_query=1
-autocmd FileType php let php_htmlInStrings=1
-autocmd FileType php let php_noShortTags=0
-autocmd FileType php let php_folding=0
+abbrev gt !ctags -R --filter-terminator=php --exclude=bower_components --exclude=node_modules --exclude=public --exclude=vendor/phpunit --exclude=vendor/phpdocumentor --exclude=vendor/maximebf
+abbrev ut !ctags -a -R --filter-terminator=php --exclude=bower_components --exclude=node_modules --exclude=public --exclude=vendor/phpunit --exclude=vendor/phpdocumentor --exclude=vendor/maximebf
+
 
 " PHP-Vim-Namespace configuration and key-mappings
 " inoremap <Leader>u <C-O>:call PhpInsertUse()<CR>
@@ -299,32 +328,66 @@ autocmd FileType php autocmd BufWritePre <buffer> call OrderUseStatements()
 let g:PHP_autoformatcomment = 1 " Format comments automatically
 let g:PHP_vintage_case_default_indent = 1 " Use the older style of switch/case indentation
 
-"Tagbar conf 
-"" Turn off alpha-sorting of Tagbar sources by default
-let g:tagbar_sort = 0
-autocmd vimenter * if !argc() | NERDTree | endif
 
-"NeoComplete Conf
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
- let g:neocomplete#enable_at_startup = 1
-" " Use smartcase.
- let g:neocomplete#enable_smart_case = 1
-" " Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 2
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+"COMPLETION
+"------------------------------------
+" Completion (no plugin) settings 
+autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
+autocmd FileType php let php_sql_query=1
+autocmd FileType php let php_htmlInStrings=1
 
-" Plugin key-mappings.
-" inoremap <expr><C-g>     neocomplete#undo_completion()
-" inoremap <expr><C-l>     neocomplete#complete_common_string()
- let g:neocomplete#enable_auto_select = 1
-" Recommended key-mappings.
-" <CR>: cancel popup and insert newline.
-" inoremap <silent> <CR> <C-r>=neocomplete#smart_close_popup()<CR><CR>
-" <TAB>: completion.
- inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
-" <C-h>, <BS>: close popup and delete backword char.
-" inoremap <expr> <C-h> neocomplete#smart_close_popup()."\<C-h>"
-" inoremap <expr> <BS>  neocomplete#smart_close_popup()."\<C-h>"
-" inoremap <expr> <C-y> neocomplete#close_popup()
-" inoremap <expr> <C-e> neocomplete#cancel_popup()
+" "YouCompleteMeConf
+let g:ycm_min_num_of_chars_for_completion = 2
+let g:ycm_auto_trigger = 1
+let g:ycm_complete_in_strings = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_register_as_syntastic_checker = 1
+
+" "Supertab & phpcomplete
+let g:SuperTabDefaultCompletionType = "context"
+"let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+
+" PHPComplete Options
+" enables parsing docblock comments to generate helper
+let g:phpcomplete_parse_docblock_comments = 1 
+" caches the most used parts of the taglist
+let g:phpcomplete_cache_taglists = 1
+" better jump to definition 
+let g:phpcomplete_enhance_jump_to_definition = 1
+" commande de composer
+let g:phpcomplete_index_composer_command='composer' 
+
+"omni sur ctrl+@
+inoremap <C-@> <C-x><C-o><C-o><C-p>
+
+"Gestion des fenetres
+"-------------------------
+function! GetBufferList()
+    redir =>buflist
+    silent! ls!
+    redir END
+    return buflist
+endfunction
+
+function! ToggleList(bufname, pfx)
+    let buflist = GetBufferList()
+    for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
+        if bufwinnr(bufnum) != -1
+            exec(a:pfx.'close')
+            return
+        endif
+    endfor
+    if a:pfx == 'l' && len(getloclist(0)) == 0
+        echohl ErrorMsg
+        echo "Location List is Empty."
+        return
+    endif
+    let winnr = winnr()
+    exec(a:pfx.'open')
+    if winnr() != winnr
+        wincmd p
+    endif
+endfunction
+
+nmap <silent> <leader>l :call ToggleList("Location List", 'l')<CR>
+nmap <silent> <leader>e :call ToggleList("Quickfix List", 'c')<CR>
