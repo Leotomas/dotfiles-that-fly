@@ -27,6 +27,7 @@ NeoBundle 'Shougo/vimproc', {
             \     'unix' : 'make -f make_unix.mak',
             \    },
             \ }
+NeoBundle  'tpope/vim-dispatch'
 
 "Git
 NeoBundle 'tpope/vim-fugitive'
@@ -43,7 +44,7 @@ NeoBundle 'milkypostman/vim-togglelist'
 
 "Multi Language
 NeoBundle 'Raimondi/delimitMate'
-" NeoBundle 'scrooloose/syntastic'
+ NeoBundle 'scrooloose/syntastic'
 " NeoBundle 'joonty/vim-phpqa'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'tomtom/tcomment_vim'
@@ -110,9 +111,10 @@ set linespace=10
 set wildmenu
 set wildmode=longest,list,full
 set wildignore+=*/vendor/**
-set wildignore+=*/public/forum/**
-set wildignore+=*/bower_components/**
 set wildignore+=*/node_modules/**
+set wildignore+=*/storage/**
+set wildignore+=*/.phpcomplete/**
+set wildignore+=*/.phpcomplete_extended/**
 set scrolloff=3
 set cursorline
 set ruler
@@ -231,7 +233,7 @@ let NERDTreeIgnore=['^tags$[[file]]', '^tags\.vendor$[[file]]']
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tagbar#enabled = 1
-" let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts=1
 
 "PHP Refactor
 let g:php_refactor_command='php ~/dotfiles/refactor.phar'
@@ -280,9 +282,12 @@ let g:easytags_languages = {
             \   }
             \}
 
-abbrev gt !ctags -R --filter-terminator=php --exclude=bower_components --exclude=node_modules --exclude=public --exclude=vendor/phpunit --exclude=vendor/phpdocumentor --exclude=vendor/maximebf
-abbrev ut !ctags -a -R --filter-terminator=php --exclude=bower_components --exclude=node_modules --exclude=public --exclude=vendor/phpunit --exclude=vendor/phpdocumentor --exclude=vendor/maximebf
-
+"Abbrevs for running tag generation and tag update - tailored for php
+abbrev generateTags !ctags -R --filter-terminator=php --exclude=node_modules  --exclude=vendor/phpunit --exclude=vendor/phpdocumentor --exclude=vendor/maximebf --exclude=storage
+abbrev updateTags !ctags -a -R --filter-terminator=php --exclude=node_modules  --exclude=vendor/phpunit --exclude=vendor/phpdocumentor --exclude=vendor/maximebf --exclude=storage
+"
+"Automatically update tags on save - deps = vim-dispatch
+autocmd BufWritePre .*php :Start!ctags -a -R --filter-terminator=php --exclude=node_modules  --exclude=vendor/phpunit --exclude=vendor/phpdocumentor --exclude=vendor/maximebf --exclude=storage 
 
 " PHP-Vim-Namespace configuration and key-mappings
 " inoremap <Leader>u <C-O>:call PhpInsertUse()<CR>
@@ -342,6 +347,10 @@ let g:ycm_auto_trigger = 1
 let g:ycm_complete_in_strings = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_register_as_syntastic_checker = 1
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_completion = 0
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
 
 " "Supertab & phpcomplete
 let g:SuperTabDefaultCompletionType = "context"
