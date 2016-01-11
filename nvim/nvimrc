@@ -155,14 +155,17 @@ set regexpengine=0
 set splitbelow
 set splitright
 set completeopt=longest,menuone
-" stop using escape guys
+
+
+"stop using escape guys
 imap jj <esc>
 
 "Simple paste in insert mode
 imap <C-v> <Esc><C-v>a
 
-"2 themes differents suivant si GUI ou Term vim
+"colorscheme
 colorscheme atom-dark-256
+
 let mapleader = ","
 let g:mapleader = ","
 
@@ -175,11 +178,11 @@ nmap <leader>o :only<cr>
 set tags+=./tags;/,./TAGS;/ " Recurse up the directory tree until finding a tags file
 set tags+=./tags.vendor;/ " Add tag files for vendor dependencies, again with recursion up the tree
 
-"Change split avec ctrl + vim moves
-" nmap <silent> <C-h> :wincmd h<CR>
-" nmap <silent> <C-l> :wincmd l<CR>
-" nmap <silent> <C-j> :wincmd j<CR>
-" nmap <silent> <C-k> :wincmd k<CR>
+"Git Wrapper
+noremap <leader>gs :Gstatus<cr>
+noremap <leader>gw :Gwrite<cr>
+noremap <leader>gp :Gpush<cr>
+noremap <leader>g. :!git add .<cr>
 
 "Disables arrow keys in insert mode
 noremap  <Up> ""
@@ -190,6 +193,7 @@ noremap  <Left> ""
 noremap! <Left> <Esc>
 noremap  <Right> ""
 noremap! <Right> <Esc>
+
 " remap les arrow keys sur resize des splits
 nnoremap <Left> :vertical resize -2<CR>
 nnoremap <Right> :vertical resize +2<CR>
@@ -202,6 +206,7 @@ let g:ctrlp_working_path_mode = 'r'
 nmap <leader>p :CtrlP<cr>
 nmap <leader>b :CtrlPBuffer<cr>
 nmap <leader>t :CtrlPTag<cr>
+
 "Laravel Specific
 "Abbrevs
 abbrev lmm !php artisan make:model
