@@ -27,16 +27,18 @@ NeoBundle 'Shougo/vimproc', {
             \     'unix' : 'make -f make_unix.mak',
             \    },
             \ }
-NeoBundle  'tpope/vim-dispatch'
+NeoBundle 'tpope/vim-dispatch'
+NeoBundle 'tomtom/tlib_vim'
+NeoBundle 'MarcWeber/vim-addon-mw-utils'
 
 "Git
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
 
-"UI
-NeoBundle 'jdkanani/vim-material-theme'
+"Themes
 NeoBundle 'gosukiwi/vim-atom-dark'
+"UI
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'bling/vim-airline'
@@ -81,7 +83,7 @@ NeoBundle 'joonty/vim-taggatron'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'bonsaiben/bootstrap-snippets'
-
+"
 "HTML
 NeoBundle 'mattn/emmet-vim'
 
@@ -104,7 +106,9 @@ NeoBundleCheck
 "End NeoBundle Scripts-------------------------
 
 "Nvim true colors
+let macvim_skip_colorscheme=1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set t_Co=256
 filetype on
 syntax on
 set nowrap
@@ -154,9 +158,11 @@ set completeopt=longest,menuone
 " stop using escape guys
 imap jj <esc>
 
+"Simple paste in insert mode
+imap <C-v> <Esc><C-v>a
+
 "2 themes differents suivant si GUI ou Term vim
 colorscheme atom-dark-256
-set background=dark
 let mapleader = ","
 let g:mapleader = ","
 
@@ -170,11 +176,20 @@ set tags+=./tags;/,./TAGS;/ " Recurse up the directory tree until finding a tags
 set tags+=./tags.vendor;/ " Add tag files for vendor dependencies, again with recursion up the tree
 
 "Change split avec ctrl + vim moves
-nmap <silent> <C-h> :wincmd h<CR>
-nmap <silent> <C-l> :wincmd l<CR>
-nmap <silent> <C-j> :wincmd j<CR>
-nmap <silent> <C-k> :wincmd k<CR>
+" nmap <silent> <C-h> :wincmd h<CR>
+" nmap <silent> <C-l> :wincmd l<CR>
+" nmap <silent> <C-j> :wincmd j<CR>
+" nmap <silent> <C-k> :wincmd k<CR>
 
+"Disables arrow keys in insert mode
+noremap  <Up> ""
+noremap! <Up> <Esc>
+noremap  <Down> ""
+noremap! <Down> <Esc>
+noremap  <Left> ""
+noremap! <Left> <Esc>
+noremap  <Right> ""
+noremap! <Right> <Esc>
 " remap les arrow keys sur resize des splits
 nnoremap <Left> :vertical resize -2<CR>
 nnoremap <Right> :vertical resize +2<CR>
@@ -208,8 +223,6 @@ cmap w!! w !sudo tee % >/dev/null
 "Insert current namespace according to PSR-0
 inoremap \pn <C-R>=expand("%:p:h:s?.*\/[^A-Z]\\+\\C??:gs?/?\\?")<CR>
 
-"automatic vertical split shortcut
-nnoremap <leader>s <C-w>v<C-w>l
 " Create and edit file in the current dir
 nmap :ed :edit %:p:h/
 
@@ -256,8 +269,13 @@ vnoremap <leader>d :call PhpDocRange()<CR>
 
 "Snippets Conf
 let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsListSnippets="<c-k>"
+
+" autocmd BufRead,BufNewFile *.blade.php set filetype=html
+autocmd FileType blade UltiSnipsAddFiletypes html
+autocmd FileType blade UltiSnipsAddFiletypes php
 
 "Syntastic Options
 set statusline+=%#warningmsg#
@@ -414,3 +432,4 @@ endfunction
 
 nmap <silent> <leader>l :call ToggleList("Location List", 'l')<CR>
 nmap <silent> <leader>e :call ToggleList("Quickfix List", 'c')<CR>
+
