@@ -35,6 +35,7 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
 
 "UI
+NeoBundle 'jdkanani/vim-material-theme'
 NeoBundle 'gosukiwi/vim-atom-dark'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'kien/ctrlp.vim'
@@ -44,7 +45,7 @@ NeoBundle 'milkypostman/vim-togglelist'
 
 "Multi Language
 NeoBundle 'Raimondi/delimitMate'
- NeoBundle 'scrooloose/syntastic'
+"  NeoBundle 'scrooloose/syntastic'
 " NeoBundle 'joonty/vim-phpqa'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'tomtom/tcomment_vim'
@@ -76,10 +77,19 @@ NeoBundle 'Valloric/YouCompleteMe'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'joonty/vim-taggatron'
 
+"Snippets
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
+NeoBundle 'bonsaiben/bootstrap-snippets'
+
+"HTML
+NeoBundle 'mattn/emmet-vim'
+
 "Search 
 NeoBundle 'mileszs/ack.vim'
+NeoBundle 'gilsondev/searchtasks.vim'
 
-"Laravel
+" Laravel
 NeoBundle 'xsbeats/vim-blade'
 
 " Required:
@@ -102,15 +112,16 @@ set ignorecase
 set smartcase
 set number
 set showmode
-set guifont=Roboto_Mono_Light:h10
+set guifont=Roboto_Mono_For_Powerline:h10
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
-set linespace=10
+set linespace=4
 set wildmenu
 set wildmode=longest,list,full
 set wildignore+=*/vendor/**
+set wildignore+=*/resources/assets/bower/**
 set wildignore+=*/node_modules/**
 set wildignore+=*/storage/**
 set wildignore+=*/.phpcomplete/**
@@ -144,7 +155,7 @@ set completeopt=longest,menuone
 imap jj <esc>
 
 "2 themes differents suivant si GUI ou Term vim
-colorscheme atom-dark
+colorscheme atom-dark-256
 set background=dark
 let mapleader = ","
 let g:mapleader = ","
@@ -243,7 +254,10 @@ inoremap <leader>d :call PhpDocSingle()<CR>i
 nnoremap <leader>d :call PhpDocSingle()<CR> 
 vnoremap <leader>d :call PhpDocRange()<CR> 
 
-
+"Snippets Conf
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "Syntastic Options
 set statusline+=%#warningmsg#
