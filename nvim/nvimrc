@@ -16,7 +16,7 @@ call neobundle#begin(expand('/Users/leo/.nvim/bundle'))
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" Add or remove your Bundles here:
+" --------- Dependencies --------- "
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc', {
@@ -29,77 +29,93 @@ NeoBundle 'Shougo/vimproc', {
             \ }
 
 NeoBundle 'tpope/vim-dispatch'
+NeoBundle 'joonty/vim-do'
 NeoBundle 'tomtom/tlib_vim'
 NeoBundle 'MarcWeber/vim-addon-mw-utils'
-"
-"Git
-"Git Wrapper
-NeoBundle 'tpope/vim-fugitive'
-" NeoBundle 'airblade/vim-gitgutter'
-" NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
+NeoBundle 'xolox/vim-misc'
+NeoBundle 'tpope/vim-eunuch'
 
-"Themes
-NeoBundle 'mhartington/oceanic-next'
-NeoBundle 'gosukiwi/vim-atom-dark'
-NeoBundle 'mkarmona/materialbox'
-"UI
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'Xuyuanp/nerdtree-git-plugin'
+" --------- Themes --------- "
+"256
+NeoBundle 'Leotomas/vim-atom-dark'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'sickill/vim-monokai'
+NeoBundle 'kristijanhusak/vim-hybrid-material'
+NeoBundle 'sts10/vim-mustard'
+NeoBundle 'endel/vim-github-colorscheme'
+NeoBundle 'w0ng/vim-hybrid'
+
+"GUI
+NeoBundle 'farfanoide/vim-facebook'
+NeoBundle 'dkanani/vim-material-theme'
+NeoBundle 'tomasr/molokai'
+
+" --------- Vim improvements --------- "
+"  Motions
+NeoBundle 'rhysd/clever-f.vim'
+NeoBundle 'bkad/CamelCaseMotion'
+"Buffers
+NeoBundle 'vim-scripts/BufOnly.vim'
+NeoBundle 'qpkorr/vim-bufkill'
+"File Management
 NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'bling/vim-airline'
 NeoBundle 'majutsushi/tagbar'
 
-"Multi Language
-"completion pour les quotes, brackets etc...
+" NeoBundle 'bling/vim-airline'
+" NeoBundle 'ryanoasis/vim-devicons'
+" autoclose tags
 NeoBundle 'Raimondi/delimitMate'
-"closes html tags
-NeoBundle 'docunext/closetag.vim'
-" "  NeoBundle 'scrooloose/syntastic'
-" NeoBundle 'joonty/vim-phpqa'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'tomtom/tcomment_vim'
-" NeoBundle 'xolox/vim-easytags'
-" NeoBundle 'xolox/vim-misc'
-NeoBundle 'tpope/vim-eunuch'
-NeoBundle 'terryma/vim-multiple-cursors'
-
-"PHP
-NeoBundle 'vim-php/vim-php-refactoring'
-NeoBundle 'adoy/vim-php-refactoring-toolbox'
-NeoBundle 'Rican7/php-doc-modded'
-NeoBundle '2072/PHP-Indenting-for-VIm'
-NeoBundle 'm2mdas/phpcomplete-extended'
-NeoBundle 'm2mdas/phpcomplete-extended-laravel'
-NeoBundle 'paulyg/Vim-PHP-Stuff'
-" NeoBundle 'vim-php/tagbar-phpctags.vim'
-NeoBundle 'arnaud-lb/vim-php-namespace'
-
-
-"Autocomplete
 NeoBundle 'Valloric/YouCompleteMe'
-" NeoBundle 'ervandew/supertab'
-
-"Additional
+NeoBundle 'henrik/vim-indexed-search'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'docunext/closetag.vim'
+" NeoBundle 'scrooloose/syntastic'
+NeoBundle 'benekastah/neomake'
 NeoBundle 'tpope/vim-surround'
-
-"Snippets
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
-NeoBundle 'bonsaiben/bootstrap-snippets'
-"
-"HTML
-" NeoBundle 'mattn/emmet-vim'
-
-"CSS
-"colore les codes hexa
 NeoBundle 'vim-scripts/colorizer'
-
-"Search 
+NeoBundle 'dkprice/vim-easygrep'
+NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'mileszs/ack.vim'
-" NeoBundle 'gilsondev/searchtasks.vim'
+NeoBundle 'vim-scripts/YankRing.vim'
 
-" Laravel
+" --------- PHP --------- "
+NeoBundleLazy 'adoy/vim-php-refactoring-toolbox', {'autoload':{'filetypes':['php']}}
+NeoBundleLazy '2072/PHP-Indenting-for-VIm', {'autoload':{'filetypes':['php']}}
+NeoBundleLazy 'm2mdas/phpcomplete-extended', {'autoload':{'filetypes':['php']}}
+NeoBundleLazy 'm2mdas/phpcomplete-extended-laravel', {'autoload':{'filetypes':['php']}}
+NeoBundleLazy 'paulyg/Vim-PHP-Stuff', {'autoload':{'filetypes':['php']}}
+NeoBundleLazy 'arnaud-lb/vim-php-namespace', {'autoload':{'filetypes':['php']}}
+NeoBundle 'mikehaertl/pdv-standalone'
+
+" --------- HTML / Front --------- "
+NeoBundle 'bonsaiben/bootstrap-snippets'
 NeoBundle 'xsbeats/vim-blade'
+
+" --------- Writing / Prise de note --------- "
+NeoBundle 'mkitt/markdown-preview.vim'
+NeoBundle 'junegunn/goyo.vim'
+NeoBundle 'reedes/vim-pencil'
+
+" --------- JS --------- "
+NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+NeoBundleLazy 'vim-scripts/JavaScript-Indent', {'autoload':{'filetypes':['javascript']}}
+" NeoBundle 'ternjs/tern_for_vim'
+NeoBundle 'posva/vim-vue'
+NeoBundle 'ahayman/vim-nodejs-complete'
+NeoBundle 'darthmall/vim-vue'
+
+" --------- Ansible --------- "
+NeoBundle 'pearofducks/ansible-vim'
+NeoBundle 'chase/vim-ansible-yaml'
+
+
 
 " Required:
 call neobundle#end()
@@ -112,37 +128,55 @@ filetype plugin indent on
 NeoBundleCheck
 "End NeoBundle Scripts-------------------------
 
-"Nvim true colors
+
+
+set rtp+=~/.fzf
+let g:enable_bold_font = 1
+
+" colorscheme atom-dark-256
+" let g:indentLine_color_term = 239
+
 colorscheme atom-dark
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-colorscheme 
+
+if has('gui_running')
+    set guioptions-=e
+    colorscheme atom-dark
+    set guifont=Meslo_LG_L_For_Powerline:h11
+    set guioptions-=m  "remove menu bar
+    set guioptions-=T  "remove toolbar
+    set guioptions-=r  "remove right-hand scroll bar
+    set guioptions-=L  "remove left hand scroll bar
+endif
+
+if has("nvim")
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
 set t_Co=256
 filetype on
 syntax on
-set nowrap
+set wrap
 set ignorecase
 set smartcase
-set number
+set iskeyword-=_
+set hlsearch
+set nonumber
 set showmode
-set guifont=Roboto_Mono_Light_For_Powerline:h11
-set guioptions-=m  "remove menu bar
-set guioptions-=T  "remove toolbar
-set guioptions-=r  "remove right-hand scroll bar
-set guioptions-=L  "remove left-hand scroll bar
-set linespace=4
+set linebreak
+set linespace=10
 set wildmenu
 set wildmode=longest,list,full
 set wildignore+=*/vendor/**
 set wildignore+=*/resources/assets/bower/**
 set wildignore+=*/node_modules/**
 set wildignore+=*/storage/**
+set clipboard=unnamed
 set wildignore+=*/.phpcomplete/**
 set wildignore+=*/.phpcomplete_extended/**
 set scrolloff=3
-set cursorline
-set ruler
+set incsearch
 set tabstop=4
 set shiftwidth=4
+set mouse=a
 set expandtab
 set autoindent
 set copyindent
@@ -155,7 +189,7 @@ set history=1000
 set undolevels=1000
 set title
 set nobackup
-set noswapfile
+set foldcolumn=1
 " show partial commands in cmd
 set showcmd
 set regexpengine=0
@@ -164,14 +198,16 @@ set splitbelow
 set splitright
 set completeopt=longest,menuone
 
-"close tags for blade
-autocmd FileType html,htmldjango,jinjahtml,eruby,mako, blade let b:closetag_html_style=1
+"Make vim faster
+let loaded_matchparent=1 " Don't load matchit.vim (paren/bracket matching)
+set nocursorcolumn      " Don't paint cursor column
+set lazyredraw          " Wait to redraw
+set nocursorline
+set scrolljump=8        " Scroll 8 lines at a time at bottom/top
+let html_no_rendering=1 " Don't render italic, bold, links in HTML"
 
 "stop using escape guys
 imap jj <esc>
-
-"Simple paste in insert mode
-imap <C-v> <Esc><C-v>a
 
 let mapleader = ","
 let g:mapleader = ","
@@ -179,17 +215,21 @@ let g:mapleader = ","
 "leader save & quit
 nmap <leader>w :w!<cr>
 nmap <leader>q :q!<cr>
+cmap w!! w !sudo tee % >/dev/null
+" Create and edit file in the current dir
+nmap :ed :edit %:p:h/
+
 " close all splits except the one focused
 nmap <leader>o :only<cr>
+
+" no more swaps in project dir
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+
 "set tags path
 set tags+=./tags;/,./TAGS;/ " Recurse up the directory tree until finding a tags file
 set tags+=./tags.vendor;/ " Add tag files for vendor dependencies, again with recursion up the tree
-
-"Git Wrapper
-noremap <leader>gs :Gstatus<cr>
-noremap <leader>gw :Gwrite<cr>
-noremap <leader>gp :Gpush<cr>
-noremap <leader>g. :!git add .<cr>
 
 "Disables arrow keys in insert mode
 noremap  <Up> ""
@@ -207,134 +247,46 @@ nnoremap <Right> :vertical resize +2<CR>
 nnoremap <Up> :resize -2<CR>
 nnoremap <Down> :resize +2<CR>
 
-let g:ctrlp_working_path_mode = 'r'
+" --------- Motions --------- "
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+map <silent> ge <Plug>CamelCaseMotion_ge
+sunmap w
+sunmap b
+sunmap e
+sunmap ge
 
-" Use a leader instead of the actual named binding
+
+" --------- CTRLP --------- "
+"permet de caler ctrpl sur le .gitignore
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_match_window = 'top,max:10,results:10,order:ttb'
 nmap <leader>p :CtrlP<cr>
-nmap <leader>b :CtrlPBuffer<cr>
+nmap <leader><space> :CtrlPBuffer<cr>
 nmap <leader>t :CtrlPTag<cr>
+let g:ctrlp_working_path_mode = 'r'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|.git\|bower_components\'
 
-"Laravel Specific
-"Abbrevs
-abbrev lmm !php artisan make:model
-abbrev lmc !php artisan make:controller
-abbrev lmmig !php artisan make:migration
-abbrev lms !php artisan make:seed 
-abbrev lsc !php artisan db:seed --class=  --force -vvv <Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+nmap <leader>f :TagbarToggle<CR>
 
 
-"auto remove trailing spaces on save with php files
- autocmd BufWritePre *.php :%s/\s\+$//e
+"Removing trailing spaces
+autocmd BufWritePre * :%s/\s\+$//e
 
-" search is a bitch
-nmap <silent> ,/ :nohlsearch<CR>
+" --------- SEARCH CONFIG --------- "
+nmap <silent> <leader>/ :nohlsearch<CR>
 
-"when you forget to sudo
-cmap w!! w !sudo tee % >/dev/null
-
+" --------- PHP CONF --------- "
 "Insert current namespace according to PSR-0
 inoremap \pn <C-R>=expand("%:p:h:s?.*\/[^A-Z]\\+\\C??:gs?/?\\?")<CR>
-
-" Create and edit file in the current dir
-nmap :ed :edit %:p:h/
-
-"go to definition hitting leader + tab in esc mode
-nnoremap <leader><Tab> <C-]>
-
-"circle buffer avec tab
-:nnoremap <Tab> :bnext<CR>
-:nnoremap <S-Tab> :bprevious<CR>
-nmap <leader>x :bd<cr>
-
-"indent whole file and go back to current position
-nnoremap <leader>i mzgg=G`z<cr> 
-
-"align array arrows with tabularize 
-vmap <leader>a :Tab /=><cr> 
-
-
-" "CTRLP conf
-"             \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
-"             \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
-"             \}
-
-"toggle tagbar
-map <leader>f :TagbarToggle<CR>
-
-"Nerd Tree Toggle conf
-map <C-b> :NERDTreeToggle<CR>
-let NERDTreeIgnore=['^tags$[[file]]', '^tags\.vendor$[[file]]']
-
-"Airline conf
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-" let g:airline#extensions#tagbar#enabled = 1
-let g:airline_powerline_fonts=1
-
 "PHP Refactor
 let g:php_refactor_command='php ~/dotfiles/refactor.phar'
-
-"PHP Doc config 
-inoremap <leader>d :call PhpDocSingle()<CR>i 
-nnoremap <leader>d :call PhpDocSingle()<CR> 
-vnoremap <leader>d :call PhpDocRange()<CR> 
-
-"Snippets Conf
-let g:UltiSnipsExpandTrigger="<c-j>"
-" let g:UltiSnipsJumpForwardTrigger="<c-b>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsListSnippets="<c-k>"
-
-" autocmd BufRead,BufNewFile *.blade.php set filetype=html
-" autocmd FileType blade UltiSnipsAddFiletypes html
-" autocmd FileType blade UltiSnipsAddFiletypes php
-
-"Syntastic Options
-set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_auto_loc_list = 1 " Automatically open and close the location list
-let g:syntastic_php_checkers = ['php', 'phpcs'] " PHP Linter, PHP Code Sniffer, PHP Mess Detector
-let g:syntastic_php_phpcs_post_args = "--standard=PSR2" " Use the PSR-2 standard for PHP Code Sniffer
-let g:syntastic_json_checkers = ['jsonlint'] " Use JSON linter
-let g:syntastic_go_checkers = ['go', 'gofmt', 'golint'] " Set our Go(lang) syntastic checkers
-let g:syntastic_go_golint_args = "-min_confidence=0.3" " Set a lower minimum confidence than default on `golint`
-"désactive les erreurs de style
-let g:syntastic_quiet_messages = { "type": "style" }
-" let g:syntastic_quiet_messages = {'level': 'warnings'}
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-
-"Easytags Options
-"" Enable async operation
-let g:easytags_async = 1
-
-" Use project specific tags files (fall back to a global)
-let g:easytags_dynamic_files = 1
-
-" Language specific settings
-let g:easytags_languages = {
-            \   'php': {
-            \     'cmd': 'ctags',
-            \       'args': [],
-            \       'fileoutput_opt': '-f',
-            \       'stdout_opt': '-f-',
-            \       'recurse_flag': '-R'
-            \   }
-            \}
-
-"Abbrevs for running tag generation and tag update - tailored for php
-abbrev generateTags !ctags -R --filter-terminator=php --exclude=node_modules  --exclude=vendor/phpunit --exclude=vendor/phpdocumentor --exclude=vendor/maximebf --exclude=storage
-abbrev updateTags !ctags -a -R --filter-terminator=php --exclude=node_modules  --exclude=vendor/phpunit --exclude=vendor/phpdocumentor --exclude=vendor/maximebf --exclude=storage
-"
-"Automatically update tags on save - deps = vim-dispatch
-autocmd BufWritePre .*php :Start!ctags -a -R --filter-terminator=php --exclude=node_modules  --exclude=vendor/phpunit --exclude=vendor/phpdocumentor --exclude=vendor/maximebf --exclude=storage 
+"Build PHP tags on save
+abbrev genTags :Do ctags -R --filter-terminator=php --exclude=node_modules  --exclude=vendor/phpunit --exclude=vendor/phpdocumentor --exclude=vendor/maximebf --exclude=storage  --exclude=bower --exclude=resources/assets/bower
+autocmd BufWritePost, BufRead *.php :DoQuietly ctags -R --filter-terminator=php --exclude=node_modules  --exclude=vendor/phpunit --exclude=vendor/phpdocumentor --exclude=vendor/maximebf --exclude=storage  --exclude=bower --exclude=resources/assets/bower
 
 " PHP-Vim-Namespace configuration and key-mappings
-" inoremap <Leader>u <C-O>:call PhpInsertUse()<CR>
 autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
 autocmd FileType php noremap <Leader>e :call PhpExpandClass()<CR>
 
@@ -369,79 +321,121 @@ function! OrderUseStatements ()
     call delete(tmpundofile)
 endfunction
 
-
 " Automaticaly order `use` statements on save
 autocmd FileType php autocmd BufWritePre <buffer> call OrderUseStatements()
-
 "PHP Indent Options
 let g:PHP_autoformatcomment = 1 " Format comments automatically
 let g:PHP_vintage_case_default_indent = 1 " Use the older style of switch/case indentation
 
+"PDV Conf
+nnoremap <leader>d :call PhpDocSingle()<CR>
+vnoremap <leader>d :call PhpDocRange()<CR>
+let g:pdv_cfg_Author = 'Leo TOMAS <leotomas@sefima.com>'
 
-"COMPLETION
-"------------------------------------
-" Completion (no plugin) settings 
+" --------- LARAVEL --------- "
+"Laravel Specific
+"Abbrevs
+abbrev lmm !php artisan make:model
+abbrev lmc !php artisan make:controller
+abbrev lmmig !php artisan make:migration
+abbrev lms !php artisan make:seed
+abbrev lsc !php artisan db:seed --class=  --force -vvv <Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+
+
+"go to definition hitting leader + tab in esc mode
+nnoremap <leader><Tab> <C-]>
+
+"circle buffer avec tab
+:nnoremap <Tab> :bnext<CR>
+:nnoremap <S-Tab> :bprevious<CR>
+"fermer un buffer
+nmap <leader>x :BD<cr>
+
+"indent whole file and go back to current position
+nnoremap <leader>i mzgg=G`z<cr>
+
+"align array arrows with tabularize
+vmap <leader>a :Tab /=><cr>
+
+"Nerd Tree Toggle conf
+map <C-b> :NERDTreeToggle<CR>
+let NERDTreeIgnore=['^tags$[[file]]', '^tags\.vendor$[[file]]']
+
+" --------- Airline --------- "
+" let g:airline_powerline_fonts=1
+
+" --------- Snippets --------- "
+"Snippets Conf
+let g:UltiSnipsJumpForwardTrigger="<TAB>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsListSnippets="<c-k>"
+" let g:UltiSnipsSnippetsDir = "~/.nvim/UltiSnips"
+
+" --------- Syntastic --------- "
+"Syntastic Options
+" set statusline+=%{SyntasticStatuslineFlag()}
+set statusline=%<%f\ %h%m%r%=%{fugitive#statusline()}\ \ %-14.(%l,%c%V%)\ %P
+
+
+let g:syntastic_auto_loc_list = 0 " Automatically open and close the location list
+let g:syntastic_php_checkers = ['php', 'phpcs'] " PHP Linter, PHP Code Sniffer, PHP Mess Detector
+let g:syntastic_php_phpcs_post_args = "--standard=PSR2" " Use the PSR-2 standard for PHP Code Sniffer
+let g:syntastic_json_checkers = ['jsonlint'] " Use JSON linter
+"désactive les erreurs de style
+" let g:syntastic_quiet_messages = { "type": "style" }
+let g:syntastic_quiet_messages = {'level': 'warnings'}
+let g:syntastic_always_populate_loc_list = 0
+
+
+" --------- Completion --------- "
+" Completion (no plugin) settings
 autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
 autocmd FileType php let php_sql_query=1
 autocmd FileType php let php_htmlInStrings=1
 
 " "YouCompleteMeConf
 let g:ycm_min_num_of_chars_for_completion = 2
-let g:ycm_auto_trigger = 1
+" let g:ycm_auto_trigger = 1
 let g:ycm_complete_in_strings = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_register_as_syntastic_checker = 1
-let g:ycm_add_preview_to_completeopt = 1
+" let g:ycm_register_as_syntastic_checker = 1
+" let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
-
-
 " "Supertab & phpcomplete
-let g:SuperTabDefaultCompletionType = "context"
+" let g:SuperTabDefaultCompletionType = "context"
 "let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-
 " PHPComplete Options
 " enables parsing docblock comments to generate helper
-let g:phpcomplete_parse_docblock_comments = 1 
+let g:phpcomplete_parse_docblock_comments = 1
 " caches the most used parts of the taglist
 let g:phpcomplete_cache_taglists = 1
-" better jump to definition 
+" better jump to definition
 let g:phpcomplete_enhance_jump_to_definition = 1
 " commande de composer
-let g:phpcomplete_index_composer_command='composer' 
+let g:phpcomplete_index_composer_command='composer'
 
-"omni sur ctrl+@
-inoremap <C-@> <C-x><C-o><C-o><C-p>
+" --------- Vdebug --------- "
+"Vdebug conf
+abbrev debugon let g:vdebug_options['port']=10000
 
-"Gestion des fenetres
-"-------------------------
-function! GetBufferList()
-    redir =>buflist
-    silent! ls!
-    redir END
-    return buflist
-endfunction
+"Autocomplete css classes
+autocmd FileType css,scss,sass,scss setlocal iskeyword=@,48-57,_,-,?,!,192-255
 
-function! ToggleList(bufname, pfx)
-    let buflist = GetBufferList()
-    for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
-        if bufwinnr(bufnum) != -1
-            exec(a:pfx.'close')
-            return
-        endif
-    endfor
-    if a:pfx == 'l' && len(getloclist(0)) == 0
-        echohl ErrorMsg
-        echo "Location List is Empty."
-        return
-    endif
-    let winnr = winnr()
-    exec(a:pfx.'open')
-    if winnr() != winnr
-        wincmd p
-    endif
-endfunction
+" --------- Writing / Prise de note --------- "
+"Conf de Pencil Mode (mode écriture)
+let g:pencil#wrapModeDefault = 'soft'
+augroup pencil
+    autocmd!
+    autocmd FileType markdown,mkd call pencil#init()
+    autocmd FileType text         call pencil#init()
+augroup END
 
-nmap <silent> <leader>l :call ToggleList("Location List", 'l')<CR>
-nmap <silent> <leader>e :call ToggleList("Quickfix List", 'c')<CR>
+" --------- JS --------- "
+let g:syntastic_javascript_checkers = ['jshint']
 
+" --------- Yankring --------- "
+let g:multi_cursor_next_key='<C-f>'
+
+autocmd! BufWritePost * Neomake
