@@ -6,7 +6,7 @@ export ZSH=/Users/leo/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="robbyrussell"
-# ZSH_THEME="dracula"
+ZSH_THEME="clean"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -87,8 +87,10 @@ source $ZSH/oh-my-zsh.sh
 alias gs="git status"
 
 #vim aliases
-alias vim="/usr/local/Cellar/neovim/0.1.2/bin/nvim"
-alias vi="/usr/local/Cellar/neovim/0.1.2/bin/nvim"
+alias vim="/usr/local/Cellar/macvim/7.4-77/bin/vim"
+alias vi="/usr/local/Cellar/macvim/7.4-77/bin/vim"
+alias mvim="/usr/local/Cellar/macvim/7.4-77/bin/mvim"
+alias macvim="/usr/local/Cellar/macvim/7.4-77/bin/mvim"
 alias nvim="/usr/local/Cellar/neovim/0.1.2/bin/nvim"
 alias neovim="/usr/local/Cellar/neovim/0.1.2/bin/nvim"
 
