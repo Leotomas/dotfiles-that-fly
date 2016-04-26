@@ -51,7 +51,6 @@ NeoBundle 'ajh17/Spacegray.vim'
 NeoBundle 'vim-scripts/oceandeep'
 NeoBundle 'visi-pivi-sivi/leerkan-vim-colors'
 NeoBundle 'farfanoide/vim-facebook'
-NeoBundle 'naddeoa/vim-visual-page-percent'
 
 " --------- Vim improvements --------- "
 NeoBundle 'ryanoasis/vim-devicons'
@@ -274,7 +273,7 @@ imap <buffer> <C-j>   <Plug>(unite_select_next_line)
 imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
 let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
 
-"Removing trailing spaces
+"Removing trailing spaces on save
 autocmd BufWritePre * :%s/\s\+$//e
 
 " --------- SEARCH CONFIG --------- "
@@ -327,6 +326,7 @@ endfunction
 
 " Automaticaly order `use` statements on save
 autocmd FileType php autocmd BufWritePre <buffer> call OrderUseStatements()
+
 "PHP Indent Options
 let g:PHP_autoformatcomment = 1 " Format comments automatically
 let g:PHP_vintage_case_default_indent = 1 " Use the older style of switch/case indentation
@@ -337,8 +337,6 @@ vnoremap <leader>d :call PhpDocRange()<CR>
 let g:pdv_cfg_Author = 'Leo TOMAS <leotomas@sefima.com>'
 
 " --------- LARAVEL --------- "
-"Laravel Specific
-"Abbrevs
 abbrev lmm !php artisan make:model
 abbrev lmc !php artisan make:controller
 abbrev lmmig !php artisan make:migration
@@ -365,31 +363,10 @@ vmap <leader>a :Tab /=><cr>
 map <C-b> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['^tags$[[file]]', '^tags\.vendor$[[file]]']
 
-" --------- Airline --------- "
-" let g:airline_powerline_fonts=1
-
-" --------- Snippets --------- "
-"Snippets Conf
-let g:UltiSnipsJumpForwardTrigger="<TAB>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsListSnippets="<c-k>"
-" let g:UltiSnipsSnippetsDir = "~/.nvim/UltiSnips"
-
-" --------- Syntastic --------- "
-"Syntastic Options
-set statusline=%<%f\ %h%m%r%=%{fugitive#statusline()}\ \ %-14.(%l,%c%V%)\ %{VisualPercent()}
-let g:syntastic_auto_loc_list = 0 " Automatically open and close the location list
-let g:syntastic_php_checkers = ['php', 'phpcs'] " PHP Linter, PHP Code Sniffer, PHP Mess Detector
-let g:syntastic_php_phpcs_post_args = "--standard=PSR2" " Use the PSR-2 standard for PHP Code Sniffer
-let g:syntastic_json_checkers = ['jsonlint'] " Use JSON linter
-"désactive les erreurs de style
-let g:syntastic_quiet_messages = { "type": "style" }
-let g:syntastic_quiet_messages = {'level': 'warnings'}
-let g:syntastic_always_populate_loc_list = 0
+" --------- Built-in statusline --------- "
+ set statusline=%<%f\ %h%m%r%=%{fugitive#statusline()}\ \ %-14.(%l,%c%V%)\%p%%
 
 " --------- Completion --------- "
-" Completion (no plugin) settings
 autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
 autocmd FileType php let php_sql_query=1
 autocmd FileType php let php_htmlInStrings=1
@@ -410,19 +387,11 @@ augroup pencil
     autocmd FileType text         call pencil#init()
 augroup END
 
-" --------- JS --------- "
-let g:syntastic_javascript_checkers = ['jshint']
-
-" --------- Yankring --------- "
-let g:multi_cursor_next_key='<C-f>'
-
-" --------- Supertab --------- "
-" let g:SuperTabDefaultCompletionType = "<c-n>"
-
 " --------- Deoplete--------- "
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#disable_auto_complete = 0
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
 
 " --------- Vue Files Indent--------- "
 au BufRead,BufNewFile *.vue set filetype=html
@@ -432,14 +401,11 @@ abbrev sftjs set filetype=javascript
 abbrev sftv set filetype=vue
 abbrev sftb set filetype=blade
 abbrev sftp set filetype=php
-
 "create file in current doc folder
 abbrev e% e %:h/
 
-autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
-
 " --------- NeoSnippet conf --------- "
-let g:neosnippet#snippets_directory="~/dotfiles/snippets"
+let g:neosnippet#snippets_directory="~/dotfiles/nvim/snippets"
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
