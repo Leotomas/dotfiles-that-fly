@@ -30,7 +30,6 @@ NeoBundle 'Shougo/vimproc', {
 
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'tpope/vim-dispatch'
-NeoBundle 'joonty/vim-do'
 NeoBundle 'tomtom/tlib_vim'
 NeoBundle 'MarcWeber/vim-addon-mw-utils'
 NeoBundle 'xolox/vim-misc'
@@ -39,20 +38,16 @@ NeoBundle 'tpope/vim-eunuch'
 " --------- Themes --------- "
 "256
 NeoBundle 'Leotomas/vim-atom-dark'
-NeoBundle 'kristijanhusak/vim-hybrid-material'
 NeoBundle 'endel/vim-github-colorscheme'
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'juanedi/predawn.vim'
-NeoBundle 'AlessandroYorba/Alduin'
 NeoBundle 'chriskempson/base16-vim'
-NeoBundle 'ajh17/Spacegray.vim'
 
 "GUI
-NeoBundle 'vim-scripts/oceandeep'
-NeoBundle 'visi-pivi-sivi/leerkan-vim-colors'
 NeoBundle 'farfanoide/vim-facebook'
 
 " --------- Vim improvements --------- "
+NeoBundle 'Shougo/neocomplete'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'ryanoasis/vim-devicons'
 "  Motions
 NeoBundle 'rhysd/clever-f.vim'
@@ -72,28 +67,20 @@ NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'docunext/closetag.vim'
-" NeoBundle 'scrooloose/syntastic'
 NeoBundle 'benekastah/neomake'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-scripts/colorizer'
 NeoBundle 'dkprice/vim-easygrep'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'mileszs/ack.vim'
-" NeoBundle 'vim-scripts/YankRing.vim'
 
 " --------- PHP --------- "
-NeoBundleLazy 'adoy/vim-php-refactoring-toolbox', {'autoload':{'filetypes':['php']}}
 NeoBundleLazy '2072/PHP-Indenting-for-VIm', {'autoload':{'filetypes':['php']}}
 NeoBundle 'paulyg/Vim-PHP-Stuff', {'autoload':{'filetypes':['php']}}
 NeoBundle 'arnaud-lb/vim-php-namespace', {'autoload':{'filetypes':['php']}}
 NeoBundle 'mikehaertl/pdv-standalone'
 NeoBundle 'shawncplus/phpcomplete.vim'
 NeoBundle 'm2mdas/phpcomplete-extended'
-" NeoBundle 'stephpy/vim-php-cs-fixer'
-"
-NeoBundle 'Shougo/neocomplete'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
 
 " --------- HTML / Front --------- "
 NeoBundle 'bonsaiben/bootstrap-snippets'
@@ -130,13 +117,8 @@ NeoBundleCheck
 
 set rtp+=~/.fzf
 let g:enable_bold_font = 1
-
 set bg=dark
-" colorscheme atom-dark-256
-let g:hybrid_custom_term_colors = 1
 colorscheme atom-dark
-" let g:indentLine_color_term = 239
-
 
 if has('gui_running')
     set guioptions-=e
