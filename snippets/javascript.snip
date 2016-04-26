@@ -1,0 +1,35 @@
+snippet     console.log
+abbr        cl
+    console.log(${1})
+
+snippet     _s.ajax
+abbr       _sajax
+    this.${1}.init({
+    post : {'args' : ${3},
+    method : ${4}},
+    url : '${5}',
+    callback: function(){
+        ${6}
+    },
+    debug : false
+    );
+
+snippet     _s.class
+abbr        _sclass
+    /* héritage */
+    Sefima.${1}= Object.create(_s.class);
+
+    /* sugar */
+    var ${2} = Sefima.${1}
+
+    /* variables de la classe */
+    ${3}
+
+    /**
+     * constructeur
+     */
+    action.construct = function() {
+    ${4}
+    };
+
+

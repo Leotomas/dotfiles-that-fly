@@ -28,6 +28,7 @@ NeoBundle 'Shougo/vimproc', {
             \    },
             \ }
 
+NeoBundle 'Shougo/unite-outline'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'joonty/vim-do'
 NeoBundle 'tomtom/tlib_vim'
@@ -47,10 +48,13 @@ NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'ajh17/Spacegray.vim'
 
 "GUI
+NeoBundle 'vim-scripts/oceandeep'
+NeoBundle 'visi-pivi-sivi/leerkan-vim-colors'
 NeoBundle 'farfanoide/vim-facebook'
-NeoBundle 'dkanani/vim-material-theme'
+NeoBundle 'naddeoa/vim-visual-page-percent'
 
 " --------- Vim improvements --------- "
+NeoBundle 'ryanoasis/vim-devicons'
 "  Motions
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'bkad/CamelCaseMotion'
@@ -59,23 +63,19 @@ NeoBundle 'vim-scripts/BufOnly.vim'
 NeoBundle 'qpkorr/vim-bufkill'
 "File Management
 NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'majutsushi/tagbar'
 " autoclose tags
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'Shougo/deoplete.nvim'
-" NeoBundle 'vim-scripts/AutoComplPop'
-" NeoBundle 'ervandew/supertab'
 NeoBundle 'henrik/vim-indexed-search'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'docunext/closetag.vim'
-NeoBundle 'scrooloose/syntastic'
+" NeoBundle 'scrooloose/syntastic'
+NeoBundle 'benekastah/neomake'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'honza/vim-snippets'
 NeoBundle 'vim-scripts/colorizer'
 NeoBundle 'dkprice/vim-easygrep'
 NeoBundle 'junegunn/vim-easy-align'
@@ -88,7 +88,13 @@ NeoBundleLazy '2072/PHP-Indenting-for-VIm', {'autoload':{'filetypes':['php']}}
 NeoBundle 'paulyg/Vim-PHP-Stuff', {'autoload':{'filetypes':['php']}}
 NeoBundle 'arnaud-lb/vim-php-namespace', {'autoload':{'filetypes':['php']}}
 NeoBundle 'mikehaertl/pdv-standalone'
+NeoBundle 'shawncplus/phpcomplete.vim'
+NeoBundle 'm2mdas/phpcomplete-extended'
 " NeoBundle 'stephpy/vim-php-cs-fixer'
+"
+NeoBundle 'Shougo/neocomplete'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 
 " --------- HTML / Front --------- "
 NeoBundle 'bonsaiben/bootstrap-snippets'
@@ -103,6 +109,7 @@ NeoBundle 'reedes/vim-pencil'
 " --------- JS --------- "
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 NeoBundleLazy 'vim-scripts/JavaScript-Indent', {'autoload':{'filetypes':['javascript']}}
+NeoBundle 'carlitux/deoplete-ternjs', { 'build': { 'mac': 'npm install -g tern', 'unix': 'npm install -g tern' }}
 
 " --------- Vue --------- "
 NeoBundle 'posva/vim-vue'
@@ -166,8 +173,6 @@ set wildignore+=*/vendor/**
 set wildignore+=*/resources/assets/bower/**
 set wildignore+=*/node_modules/**
 set wildignore+=*/storage/**
-set wildignore+=*/.phpcomplete/**
-set wildignore+=*/.phpcomplete_extended/**
 set scrolloff=3
 set incsearch
 set tabstop=4
@@ -263,7 +268,11 @@ nmap <leader>t :CtrlPTag<cr>
 let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|.git\|bower_components\'
 
-nmap <leader>f :TagbarToggle<CR>
+nmap <leader>f :Unite outline -start-insert<cr>
+"navigation with C-j C-k in unite insert mode
+imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
 
 "Removing trailing spaces
 autocmd BufWritePre * :%s/\s\+$//e
@@ -277,7 +286,8 @@ inoremap \pn <C-R>=expand("%:p:h:s?.*\/[^A-Z]\\+\\C??:gs?/?\\?")<CR>
 "PHP Refactor
 let g:php_refactor_command='php ~/dotfiles/refactor.phar'
 "Build PHP tags on save
-abbrev genTags :Do ctags -R --filter-terminator=php --exclude=node_modules  --exclude=vendor/phpunit --exclude=vendor/phpdocumentor --exclude=vendor/maximebf --exclude=storage  --exclude=bower --exclude=resources/assets/bower
+abbrev genTags !ctags -R --filter-terminator=php --exclude=node_modules  --exclude=vendor/phpunit --exclude=vendor/phpdocumentor --exclude=vendor/maximebf --exclude=storage  --exclude=bower --exclude=resources/assets/bower
+
 autocmd BufWritePost, BufRead *.php :DoQuietly ctags -R --filter-terminator=php --exclude=node_modules  --exclude=vendor/phpunit --exclude=vendor/phpdocumentor --exclude=vendor/maximebf --exclude=storage  --exclude=bower --exclude=resources/assets/bower
 
 " PHP-Vim-Namespace configuration and key-mappings
@@ -334,6 +344,7 @@ abbrev lmc !php artisan make:controller
 abbrev lmmig !php artisan make:migration
 abbrev lms !php artisan make:seed
 abbrev lsc !php artisan db:seed --class=  --force -vvv <Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+abbrev langjs !gulp langJs
 
 "go to definition hitting leader + tab in esc mode
 nnoremap <leader><Tab> <C-]>
@@ -367,7 +378,7 @@ let g:UltiSnipsListSnippets="<c-k>"
 
 " --------- Syntastic --------- "
 "Syntastic Options
-set statusline=%<%f\ %h%m%r%=%{fugitive#statusline()}\ \ %-14.(%l,%c%V%)\ %P
+set statusline=%<%f\ %h%m%r%=%{fugitive#statusline()}\ \ %-14.(%l,%c%V%)\ %{VisualPercent()}
 let g:syntastic_auto_loc_list = 0 " Automatically open and close the location list
 let g:syntastic_php_checkers = ['php', 'phpcs'] " PHP Linter, PHP Code Sniffer, PHP Mess Detector
 let g:syntastic_php_phpcs_post_args = "--standard=PSR2" " Use the PSR-2 standard for PHP Code Sniffer
@@ -410,6 +421,8 @@ let g:multi_cursor_next_key='<C-f>'
 
 " --------- Deoplete--------- "
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#disable_auto_complete = 0
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " --------- Vue Files Indent--------- "
 au BufRead,BufNewFile *.vue set filetype=html
@@ -419,3 +432,17 @@ abbrev sftjs set filetype=javascript
 abbrev sftv set filetype=vue
 abbrev sftb set filetype=blade
 abbrev sftp set filetype=php
+
+"create file in current doc folder
+abbrev e% e %:h/
+
+autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
+
+" --------- NeoSnippet conf --------- "
+let g:neosnippet#snippets_directory="~/dotfiles/snippets"
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+
