@@ -33,3 +33,66 @@ abbr        _sclass
     };
 
 
+snippet     _s.ajax
+abbr        _sajax
+    this.Ajax.init({
+        post : {'args' : ${1},
+            method : '${2}'},
+            url : '${3}',
+            callback: function(q){
+                ${4}
+            },
+            multiple : true,
+            debug : ${5}
+    });
+
+snippet vjs.component
+abbr    vjscomponent
+    <template>
+        ...
+    </template>
+
+
+
+    <script>
+    export default {
+        props : {
+        },
+
+        data : function(){
+            return {
+            };
+        },
+
+        computed : {
+        },
+
+        methods : {
+        },
+
+        events : {
+        }
+
+    };
+    </script>
+
+snippet throw error
+abbr therr
+    if (err) {
+        throw err;
+    }
+
+snippet casperjs module
+abbrev caspermodule
+
+    var ${1} = {};
+
+    ${1}.${2}= function(casper, test ${3})  {
+    };
+
+    module.exports = ${1};
+
+
+
+
+

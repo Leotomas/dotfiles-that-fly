@@ -87,10 +87,12 @@ source $ZSH/oh-my-zsh.sh
 alias gs="git status"
 
 #vim aliases
-alias vim="/usr/local/Cellar/macvim/7.4-77/bin/vim"
-alias vi="/usr/local/Cellar/macvim/7.4-77/bin/vim"
-alias mvim="/usr/local/Cellar/macvim/7.4-77/bin/mvim"
-alias macvim="/usr/local/Cellar/macvim/7.4-77/bin/mvim"
-alias nvim="/usr/local/Cellar/neovim/0.1.2/bin/nvim"
-alias neovim="/usr/local/Cellar/neovim/0.1.2/bin/nvim"
+alias vi="/usr/local/Cellar/neovim/0.1.4/bin/nvim"
+alias vim="/usr/local/Cellar/neovim/0.1.4/bin/nvim"
+alias nvim="/usr/local/Cellar/neovim/0.1.4/bin/nvim"
+alias neovim="/usr/local/Cellar/neovim/0.1.4/bin/nvim"
+alias nvimdiff="nvim -d"
+
+export NVM_DIR="/Users/leo/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 

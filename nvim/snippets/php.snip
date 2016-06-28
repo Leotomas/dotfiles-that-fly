@@ -1,0 +1,23 @@
+snippet     TestCase
+abbr        testcase
+    <?php
+    use Faker\Factory;
+    use Mockery;
+
+    class ${1} extends TestCase
+    {
+        public function tearDown()
+        {
+            Mockery::close();
+        }
+
+        public function setUp()
+        {
+            parent::setUp();
+        }
+
+        /** @test **/
+        public function awesome_test()
+        {
+        }
+    }

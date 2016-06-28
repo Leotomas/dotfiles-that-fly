@@ -40,15 +40,17 @@ NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'Leotomas/vim-atom-dark'
 NeoBundle 'endel/vim-github-colorscheme'
 NeoBundle 'chriskempson/base16-vim'
+NeoBundle 'NLKNguyen/papercolor-theme'
 
 "GUI
 NeoBundle 'farfanoide/vim-facebook'
+NeoBundle 'sonjapeterson/1989.vim'
+NeoBundle 'vim-scripts/Sift'
 
 " --------- Vim improvements --------- "
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'ryanoasis/vim-devicons'
 "  Motions
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'bkad/CamelCaseMotion'
@@ -65,6 +67,7 @@ NeoBundle 'Shougo/deoplete.nvim'
 NeoBundle 'henrik/vim-indexed-search'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'docunext/closetag.vim'
 NeoBundle 'benekastah/neomake'
@@ -72,8 +75,8 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-scripts/colorizer'
 NeoBundle 'dkprice/vim-easygrep'
 NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'mileszs/ack.vim'
-
+NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'rking/ag.vim'
 " --------- PHP --------- "
 NeoBundleLazy '2072/PHP-Indenting-for-VIm', {'autoload':{'filetypes':['php']}}
 NeoBundle 'paulyg/Vim-PHP-Stuff', {'autoload':{'filetypes':['php']}}
@@ -81,6 +84,7 @@ NeoBundle 'arnaud-lb/vim-php-namespace', {'autoload':{'filetypes':['php']}}
 NeoBundle 'mikehaertl/pdv-standalone'
 NeoBundle 'shawncplus/phpcomplete.vim'
 NeoBundle 'm2mdas/phpcomplete-extended'
+NeoBundle 'stephpy/vim-php-cs-fixer'
 
 " --------- HTML / Front --------- "
 NeoBundle 'bonsaiben/bootstrap-snippets'
@@ -103,6 +107,15 @@ NeoBundle 'posva/vim-vue'
 " --------- Ansible --------- "
 NeoBundle 'pearofducks/ansible-vim'
 NeoBundle 'chase/vim-ansible-yaml'
+"
+" --------- Testing --------- "
+NeoBundle 'kassio/neoterm'
+
+
+" --------- Search --------- "
+NeoBundle 'mileszs/ack.vim'
+
+
 
 " Required:
 call neobundle#end()
@@ -145,7 +158,7 @@ set nonumber
 set showmode
 " toujours afficher la statusline
 set laststatus=2
-" set clipboard=unnamed
+set clipboard=unnamed
 set linebreak
 set linespace=10
 set wildmenu
@@ -153,11 +166,13 @@ set wildmode=longest,list,full
 set wildignore+=*/vendor/**
 set wildignore+=*/resources/assets/bower/**
 set wildignore+=*/node_modules/**
+set wildignore+=*/server/node_modules/**
 set wildignore+=*/storage/**
 set scrolloff=3
 set incsearch
 set tabstop=4
 set shiftwidth=4
+set conceallevel=0
 set mouse=a
 set expandtab
 set autoindent
@@ -204,6 +219,7 @@ nmap :ed :edit %:p:h/
 " close all splits except the one focused
 nmap <leader>o :only<cr>
 
+
 " no more swaps in project dir
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
@@ -245,7 +261,6 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 let g:ctrlp_match_window = 'top,max:10,results:10,order:ttb'
 nmap <leader>p :CtrlP<cr>
 nmap <leader><space> :CtrlPBuffer<cr>
-nmap <leader>t :CtrlPTag<cr>
 let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|.git\|bower_components\'
 
@@ -385,6 +400,17 @@ abbrev sftb set filetype=blade
 abbrev sftp set filetype=php
 "create file in current doc folder
 abbrev e% e %:h/
+"
+" --------- Neomake --------- "
+autocmd! BufWritePost,BufEnter * Neomake
+" let g:neomake_open_list = 2
+let g:neomake_javascript_jshint_maker = {
+    \ 'args': ['--verbose'],
+    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+    \ }
+let g:neomake_javascript_enabled_makers = ['jshint']
+" pas de phpmd ou phpcs sur le lint php, juste les erreurs
+let g:neomake_php_enabled_makers = ['php']
 
 " --------- NeoSnippet conf --------- "
 let g:neosnippet#snippets_directory="~/dotfiles/nvim/snippets"
@@ -393,4 +419,26 @@ imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 
+" --------- Neovim terminal --------- "
+tnoremap <Esc> <C-\><C-n>
+"
+" --------- Testing ---------- "
+"  noremap <leader>hp :T vendor/bin/phpunit %<cr>
+ noremap <leader>hp :T vendor/bin/phpunit "%."<cr>
+ noremap <leader>hc :T casperjs test %<cr>
+ noremap <leader>hk :T karma start<cr>
 
+
+" --------- AG --------- "
+let g:ag_working_path_mode="r"
+"
+
+function! Multiple_cursors_before()
+    let b:deoplete_disable_auto_complete = 1
+endfunction
+
+function! Multiple_cursors_after()
+    let b:deoplete_disable_auto_complete = 0
+endfunction
+
+nnoremap <leader>l :!php-cs-fixer fix %<CR>
