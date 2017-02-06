@@ -17,7 +17,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Packages
 " async linting (local eslint ok)
-"NeoBundle "ctrlpvim/ctrlp.vim"
+NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle "maxbrunsfeld/vim-yankstack"
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tomtom/tcomment_vim'
@@ -30,12 +30,10 @@ NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'docunext/closetag.vim'
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'henrik/vim-indexed-search'
+NeoBundle 'kshenoy/vim-signature'
 
 NeoBundle "SirVer/ultisnips"
 NeoBundle "terryma/vim-multiple-cursors"
-
-NeoBundle "sidorares/node-vim-debugger"
-
 
 " --------- Themes --------
 NeoBundle "Leotomas/vim-atom-dark"
@@ -51,7 +49,7 @@ NeoBundleLazy 'heavenshell/vim-jsdoc', {'autoload':{'filetypes':['javascript', '
 NeoBundleLazy 'ternjs/tern_for_vim', {'autoload':{'filetypes':['javascript', 'vue']}}
 
 "----- TS ----"
-"NeoBundle "leafgarland/typescript-vim"
+"NeoBundle 'leafgarland/typescript-vim'
 
 " Required:
 call neobundle#end()
@@ -107,6 +105,7 @@ set expandtab
 set clipboard=unnamed
 " --- code wrapping
 set wrap
+set wildmenu
 set wildignore+=*/node_modules/*,*/vendor/*
 
 "--- Macvim Stuff ----"
@@ -144,12 +143,13 @@ nnoremap <Down> :resize +2<CR>
 
 nmap <leader>y <Plug>yankstack_substitute_older_paste
 nmap <leader>Y <Plug>yankstack_substitute_new_paste
-"nnoremap <leader>p :CtrlP <cr>
-"nnoremap <leader><space> :CtrlPBuffer<cr>
+" nnoremap <leader>p :CtrlP <cr>
+" nnoremap <leader><space> :CtrlPBuffer<cr>
 "
 nnoremap <leader><space> :Buffer<cr>
 nnoremap <leader>p :Files<cr>
 nnoremap <leader>f :Lines<cr>
+nnoremap <leader>r :TagbarToggle<cr>
 
 set statusline=%<%f:%{ALEGetStatusLine()}\ %h%m%r%=%{fugitive#statusline()}\ \ %-14.(%l,%c%V%)\%p%%
 "set statusline=%<%f\ %h%m%r%=%{fugitive#statusline()}\ \ %-14.(%l,%c%V%)\%p%%
@@ -187,7 +187,7 @@ let g:syntastic_javascript_checkers = ['eslint']
 
 " --- Completor PHP trigger ---- "
 "  referred : https://github.com/maralla/completor.vim/issues/24
-let g:completor_php_omni_trigger = '([$\w]+|use\s*|->[$\w]*|::[$\w]*|implements\s*|extends\s*|class\s+[$\w]+|new\s*)$'
+" let g:completor_php_omni_trigger = '([$\w]+|use\s*|->[$\w]*|::[$\w]*|implements\s*|extends\s*|class\s+[$\w]+|new\s*)$'
 
 abbrev ee e **
 
@@ -202,7 +202,7 @@ map <leader>d :JsDoc <cr>
 
 " --- Completor ---"
 let g:completor_min_chars=3
-let g:completor_auto_trigger=0
+let g:completor_auto_trigger=1
 
 " ---  Ale ----"
 let g:ale_lint_on_save=1
@@ -213,8 +213,8 @@ let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 " ---- FZF ---- "
 "let $FZF_DEFAULT_COMMAND = 'ag -l -g "'"
 
-"Node vim debugger
-"
+"Tagnar
 
+let g:tagbar_ctags_bin='/usr/local/Homebrew/Cellar/ctags/5.8_1/bin/ctags'
 
 

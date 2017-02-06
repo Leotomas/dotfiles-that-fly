@@ -1,0 +1,23 @@
+snippet console.log
+abbr    cl
+options head
+    console.log(${1});
+
+snippet Promise
+abbr Promise
+options word
+    return new Promise((resolve, reject) => {
+        ${1}
+    });
+
+snippet mochatest
+options head
+    "use strict";
+    const chai = require("chai");
+    const dirtyChai = require("dirty-chai");
+    const expect = chai.expect;
+    chai.use(dirtyChai);
+
+    describe("${1}", function() {
+        ${2}
+    });
