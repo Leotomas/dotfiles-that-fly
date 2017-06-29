@@ -177,7 +177,7 @@ exec = df | grep sdb6 | grep sdb6 | grep -Po '(\d)+(?=%)'
 #click-right = pavucontrol &
 format-prefix = "HDD "
 format-suffix = "%"
-format-underline = #20dfdf
+format-underline = foreground
 
 [module/myLoad]
 inherit = module/theme
@@ -185,7 +185,7 @@ interval = 1
 type = custom/script
 exec = /usr/lib/i3blocks/load_average
 click-left = urxvt -name float -e htop &
-format-underline = #d33636
+format-underline = foreground
 
 [module/systemRoot]
 inherit = module/theme
@@ -195,7 +195,7 @@ mount-0 = /
 label-mounted = " %free%"
 label-unmounted = " ??"
 format-mounted-underline = #39c639
-format-unmounted-underline = #39c639
+format-unmounted-underline = foreground
 
 [module/systemHome]
 inherit = module/theme
@@ -214,7 +214,7 @@ type = internal/cpu
 interval = 2
 format-prefix = "CPU "
 format-suffix = "%"
-format-underline = #d33636
+format-underline = foreground
 label = %percentage%
 
 [module/memory]
@@ -223,7 +223,7 @@ type = internal/memory
 interval = 2
 format-prefix = "RAM "
 format-suffix = "%"
-format-underline = #999999
+format-underline = foreground
 label = %percentage_used%
 
 [module/eth]
