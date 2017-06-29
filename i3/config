@@ -31,6 +31,8 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec gnome-terminal
+bindsym $mod+p exec pantheon-files
+bindsym $mod+c exec google-chrome
 
 # kill focused window
 bindsym $mod+Shift+A kill
@@ -128,7 +130,7 @@ mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
         # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
+       # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
         bindsym j resize shrink width 10 px or 10 ppt
@@ -146,11 +148,27 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
 bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-}
+
+#bar {
+#    height 1
+#}
+
+# pas de title bar
+for_window [class="^.*"] border pixel 0
+
+# i3-gaps
+gaps outer 20
+gaps outer 20
+gaps inner 20
+gaps inner 20
+
+# background image on startup
+exec_always feh --bg-fill ~/Pictures/Wallpapers/matt-hoffman-277877.jpg
+
+#launch my polybar on startup
+exec_always polybar main
+
