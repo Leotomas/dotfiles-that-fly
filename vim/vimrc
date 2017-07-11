@@ -1,25 +1,27 @@
-" "NeoBundle Scripts-----------------------------
-if has('vim_starting')
-    if &compatible
-        set nocompatible               " Be iMproved
-    endif
 
-    " Required:
-    set runtimepath+=/Users/leo/.vim/bundle/neobundle.vim/
+if 0 | endif
+
+if &compatible
+  set nocompatible               " Be iMproved
 endif
 
 " Required:
-call neobundle#begin(expand('/Users/leo/.vim/bundle'))
+set runtimepath+=~/.vim/bundle/neobundle.vim/
+
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" Packages
-" async linting (local eslint ok)
+
+NeoBundle "Shougo/unite.vim"
+NeoBundle "Shougo/unite-outline"
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle "maxbrunsfeld/vim-yankstack"
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-rhubarb'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'junegunn/fzf'
 NeoBundle 'junegunn/fzf.vim'
@@ -37,47 +39,55 @@ NeoBundle "terryma/vim-multiple-cursors"
 
 " --------- Themes --------
 NeoBundle "Leotomas/vim-atom-dark"
+NeoBundle "chriskempson/base16-vim"
+NeoBundle "rakr/vim-one"
+NeoBundle "tyrannicaltoucan/vim-quantum"
+NeoBundle "lifepillar/vim-solarized8"
+NeoBundle "morhetz/gruvbox"
+NeoBundle "mhartington/oceanic-next"
+NeoBundle "jdkanani/vim-material-theme"
 NeoBundle "scrooloose/nerdtree"
 NeoBundle 'rking/ag.vim'
+NeoBundle 'majutsushi/tagbar'
 
 " --------- JS --------- "
-NeoBundleLazy 'maralla/completor.vim', {'autoload':{'filetypes':['javascript', 'vue']}}
+" NeoBundleLazy 'maralla/completor.vim', {'autoload':{'filetypes':['javascript', 'vue']}}
 NeoBundleLazy 'w0rp/ale', {'autoload':{'filetypes':['javascript', 'vue', 'css', 'scss', 'sass']}}
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript', 'vue']}}
 NeoBundleLazy 'vim-scripts/JavaScript-Indent', {'autoload':{'filetypes':['javascript', 'vue']}}
 NeoBundleLazy 'heavenshell/vim-jsdoc', {'autoload':{'filetypes':['javascript', 'vue']}}
 NeoBundleLazy 'ternjs/tern_for_vim', {'autoload':{'filetypes':['javascript', 'vue']}}
 
-"----- TS ----"
-"NeoBundle 'leafgarland/typescript-vim'
-
-" Required:
 call neobundle#end()
 
 " Required:
 filetype plugin indent on
 
-
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 NeoBundleCheck
-"End NeoBundle Scripts-------------------------
-"
-"
-colorscheme atom-dark
+
+"colorscheme atom-dark
+set bg=dark
+" set bg=light
+" colorscheme gruvbox
+" colorscheme solarized8_dark
+" colorscheme one
+colorscheme base16-ashes
 
 set rtp+=~/.fz
+set rtp+=~/Documents/projects/perso/dotfiles-that-fly/snippets
 
-syntax on
+syntax enable
 set visualbell
 set encoding=utf-8
 set t_Co=256
-set term=screen-256color
-if &term =~# '^screen'
-	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+" set term=xterm-256color
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+if (has("termguicolors"))
+    set termguicolors
 endif
-set termguicolors
 set noerrorbells
 set ignorecase
 set smartcase
@@ -147,9 +157,10 @@ nmap <leader>Y <Plug>yankstack_substitute_new_paste
 " nnoremap <leader><space> :CtrlPBuffer<cr>
 "
 nnoremap <leader><space> :Buffer<cr>
-nnoremap <leader>p :Files<cr>
+nnoremap <leader>p :GFiles<cr>
 nnoremap <leader>f :Lines<cr>
-nnoremap <leader>r :TagbarToggle<cr>
+" nnoremap <leader>r :TagbarToggle<cr>
+nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
 
 set statusline=%<%f:%{ALEGetStatusLine()}\ %h%m%r%=%{fugitive#statusline()}\ \ %-14.(%l,%c%V%)\%p%%
 "set statusline=%<%f\ %h%m%r%=%{fugitive#statusline()}\ \ %-14.(%l,%c%V%)\%p%%
@@ -206,15 +217,24 @@ let g:completor_auto_trigger=1
 
 " ---  Ale ----"
 let g:ale_lint_on_save=1
-let g:ale_lint_on_text_changed=0
+let g:ale_lint_on_text_changed=1
 let g:ale_lint_on_enter=0
-let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+" let g:ale_statusline_format = ['⨉', '⚠', '⬥']
+let g:ale_sign_error="x"
+let g:ale_sign_warning="!"
+let g:ale_sign_column_always = 1
 
 " ---- FZF ---- "
 "let $FZF_DEFAULT_COMMAND = 'ag -l -g "'"
 
-"Tagnar
+"Tagbag
+let g:tagbar_ctags_bin='/usr/bin/ctags-exuberant'
 
-let g:tagbar_ctags_bin='/usr/local/Homebrew/Cellar/ctags/5.8_1/bin/ctags'
+" UltiSnips
+let g:UltiSnipsSnippetDirectories = ['~/Documents/projects/perso/dotfiles-that-fly/vim/snippets']
+" let g:UltiSnipsSnippetsDir = ['~/Documents/projects/perso/dotfiles-that-fly/vim/snippets']
+" let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-
+inoremap <c-i> <c-r>=UltiSnips#ExpandSnippetOrJump()<cr>
