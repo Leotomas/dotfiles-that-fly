@@ -21,6 +21,8 @@ NeoBundle "Shougo/unite-outline"
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle "maxbrunsfeld/vim-yankstack"
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'int3/vim-extradite'
 NeoBundle 'tpope/vim-rhubarb'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'junegunn/fzf'
@@ -34,29 +36,47 @@ NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'henrik/vim-indexed-search'
 NeoBundle 'kshenoy/vim-signature'
 
-NeoBundle "SirVer/ultisnips"
 NeoBundle "terryma/vim-multiple-cursors"
 
 " --------- Themes --------
 NeoBundle "Leotomas/vim-atom-dark"
 NeoBundle "chriskempson/base16-vim"
+NeoBundle "junegunn/seoul256.vim"
+NeoBundle "NLKNguyen/papercolor-theme"
+NeoBundle "w0ng/vim-hybrid"
 NeoBundle "rakr/vim-one"
 NeoBundle "tyrannicaltoucan/vim-quantum"
 NeoBundle "lifepillar/vim-solarized8"
 NeoBundle "morhetz/gruvbox"
 NeoBundle "mhartington/oceanic-next"
 NeoBundle "jdkanani/vim-material-theme"
+NeoBundle "farfanoide/vim-facebook"
+NeoBundle "pbrisbin/vim-colors-off"
+NeoBundle "ayu-theme/ayu-vim"
+NeoBundle "owickstrom/vim-colors-paramount"
 NeoBundle "scrooloose/nerdtree"
 NeoBundle 'rking/ag.vim'
 NeoBundle 'majutsushi/tagbar'
 
+NeoBundle "tomtom/tlib_vim"
+NeoBundle "marcweber/vim-addon-mw-utils"
+NeoBundle "garbas/vim-snipmate"
+
 " --------- JS --------- "
-" NeoBundleLazy 'maralla/completor.vim', {'autoload':{'filetypes':['javascript', 'vue']}}
+NeoBundleLazy 'maralla/completor.vim', {'autoload':{'filetypes':['javascript']}}
+NeoBundleLazy 'posva/vim-vue', {'autoload': {'filetypes': ['vue']}}
 NeoBundleLazy 'w0rp/ale', {'autoload':{'filetypes':['javascript', 'vue', 'css', 'scss', 'sass']}}
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript', 'vue']}}
 NeoBundleLazy 'vim-scripts/JavaScript-Indent', {'autoload':{'filetypes':['javascript', 'vue']}}
 NeoBundleLazy 'heavenshell/vim-jsdoc', {'autoload':{'filetypes':['javascript', 'vue']}}
 NeoBundleLazy 'ternjs/tern_for_vim', {'autoload':{'filetypes':['javascript', 'vue']}}
+NeoBundle "sidorares/node-vim-debugger"
+
+" ----- Productivity ---- "
+NeoBundle "wakatime/vim-wakatime"
+
+" --- SQL  -----"
+NeoBundle "joereynolds/SQHell.vim"
 
 call neobundle#end()
 
@@ -73,16 +93,21 @@ set bg=dark
 " colorscheme gruvbox
 " colorscheme solarized8_dark
 " colorscheme one
-colorscheme base16-ashes
+" colorscheme facebook
+colorscheme atom-dark
+" colorscheme base16-ashes
+" colorscheme hybrid
+" let ayucolor="light"
+" colorscheme ayu
 
 set rtp+=~/.fz
-set rtp+=~/Documents/projects/perso/dotfiles-that-fly/snippets
+set rtp+=~/Documents/projects/perso/dotfiles-that-fly/snippets/
 
 syntax enable
 set visualbell
 set encoding=utf-8
-set t_Co=256
-" set term=xterm-256color
+" set t_Co=256
+set term=screen-256color
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 if (has("termguicolors"))
@@ -175,7 +200,6 @@ map <silent> ge <Plug>CamelCaseMotion_ge
 "--- Nedtree ----"
 nmap <C-b> :NERDTreeToggle<CR>
 nmap <C-f> :NERDTreeFind<CR>
-" let g:fzf_launcher="/Users/leo/.vim/fzfMacvim.vim %s"
 
 
 
@@ -192,6 +216,7 @@ autocmd BufWritePre * %s/\s\+$//e
 
 " --- auto set type is js for vue files ----
 au BufRead,BufNewFile *.vue set filetype=javascript
+" autocmd BufNewFile,BufRead *.vue set filetype=vue
 
 " --- Syntastic ---"
 let g:syntastic_javascript_checkers = ['eslint']
@@ -212,7 +237,7 @@ let g:jsdoc_allow_shorthand = 1
 map <leader>d :JsDoc <cr>
 
 " --- Completor ---"
-let g:completor_min_chars=3
+let g:completor_min_chars=2
 let g:completor_auto_trigger=1
 
 " ---  Ale ----"
@@ -230,11 +255,27 @@ let g:ale_sign_column_always = 1
 "Tagbag
 let g:tagbar_ctags_bin='/usr/bin/ctags-exuberant'
 
-" UltiSnips
-let g:UltiSnipsSnippetDirectories = ['~/Documents/projects/perso/dotfiles-that-fly/vim/snippets']
-" let g:UltiSnipsSnippetsDir = ['~/Documents/projects/perso/dotfiles-that-fly/vim/snippets']
-" let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"Sauvegarde les folds et les rechargejG
+" augroup remember_folds
+" autocmd!
+"     autocmd BufWinLeave *.* mkview
+"       autocmd BufWinEnter *.* loadview
+" augroup END
 
-inoremap <c-i> <c-r>=UltiSnips#ExpandSnippetOrJump()<cr>
+"Validation d'un JSON
+abbrev validateJson :%!jq .
+abbrev validatejson :%!jq .
+
+"SQL"
+let g:sqh_connections = {
+    \ 'default': {
+    \   'user': 'root',
+    \   'password': 'poiuyt',
+    \   'host': ' 172.25.0.104'
+    \}
+    \}
+
+
+
+
+
