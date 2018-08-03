@@ -29,6 +29,8 @@ font pango:Monaco 10
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+for_window [class="TeamViewer.exe"] floating enable
+
 # start a terminal
 bindsym $mod+Return exec gnome-terminal
 bindsym $mod+p exec pantheon-files
@@ -39,6 +41,7 @@ bindsym $mod+Shift+A kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec i3-dmenu-desktop
+
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -167,7 +170,7 @@ gaps inner 20
 gaps inner 20
 
 # background image on startup
-exec_always feh --bg-fill ~/Pictures/Wallpapers/matt-hoffman-277877.jpg
+exec_always feh --bg-fill ~/Pictures/Wallpapers/mountains.jpg
 exec_always gnome-settings-daemon
 
 #launch my polybar on startup

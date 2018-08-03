@@ -7,6 +7,7 @@ endif
 
 " Required:
 set runtimepath+=~/.vim/bundle/neobundle.vim/
+set runtimepath+=~/.vim-plugins/LanguageClient-neovim
 
 " Required:
 call neobundle#begin(expand('~/.vim/bundle/'))
@@ -18,13 +19,17 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle "Shougo/unite.vim"
 NeoBundle "Shougo/unite-outline"
+NeoBundle 'Shougo/deoplete.nvim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle "maxbrunsfeld/vim-yankstack"
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'int3/vim-extradite'
 NeoBundle 'tpope/vim-rhubarb'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'junegunn/fzf'
 NeoBundle 'junegunn/fzf.vim'
+NeoBundle 'junegunn/vim-peekaboo'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'bkad/CamelCaseMotion'
 NeoBundle 'tpope/vim-eunuch'
@@ -33,30 +38,38 @@ NeoBundle 'docunext/closetag.vim'
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'henrik/vim-indexed-search'
 NeoBundle 'kshenoy/vim-signature'
+NeoBundle 'gcmt/taboo.vim'
 
-NeoBundle "SirVer/ultisnips"
 NeoBundle "terryma/vim-multiple-cursors"
 
 " --------- Themes --------
-NeoBundle "Leotomas/vim-atom-dark"
 NeoBundle "chriskempson/base16-vim"
-NeoBundle "rakr/vim-one"
-NeoBundle "tyrannicaltoucan/vim-quantum"
-NeoBundle "lifepillar/vim-solarized8"
-NeoBundle "morhetz/gruvbox"
-NeoBundle "mhartington/oceanic-next"
-NeoBundle "jdkanani/vim-material-theme"
 NeoBundle "scrooloose/nerdtree"
+
 NeoBundle 'rking/ag.vim'
-NeoBundle 'majutsushi/tagbar'
+NeoBundle "tomtom/tlib_vim"
+NeoBundle "marcweber/vim-addon-mw-utils"
+NeoBundle "garbas/vim-snipmate"
+NeoBundle 'evidens/vim-twig'
 
 " --------- JS --------- "
-" NeoBundleLazy 'maralla/completor.vim', {'autoload':{'filetypes':['javascript', 'vue']}}
+NeoBundle "roxma/vim-hug-neovim-rpc"
+NeoBundle "roxma/nvim-yarp"
+
+" NeoBundle "autozimu/LanguageClient-neovim"
+
+
+
+" NeoBundleLazy 'maralla/completor.vim', {'autoload':{'filetypes':['javascript']}}
+NeoBundle 'posva/vim-vue'
 NeoBundleLazy 'w0rp/ale', {'autoload':{'filetypes':['javascript', 'vue', 'css', 'scss', 'sass']}}
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript', 'vue']}}
 NeoBundleLazy 'vim-scripts/JavaScript-Indent', {'autoload':{'filetypes':['javascript', 'vue']}}
 NeoBundleLazy 'heavenshell/vim-jsdoc', {'autoload':{'filetypes':['javascript', 'vue']}}
-NeoBundleLazy 'ternjs/tern_for_vim', {'autoload':{'filetypes':['javascript', 'vue']}}
+" NeoBundleLazy 'ternjs/tern_for_vim', {'autoload':{'filetypes':['javascript', 'vue']}}
+" NeoBundle "sidorares/node-vim-debugger"
+NeoBundle 'digitaltoad/vim-pug'
+
 
 call neobundle#end()
 
@@ -67,22 +80,36 @@ filetype plugin indent on
 " this will conveniently prompt you to install them.
 NeoBundleCheck
 
-"colorscheme atom-dark
+" colorscheme atom-dark
 set bg=dark
 " set bg=light
 " colorscheme gruvbox
 " colorscheme solarized8_dark
 " colorscheme one
-colorscheme base16-ashes
+" colorscheme facebook
+" colorscheme base16-ashes
+" colorscheme hybrid
+" colorscheme monotone
+" colorscheme base16-ashes
+" colorscheme hybrid
+" colorscheme atom-dark
+" colorscheme bubblegum-256-dark
+" colorscheme xoria256
+" let g:seoul256_background=234
+" colo seoul256
+" colorscheme base16-classic-dark
+colo base16-grayscale-dark
+" " let ayucolor="light"
+" colorscheme ayu
 
 set rtp+=~/.fz
-set rtp+=~/Documents/projects/perso/dotfiles-that-fly/snippets
+set rtp+=~/Documents/projects/perso/dotfiles-that-fly/snippets/
 
 syntax enable
 set visualbell
 set encoding=utf-8
-set t_Co=256
-" set term=xterm-256color
+" set t_Co=256
+set term=screen-256color
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 if (has("termguicolors"))
@@ -91,6 +118,7 @@ endif
 set noerrorbells
 set ignorecase
 set smartcase
+set autoread
 set hlsearch
 set nonumber
 set laststatus=2
@@ -99,6 +127,7 @@ set backspace=indent,eol,start
 set autoindent
 set copyindent
 highlight Search cterm=underline
+
 set history=75
 set undolevels=75
 set title
@@ -112,9 +141,8 @@ set expandtab
 " set softtabstop=0
 " set smarttab
 " -- Clipboard
-set clipboard=unnamed
+set clipboard=unnamedplus
 " --- code wrapping
-set wrap
 set wildmenu
 set wildignore+=*/node_modules/*,*/vendor/*
 
@@ -141,6 +169,7 @@ let g:mapleader = ","
 imap jj <esc>
 nmap <leader>w :w!<cr>
 nmap <leader>q :q!<cr>
+nmap <leader>n :tabNext<cr>
 " close all splits except the one focused
 nmap <leader>o :only<cr>
 set backupdir=~/.vim/backup//
@@ -159,7 +188,6 @@ nmap <leader>Y <Plug>yankstack_substitute_new_paste
 nnoremap <leader><space> :Buffer<cr>
 nnoremap <leader>p :GFiles<cr>
 nnoremap <leader>f :Lines<cr>
-" nnoremap <leader>r :TagbarToggle<cr>
 nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
 
 set statusline=%<%f:%{ALEGetStatusLine()}\ %h%m%r%=%{fugitive#statusline()}\ \ %-14.(%l,%c%V%)\%p%%
@@ -175,15 +203,14 @@ map <silent> ge <Plug>CamelCaseMotion_ge
 "--- Nedtree ----"
 nmap <C-b> :NERDTreeToggle<CR>
 nmap <C-f> :NERDTreeFind<CR>
-" let g:fzf_launcher="/Users/leo/.vim/fzfMacvim.vim %s"
-
 
 
 "------ Ale ------
 
 let g:ale_linters = {
-            \   'javascript': ['eslint'],
-            \   'php': ['phpcs']
+            \   'javascript': ['eslint', 'tcp://127.0.0.1:2089'],
+            \   'php': ['phpcs'],
+            \   'vue': ['vls']
             \}
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 
@@ -191,10 +218,9 @@ let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 autocmd BufWritePre * %s/\s\+$//e
 
 " --- auto set type is js for vue files ----
-au BufRead,BufNewFile *.vue set filetype=javascript
+" au BufRead,BufNewFile *.vue set filetype=vue
+" autocmd BufNewFile,BufRead *.vue set filetype=vue
 
-" --- Syntastic ---"
-let g:syntastic_javascript_checkers = ['eslint']
 
 " --- Completor PHP trigger ---- "
 "  referred : https://github.com/maralla/completor.vim/issues/24
@@ -209,10 +235,11 @@ let g:jsdoc_access_descriptions = 1
 let g:jsdoc_underscore_private = 1
 let g:jsdoc_enable_es6 = 1
 let g:jsdoc_allow_shorthand = 1
+
 map <leader>d :JsDoc <cr>
 
 " --- Completor ---"
-let g:completor_min_chars=3
+let g:completor_min_chars=2
 let g:completor_auto_trigger=1
 
 " ---  Ale ----"
@@ -230,11 +257,52 @@ let g:ale_sign_column_always = 1
 "Tagbag
 let g:tagbar_ctags_bin='/usr/bin/ctags-exuberant'
 
-" UltiSnips
-let g:UltiSnipsSnippetDirectories = ['~/Documents/projects/perso/dotfiles-that-fly/vim/snippets']
-" let g:UltiSnipsSnippetsDir = ['~/Documents/projects/perso/dotfiles-that-fly/vim/snippets']
-" let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"Sauvegarde les folds et les rechargejG
+" augroup remember_folds
+" autocmd!
+"     autocmd BufWinLeave *.* mkview
+"       autocmd BufWinEnter *.* loadview
+" augroup END
 
-inoremap <c-i> <c-r>=UltiSnips#ExpandSnippetOrJump()<cr>
+"Validation d'un JSON
+abbrev validateJson :%!jq .
+abbrev validatejson :%!jq .
+
+abbrev eslintfix !node node_modules/eslint/bin/eslint.js --fix %
+abbrev eslint !node node_modules/eslint/bin/eslint.js  %
+
+
+augroup vimrc_autocmds
+  autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#111111
+  autocmd BufEnter * match OverLength /\%80v.*/
+augroup END
+
+let g:LanguageClient_serverCommands = {
+    \ 'javascript': ['tcp://127.0.0.1:2089'],
+    \ 'vue': ['vls']
+    \ }
+map <leader>m :call LanguageClient_contextMenu()<CR>
+
+
+" Or map each action separately
+" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+" Persistent folds
+" augroup AutoSaveFolds
+"     autocmd!
+"     autocmd BufWinLeave * mkview
+"     autocmd BufWinEnter * silent loadview
+" augroup END
+
+
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_buffer_path = 1
+let g:deoplete#file#enable_buffer_path = 1
+
+
+
+
+
+
