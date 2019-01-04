@@ -102,7 +102,7 @@ set bg=dark
 " let g:seoul256_background=234
 " colo seoul256
 " colorscheme base16-classic-dark
-colo base16-grayscale-dark
+colo base16-default-dark
 " " let ayucolor="light"
 " colorscheme ayu
 
