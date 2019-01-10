@@ -1,13 +1,13 @@
-
+" Note: Skip initialization for vim-tiny or vim-small.
 if 0 | endif
 
 if &compatible
-  set nocompatible               " Be iMproved
+	set nocompatible               " Be iMproved
 endif
 
 " Required:
 set runtimepath+=~/.vim/bundle/neobundle.vim/
-set runtimepath+=~/.vim-plugins/LanguageClient-neovim
+set runtimepath+=~/Documents/projects/perso/dotfiles-that-fly/vim/
 
 " Required:
 call neobundle#begin(expand('~/.vim/bundle/'))
@@ -16,10 +16,9 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-
 NeoBundle "Shougo/unite.vim"
 NeoBundle "Shougo/unite-outline"
-NeoBundle 'Shougo/deoplete.nvim'
+"NeoBundle 'Shougo/deoplete.nvim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle "maxbrunsfeld/vim-yankstack"
 NeoBundle 'tpope/vim-fugitive'
@@ -39,41 +38,38 @@ NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'henrik/vim-indexed-search'
 NeoBundle 'kshenoy/vim-signature'
 NeoBundle 'gcmt/taboo.vim'
-
+NeoBundle "scrooloose/nerdtree"
 NeoBundle "terryma/vim-multiple-cursors"
 
 " --------- Themes --------
 NeoBundle "chriskempson/base16-vim"
-NeoBundle "scrooloose/nerdtree"
+NeoBundle "Nequo/vim-allomancer"
+NeoBundle "rakr/vim-two-firewatch"
+NeoBundle "NerdyPepper/vim-colors-plain"
+NeoBundle "arcticicestudio/nord-vim"
+NeoBundle "robertmeta/nofrils"
+NeoBundle "ayu-theme/ayu-vim"
+NeoBundle 'morhetz/gruvbox'
 
 NeoBundle 'rking/ag.vim'
 NeoBundle "tomtom/tlib_vim"
 NeoBundle "marcweber/vim-addon-mw-utils"
 NeoBundle "garbas/vim-snipmate"
 NeoBundle 'evidens/vim-twig'
-
 NeoBundle "tomtom/tlib_vim"
 NeoBundle "marcweber/vim-addon-mw-utils"
-NeoBundle "garbas/vim-snipmate"
 
 " --------- JS --------- "
-NeoBundle "roxma/vim-hug-neovim-rpc"
-NeoBundle "roxma/nvim-yarp"
+"NeoBundle "roxma/vim-hug-neovim-rpc"
+"NeoBundle "roxma/nvim-yarp"
 
-" NeoBundle "autozimu/LanguageClient-neovim"
-
-
-
-" NeoBundleLazy 'maralla/completor.vim', {'autoload':{'filetypes':['javascript']}}
+NeoBundleLazy 'maralla/completor.vim', {'autoload':{'filetypes':['javascript']}}
 NeoBundle 'posva/vim-vue'
 NeoBundleLazy 'w0rp/ale', {'autoload':{'filetypes':['javascript', 'vue', 'css', 'scss', 'sass']}}
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript', 'vue']}}
 NeoBundleLazy 'vim-scripts/JavaScript-Indent', {'autoload':{'filetypes':['javascript', 'vue']}}
 NeoBundleLazy 'heavenshell/vim-jsdoc', {'autoload':{'filetypes':['javascript', 'vue']}}
 " NeoBundleLazy 'ternjs/tern_for_vim', {'autoload':{'filetypes':['javascript', 'vue']}}
-" NeoBundle "sidorares/node-vim-debugger"
-NeoBundle 'digitaltoad/vim-pug'
-
 
 call neobundle#end()
 
@@ -84,30 +80,18 @@ filetype plugin indent on
 " this will conveniently prompt you to install them.
 NeoBundleCheck
 
-" colorscheme atom-dark
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+
 set bg=dark
-" set bg=light
-" colorscheme gruvbox
-" colorscheme solarized8_dark
-" colorscheme one
-" colorscheme facebook
-" colorscheme base16-ashes
-" colorscheme hybrid
-" colorscheme monotone
-" colorscheme base16-ashes
-" colorscheme hybrid
-" colorscheme atom-dark
-" colorscheme bubblegum-256-dark
-" colorscheme xoria256
-" let g:seoul256_background=234
-" colo seoul256
-" colorscheme base16-classic-dark
-colo base16-default-dark
-" " let ayucolor="light"
-" colorscheme ayu
+colo base16-eighties
 
 set rtp+=~/.fz
-set rtp+=~/Documents/projects/perso/dotfiles-that-fly/snippets/
 
 syntax enable
 set visualbell
@@ -149,13 +133,6 @@ set clipboard=unnamedplus
 " --- code wrapping
 set wildmenu
 set wildignore+=*/node_modules/*,*/vendor/*
-
-"--- Macvim Stuff ----"
-set guioptions-=r
-set guioptions-=L
-set guioptions-=r
-set guioptions-=T
-set guifont=FiraMono:h12
 set linespace=3
 
 "Make vim faster
@@ -186,16 +163,13 @@ nnoremap <Down> :resize +2<CR>
 
 nmap <leader>y <Plug>yankstack_substitute_older_paste
 nmap <leader>Y <Plug>yankstack_substitute_new_paste
-" nnoremap <leader>p :CtrlP <cr>
-" nnoremap <leader><space> :CtrlPBuffer<cr>
 "
 nnoremap <leader><space> :Buffer<cr>
 nnoremap <leader>p :GFiles<cr>
 nnoremap <leader>f :Lines<cr>
 nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
 
-set statusline=%<%f:%{ALEGetStatusLine()}\ %h%m%r%=%{fugitive#statusline()}\ \ %-14.(%l,%c%V%)\%p%%
-"set statusline=%<%f\ %h%m%r%=%{fugitive#statusline()}\ \ %-14.(%l,%c%V%)\%p%%
+set statusline=%<%f\ %h%m%r%=%{fugitive#statusline()}\ \ %-14.(%l,%c%V%)\%p%%
 
 "---- Case Motions -----"
 map <silent> w <Plug>CamelCaseMotion_w
@@ -222,7 +196,7 @@ let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 autocmd BufWritePre * %s/\s\+$//e
 
 " --- auto set type is js for vue files ----
-" au BufRead,BufNewFile *.vue set filetype=vue
+au BufRead,BufNewFile *.vue set filetype=vue
 " autocmd BufNewFile,BufRead *.vue set filetype=vue
 
 
@@ -261,13 +235,6 @@ let g:ale_sign_column_always = 1
 "Tagbag
 let g:tagbar_ctags_bin='/usr/bin/ctags-exuberant'
 
-"Sauvegarde les folds et les rechargejG
-" augroup remember_folds
-" autocmd!
-"     autocmd BufWinLeave *.* mkview
-"       autocmd BufWinEnter *.* loadview
-" augroup END
-
 "Validation d'un JSON
 abbrev validateJson :%!jq .
 abbrev validatejson :%!jq .
@@ -275,17 +242,18 @@ abbrev validatejson :%!jq .
 abbrev eslintfix !node node_modules/eslint/bin/eslint.js --fix %
 abbrev eslint !node node_modules/eslint/bin/eslint.js  %
 
+abbrev clearswaps rm ~/.vim/swap/*
 
-augroup vimrc_autocmds
-  autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#111111
-  autocmd BufEnter * match OverLength /\%80v.*/
-augroup END
+" augroup vimrc_autocmds
+"   autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#111111
+"   autocmd BufEnter * match OverLength /\%80v.*/
+" augroup END
 
-let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['tcp://127.0.0.1:2089'],
-    \ 'vue': ['vls']
-    \ }
-map <leader>m :call LanguageClient_contextMenu()<CR>
+" let g:LanguageClient_serverCommands = {
+"     \ 'javascript': ['tcp://127.0.0.1:2089'],
+"     \ 'vue': ['vls']
+"     \ }
+" map <leader>m :call LanguageClient_contextMenu()<CR>
 
 
 " Or map each action separately
@@ -293,7 +261,7 @@ map <leader>m :call LanguageClient_contextMenu()<CR>
 " nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 " nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
-" Persistent folds
+"Persistent folds
 " augroup AutoSaveFolds
 "     autocmd!
 "     autocmd BufWinLeave * mkview
@@ -301,11 +269,13 @@ map <leader>m :call LanguageClient_contextMenu()<CR>
 " augroup END
 
 
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_buffer_path = 1
-let g:deoplete#file#enable_buffer_path = 1
+" let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_buffer_path = 1
+" let g:deoplete#file#enable_buffer_path = 1
 
 
+let g:nofrils_strbackgrounds=1
+let g:nofrils_heavycomments=1
 
 
 
