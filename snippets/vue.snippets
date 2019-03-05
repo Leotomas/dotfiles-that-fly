@@ -1,0 +1,50 @@
+# snippet cl "console.log"
+# 	console.log(${1});
+#
+# snippet cljson "console.log json"
+# 	console.log(JSON.stringify(${1}, null, 4));
+#
+# snippet promise "Promise"
+# 	new Promise((resolve, reject) => {
+# 	});
+#
+# snippet rpromise "return new Promise"
+# 	return new Promise((resolve, reject) => {
+# 	});
+#
+# snippet base "base vue component"
+# 	<template>
+# 	</template>
+# 	<script>
+# 		const Component = require('${1}');
+# 		export default {
+# 			extends: Component,
+# 			data() {
+# 				return {
+# 					${2}
+# 					states: {
+# 						ready: false
+# 					}
+# 				};
+# 			},
+# 			ready() {
+# 			},
+# 			methods: {
+# 				__construct() {
+# 				}
+# 			},
+# 			computed: {
+# 			}
+# 		}
+# 	</script>
+#
+# snippet clm "console.log mirror"
+# 	console.log(${1:}, "$1");
+# snippet cw "console.warn"
+# 	console.warn("${1}");
+# snippet cb "comment block"
+# 	/**
+# 	 * ${1}
+# 	 * @param {*} myparam description
+# 	 * @return {*} return
+# 	 */
