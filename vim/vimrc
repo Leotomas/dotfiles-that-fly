@@ -52,6 +52,7 @@ NeoBundle 'morhetz/gruvbox'
 NeoBundle 'cocopon/iceberg.vim'
 NeoBundle 'maralla/mycolor'
 NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'Leotomas/vim-atom-dark'
 
 NeoBundle 'rking/ag.vim'
 NeoBundle "tomtom/tlib_vim"
@@ -62,6 +63,7 @@ NeoBundle 'evidens/vim-twig'
 " --------- JS --------- "
 "NeoBundle "roxma/nvim-yarp"
 NeoBundle 'jelera/vim-javascript-syntax'
+" NeoBundle "Shougo/neocomplcache.vim"
 
 " NeoBundleLazy 'maralla/completor.vim', {'autoload':{'filetypes':['javascript', 'vue']}}
 " NeoBundleLazy 'posva/vim-vue', {'autoload':{'filetypes':['vue']}}
@@ -69,6 +71,7 @@ NeoBundleLazy 'w0rp/ale', {'autoload':{'filetypes':['javascript', 'vue', 'css', 
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript', 'vue']}}
 NeoBundleLazy 'vim-scripts/JavaScript-Indent', {'autoload':{'filetypes':['javascript', 'vue']}}
 NeoBundleLazy 'heavenshell/vim-jsdoc', {'autoload':{'filetypes':['javascript', 'vue']}}
+NeoBundle "Sefima/vim-nearest-complete-improved"
 " NeoBundleLazy 'ternjs/tern_for_vim', {'autoload':{'filetypes':['javascript', 'vue']}}
 
 
@@ -145,10 +148,17 @@ set ttyfast
 set scrolljump=8        " Scroll 8 lines at a time at bottom/top
 let html_no_rendering=1 " Don't render italic, bold, links in HTML"
 " keep folds between sessions
-:set sessionoptions+=folds
+" :set sessionoptions+=folds
+set viewoptions=cursor,folds,slash,unix
+set fdm=indent
+set fdc=4
+set fdl=1
+set nofen
 
 " no buffer warning when unsaved
 set hidden
+
+set complete=.,b,u,]
 
 let mapleader = ","
 let g:mapleader = ","
@@ -173,9 +183,22 @@ nmap <leader>Y <Plug>yankstack_substitute_new_paste
 "
 nnoremap <leader><space> :Buffer<cr>
 nnoremap <leader>p :GFiles<cr>
-nnoremap <leader>f :Lines<cr>
+" nnoremap <leader>f :Lines<cr>
 nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
 nnoremap <leader>s :syntax on <cr>
+
+" Press leader f to toggle identation based folds
+let g:auto_folds_toggle = 0
+function! g:ToggleAutoFolds()
+    if (g:auto_folds_toggle == 0)
+        let g:auto_folds_toggle = 1
+        set fen
+    else
+        let g:auto_folds_toggle = 0
+        set nofen
+    endif
+endfunction
+nmap<leader>f :call ToggleAutoFolds()<CR><CR>
 
 " echo Ale's linter status in status line
 function! LinterStatus() abort
@@ -305,6 +328,16 @@ autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
 autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
 inoremap <C-f> <C-x><C-f>
 
+
 " remap backtick - french keyboard
 " does not work with cs (surround.vim)
 " inoremap <leader>è `
+
+
+
+"  used with Sefima/vim-nearest-complete-improved
+set completefunc=NearestComplete
+set completeopt=menu
+inoremap <silent><expr> <C-n>      pumvisible() ? "\<C-n>" : "\<C-x><C-u>"
+imap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
+imap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
