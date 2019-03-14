@@ -18,16 +18,17 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle "Shougo/unite.vim"
 NeoBundle "Shougo/unite-outline"
-NeoBundle 'ctrlpvim/ctrlp.vim'
+" NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle "maxbrunsfeld/vim-yankstack"
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'jreybert/vimagit'
 NeoBundle 'airblade/vim-gitgutter'
 " NeoBundle 'int3/vim-extradite'
 NeoBundle 'tpope/vim-rhubarb'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'junegunn/fzf'
 NeoBundle 'junegunn/fzf.vim'
-" NeoBundle 'junegunn/vim-peekaboo'
+NeoBundle 'junegunn/vim-peekaboo'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'bkad/CamelCaseMotion'
 NeoBundle 'tpope/vim-eunuch'
@@ -42,15 +43,6 @@ NeoBundle "ConradIrwin/vim-bracketed-paste"
 
 " --------- Themes --------
 NeoBundle "chriskempson/base16-vim"
-NeoBundle "Nequo/vim-allomancer"
-NeoBundle "rakr/vim-two-firewatch"
-NeoBundle "NerdyPepper/vim-colors-plain"
-NeoBundle "arcticicestudio/nord-vim"
-NeoBundle "robertmeta/nofrils"
-NeoBundle "ayu-theme/ayu-vim"
-NeoBundle 'morhetz/gruvbox'
-NeoBundle 'cocopon/iceberg.vim'
-NeoBundle 'maralla/mycolor'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'Leotomas/vim-atom-dark'
 
@@ -59,21 +51,19 @@ NeoBundle "tomtom/tlib_vim"
 NeoBundle "marcweber/vim-addon-mw-utils"
 NeoBundle "garbas/vim-snipmate"
 NeoBundle 'evidens/vim-twig'
+NeoBundle 'thaerkh/vim-workspace'
 
 " --------- JS --------- "
-"NeoBundle "roxma/nvim-yarp"
 NeoBundle 'jelera/vim-javascript-syntax'
-" NeoBundle "Shougo/neocomplcache.vim"
 
-" NeoBundleLazy 'maralla/completor.vim', {'autoload':{'filetypes':['javascript', 'vue']}}
-" NeoBundleLazy 'posva/vim-vue', {'autoload':{'filetypes':['vue']}}
+
 NeoBundleLazy 'w0rp/ale', {'autoload':{'filetypes':['javascript', 'vue', 'css', 'scss', 'sass']}}
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript', 'vue']}}
 NeoBundleLazy 'vim-scripts/JavaScript-Indent', {'autoload':{'filetypes':['javascript', 'vue']}}
 NeoBundleLazy 'heavenshell/vim-jsdoc', {'autoload':{'filetypes':['javascript', 'vue']}}
 NeoBundle "Sefima/vim-nearest-complete-improved"
-" NeoBundleLazy 'ternjs/tern_for_vim', {'autoload':{'filetypes':['javascript', 'vue']}}
 
+" NeoBundle "tpope/vim-scriptease"
 
 call neobundle#end()
 
@@ -125,7 +115,6 @@ set history=75
 set undolevels=75
 set title
 set nobackup
-set foldcolumn=1
 set path+=**
 " --- Tabs & indents
 set tabstop=4
@@ -151,14 +140,15 @@ let html_no_rendering=1 " Don't render italic, bold, links in HTML"
 " :set sessionoptions+=folds
 set viewoptions=cursor,folds,slash,unix
 set fdm=indent
-set fdc=4
+set foldcolumn=1
 set fdl=1
 set nofen
+set formatoptions+=j " Delete comment character when joining commented lines"
 
-" no buffer warning when unsaved
+" no buffer warning when unsaved plop
 set hidden
 
-set complete=.,b,u,]
+" set complete=.,b,u,]
 
 let mapleader = ","
 let g:mapleader = ","
@@ -173,6 +163,7 @@ nmap <leader>o :only<cr>
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
+set undofile
 nnoremap <Left> :vertical resize -2<CR>
 nnoremap <Right> :vertical resize +2<CR>
 nnoremap <Up> :resize -2<CR>
@@ -208,13 +199,11 @@ let l:all_errors = l:counts.error + l:counts.style_error
 let l:all_non_errors = l:counts.total - l:all_errors
 
 return l:counts.total == 0 ? 'OK' : printf(
-            \   '%dW %dE',
+            \   '%d⚠  %d⨉ ',
             \   all_non_errors,
             \   all_errors
             \)
 endfunction
-
-
 
 " minimal status line (displays git repo)
 set statusline=%<%f=%{LinterStatus()}\ %h%m%r%=%{fugitive#statusline()}\ \ %-14.(%l,%c%V%)\%p%%
@@ -225,18 +214,10 @@ map <silent> b <Plug>CamelCaseMotion_b
 map <silent> e <Plug>CamelCaseMotion_e
 map <silent> ge <Plug>CamelCaseMotion_ge
 
-
 "--- Nedtree ----"
 nmap <C-b> :NERDTreeToggle<CR>
 nmap <C-f> :NERDTreeFind<CR>
 
-
-"------ Ale ------
-
-" let g:ale_linters = {
-"             \   'javascript': ['eslint', 'tcp://127.0.0.1:2089'],
-"             \   'php': ['phpcs'],
-"             \}
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 let g:ale_linter_aliases = {'vue': ['javascript', 'html', 'scss', 'eslint-plugin-vue']}
 
@@ -247,11 +228,6 @@ autocmd BufWritePre * %s/\s\+$//e
 autocmd BufNewFile,BufRead *.vue set filetype=vue.javascript
  au BufNewFile,BufRead *.vue syntax sync fromstart
 
-
-" --- Completor PHP trigger ---- "
-"  referred : https://github.com/maralla/completor.vim/issues/24
-" let g:completor_php_omni_trigger = '([$\w]+|use\s*|->[$\w]*|::[$\w]*|implements\s*|extends\s*|class\s+[$\w]+|new\s*)$'
-
 abbrev ee e **
 
 " --- JsDoc conf ---- "
@@ -260,13 +236,9 @@ let g:jsdoc_input_description = 1
 let g:jsdoc_access_descriptions = 1
 let g:jsdoc_underscore_private = 1
 let g:jsdoc_enable_es6 = 1
-let g:jsdoc_allow_shorthand = 1
+let g:jsdoc_tags = {} | let g:jsdoc_tags['returns'] = 'return'
 
 map <leader>d :JsDoc <cr>
-
-" --- Completor ---"
-let g:completor_min_chars=2
-let g:completor_auto_trigger=0
 
 " ---  Ale ----"
 let g:ale_lint_on_save=1
@@ -279,65 +251,45 @@ let g:ale_sign_error="⨉"
 let g:ale_sign_warning="!"
 let g:ale_sign_column_always = 1
 
-" ---- FZF ---- "
-"let $FZF_DEFAULT_COMMAND = 'ag -l -g "'"
-
 "Tagbag
-let g:tagbar_ctags_bin='/usr/bin/ctags-exuberant'
+" let g:tagbar_ctags_bin='/usr/bin/ctags-exuberant'
 
 "Validation d'un JSON -> leader jv
 abbrev validateJson :%!jq .
 abbrev validatejson :%!jq .
+abbrev vjson validatejson
 noremap <leader>jv :%!jq .<cr>
 
 abbrev eslintfix !node node_modules/eslint/bin/eslint.js --fix %
 abbrev eslint !node node_modules/eslint/bin/eslint.js  %
 
+" whenever vim crashes it's handy to delete swaps
 abbrev clearswaps !rm ~/.vim/swap/*
-
-" augroup vimrc_autocmds
-"   autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#111111
-"   autocmd BufEnter * match OverLength /\%80v.*/
-" augroup END
-
-" let g:LanguageClient_serverCommands = {
-"     \ 'javascript': ['tcp://127.0.0.1:2089'],
-"     \ 'vue': ['vls']
-"     \ }
-" map <leader>m :call LanguageClient_contextMenu()<CR>
-
-
-" Or map each action separately
-" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-
-"Persistent folds
-" augroup remember_folds
-"   autocmd!
-"   au BufWinLeave ?* mkview 1
-"   au BufWinEnter ?* silent! loadview 1
-" augroup END
-
-
-" let g:deoplete#enable_at_startup = 1
-" let g:deoplete#enable_buffer_path = 1
+abbrev dswaps clearswaps
+abbrev cswaps clearswaps
 
 " Completion des fichiers filepath '../' -> Ctrl+F pour trigger en insert mode
 autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
 autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
 inoremap <C-f> <C-x><C-f>
 
-
-" remap backtick - french keyboard
-" does not work with cs (surround.vim)
-" inoremap <leader>è `
-
-
-
 "  used with Sefima/vim-nearest-complete-improved
 set completefunc=NearestComplete
 set completeopt=menu
 inoremap <silent><expr> <C-n>      pumvisible() ? "\<C-n>" : "\<C-x><C-u>"
-imap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
-imap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+" IMAP <EXpr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
+" imap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+" imap <expr> <ESC>       pumvisible() ? "\<C-y><ESC>" : "\<ESC>"
+
+" leader tn -> tab new tmux like
+noremap <leader>tc tab new<CR>
+noremap <leader>tx :tabclose<CR>
+
+" vim workspace
+let g:workspace_session_directory = $HOME . '/.vim/sessions/'
+noremap <leader>chb :CloseHiddenBuffers<CR>
+noremap <leader>tw :ToggleWorkspace<CR>
+
+" magit & git
+noremap <leader>ga. :!git add .<CR><CR>
+
