@@ -53,6 +53,9 @@ NeoBundle "garbas/vim-snipmate"
 NeoBundle 'evidens/vim-twig'
 NeoBundle 'thaerkh/vim-workspace'
 
+"--- Markdown ----
+NeoBundle 'gabrielelana/vim-markdown'
+
 " --------- JS --------- "
 NeoBundle 'jelera/vim-javascript-syntax'
 
@@ -174,7 +177,7 @@ nmap <leader>Y <Plug>yankstack_substitute_new_paste
 "
 nnoremap <leader><space> :Buffer<cr>
 nnoremap <leader>p :GFiles<cr>
-" nnoremap <leader>f :Lines<cr>
+nnoremap <leader>l :Lines<cr>
 nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
 nnoremap <leader>s :syntax on <cr>
 
@@ -282,7 +285,7 @@ inoremap <silent><expr> <C-n>      pumvisible() ? "\<C-n>" : "\<C-x><C-u>"
 " imap <expr> <ESC>       pumvisible() ? "\<C-y><ESC>" : "\<ESC>"
 
 " leader tn -> tab new tmux like
-noremap <leader>tc tab new<CR>
+noremap <leader>tc :tabnew<CR>
 noremap <leader>tx :tabclose<CR>
 
 " vim workspace
@@ -292,4 +295,12 @@ noremap <leader>tw :ToggleWorkspace<CR>
 
 " magit & git
 noremap <leader>ga. :!git add .<CR><CR>
+noremap <leader>gs :Gstatus<CR>
+noremap <leader>gc :Gcommit<CR>
+
+"Markdown conf
+let g:markdown_include_jekyll_support = 0
+let g:markdown_enable_folding = 1
+let g:markdown_enable_spell_checking = 0
+let g:markdown_enable_input_abbreviations = 0
 

@@ -4,10 +4,17 @@
 ![WSLTTY Windows](https://raw.githubusercontent.com/Leotomas/dotfiles-that-fly/master/docs/setup.PNG)
 
 ## Vim
-Mainly centered around javascript, nodejs, vuejs and html.
+Mainly centered around javascript, nodejs, vuejs and html and git. It features linting, simple completion (not using lsp because I'm not satisfied with how it's been implemented in vim).
+
+To install you'll first need to install NeoBundle. Then :
+```
+   ln -s ??/dotfiles-that-fly/vim/vimrc ~/.vimrc
+   ln -s ??/dotfiles-that-fly/vim/snippets ~/.vim/snippets
+```
+
 
 ## Tmux
-Something easy to use.
+Something easy to use. F9 is my leader which I've remapped to caps lock.
 
 ## Windows
 
@@ -21,6 +28,8 @@ This is my current setup with WSL and wsltty.
 - vscode
 - sublime text (almost useless with wsltty copy/paste buffer support)
 - cmder (for tabbed powershell only)
+
+If you want WSL to have decent performances you sould disable windows real time protection.
 
 ### WSLTTY
 
