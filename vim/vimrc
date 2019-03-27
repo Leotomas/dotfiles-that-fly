@@ -54,7 +54,7 @@ NeoBundle 'evidens/vim-twig'
 NeoBundle 'thaerkh/vim-workspace'
 
 "--- Markdown ----
-NeoBundle 'gabrielelana/vim-markdown'
+NeoBundle 'plasticboy/vim-markdown'
 
 " --------- JS --------- "
 NeoBundle 'jelera/vim-javascript-syntax'
@@ -152,7 +152,6 @@ set formatoptions+=j " Delete comment character when joining commented lines"
 set hidden
 
 " set complete=.,b,u,]
-
 let mapleader = ","
 let g:mapleader = ","
 
@@ -279,6 +278,8 @@ inoremap <C-f> <C-x><C-f>
 "  used with Sefima/vim-nearest-complete-improved
 set completefunc=NearestComplete
 set completeopt=menu
+set complete=.,w,b,u,t,i,kspell
+
 inoremap <silent><expr> <C-n>      pumvisible() ? "\<C-n>" : "\<C-x><C-u>"
 " IMAP <EXpr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
 " imap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
@@ -298,9 +299,21 @@ noremap <leader>ga. :!git add .<CR><CR>
 noremap <leader>gs :Gstatus<CR>
 noremap <leader>gc :Gcommit<CR>
 
-"Markdown conf
-let g:markdown_include_jekyll_support = 0
-let g:markdown_enable_folding = 1
-let g:markdown_enable_spell_checking = 0
-let g:markdown_enable_input_abbreviations = 0
+" Spelling / Orthographe
+let g:c_spelllang = "fr"
+let &spelllang=g:c_spelllang
+function! AlternateSpellLang()
+    if (g:c_spelllang == "fr")
+        let g:c_spelllang = "en_us"
+    elseif (g:c_spelllang == "en_us")
+        let g:c_spelllang = "en_us,fr"
+    elseif (g:c_spelllang == "en_us,fr")
+        let g:c_spelllang = "fr"
+    endif
+    echo "spelllang is now " . g:c_spelllang
+    let &spelllang=g:c_spelllang
+endfunction
 
+nnoremap <leader>ks :set spell!<CR>
+nnoremap <leader>kk :set spell!<CR>
+nnoremap <leader>kn :call AlternateSpellLang()<CR><CR>
