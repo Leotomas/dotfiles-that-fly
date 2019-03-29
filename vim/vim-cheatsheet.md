@@ -22,3 +22,7 @@
 - "ay pour yank ce qui est selectionné dans le register a
 - "ap pour paste ce qui se trouve dans le register a
 - in insert mode CTRL-R will paste -> * for clipboard, % for filename, any other letter for letter registers
+
+### Spelling
+- zg pour ajouter un mot à la liste des bons mots
+- ]s pour jump au prochain mauvais mispelled

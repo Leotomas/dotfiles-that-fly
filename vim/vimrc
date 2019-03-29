@@ -86,7 +86,7 @@ filetype plugin indent on
 NeoBundleCheck
 
 set bg=dark
-colo base16-eighties
+colo base16-ashes
 " colo iceberg
 
 set rtp+=~/.fz
