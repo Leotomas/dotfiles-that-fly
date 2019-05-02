@@ -26,3 +26,11 @@
 ### Spelling
 - zg pour ajouter un mot à la liste des bons mots
 - ]s pour jump au prochain mauvais mispelled
+
+### Terminal
+- :term
+- Ctrl+W + N pour
+
+### Pull requests
+git fetch origin +refs/pull/$PR/merge
+git checkout FETCH_HEAD

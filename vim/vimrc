@@ -41,6 +41,9 @@ NeoBundle 'gcmt/taboo.vim'
 NeoBundle "scrooloose/nerdtree"
 NeoBundle "ConradIrwin/vim-bracketed-paste"
 
+" Waka Waka hehe
+NeoBundle "wakatime/vim-wakatime"
+
 " --------- Themes --------
 NeoBundle "chriskempson/base16-vim"
 NeoBundle 'w0ng/vim-hybrid'
@@ -55,6 +58,7 @@ NeoBundle 'thaerkh/vim-workspace'
 
 "--- Markdown ----
 NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'junegunn/goyo.vim'
 
 " --------- JS --------- "
 NeoBundle 'jelera/vim-javascript-syntax'
@@ -142,7 +146,7 @@ let html_no_rendering=1 " Don't render italic, bold, links in HTML"
 " keep folds between sessions
 " :set sessionoptions+=folds
 set viewoptions=cursor,folds,slash,unix
-set fdm=indent
+set fdm=manual
 set foldcolumn=1
 set fdl=1
 set nofen
@@ -181,17 +185,17 @@ nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=outline -start-insert outl
 nnoremap <leader>s :syntax on <cr>
 
 " Press leader f to toggle identation based folds
-let g:auto_folds_toggle = 0
-function! g:ToggleAutoFolds()
-    if (g:auto_folds_toggle == 0)
-        let g:auto_folds_toggle = 1
-        set fen
-    else
-        let g:auto_folds_toggle = 0
-        set nofen
-    endif
-endfunction
-nmap<leader>f :call ToggleAutoFolds()<CR><CR>
+" let g:auto_folds_toggle = 0
+" function! g:ToggleAutoFolds()
+"     if (g:auto_folds_toggle == 0)
+"         let g:auto_folds_toggle = 1
+"         set fen
+"     else
+"         let g:auto_folds_toggle = 0
+"         set nofen
+"     endif
+" endfunction
+" nmap<leader>f :call ToggleAutoFolds()<CR><CR>
 
 " echo Ale's linter status in status line
 function! LinterStatus() abort
@@ -252,6 +256,11 @@ let g:ale_lint_on_insert_leave=1
 let g:ale_sign_error="⨉"
 let g:ale_sign_warning="!"
 let g:ale_sign_column_always = 1
+
+nnoremap <leader>ar :ALELint<CR>
+nnoremap <leader>aa :ALELint<CR>
+nnoremap <leader>ae :ALEEnable<CR>
+nnoremap <leader>ad :ALEDisable<CR>
 
 "Tagbag
 " let g:tagbar_ctags_bin='/usr/bin/ctags-exuberant'
@@ -317,3 +326,6 @@ endfunction
 nnoremap <leader>ks :set spell!<CR>
 nnoremap <leader>kk :set spell!<CR>
 nnoremap <leader>kn :call AlternateSpellLang()<CR><CR>
+
+" fast command launch
+nnoremap <leader>! :!
