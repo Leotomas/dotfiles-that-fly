@@ -34,3 +34,12 @@
 ### Pull requests
 git fetch origin +refs/pull/$PR/merge
 git checkout FETCH_HEAD
+
+### Git merge
+
+- git conflicted in bash when merging
+- dgu dgl (diff get upstream/local)
+- Gwrite! in buffer to take the buffer version while in 3 way merge
+- leader + c + n "next conflict"
+- leader + c + p "previous conflict"
+- :GitConflictNext when conflict is resolved
