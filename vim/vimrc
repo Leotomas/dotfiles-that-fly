@@ -86,12 +86,17 @@ NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascr
 NeoBundleLazy 'vim-scripts/JavaScript-Indent', {'autoload':{'filetypes':['javascript', 'vue']}}
 NeoBundleLazy 'heavenshell/vim-jsdoc', {'autoload':{'filetypes':['javascript', 'vue']}}
 
-" NeoBundle "Sefima/vim-nearest-complete-improved"
+NeoBundle "Sefima/vim-nearest-complete-improved"
 
-NeoBundle "neoclide/coc.nvim"
-NeoBundle "ludovicchabant/vim-gutentags"
+" NeoBundle "neoclide/coc.nvim"
+" NeoBundle "ludovicchabant/vim-gutentags"
 
 NeoBundle 'chrisbra/Colorizer'
+
+" ----- PlantUML preview ---- "
+NeoBundle "aklt/plantuml-syntax"
+NeoBundle "tyru/open-browser.vim"
+NeoBundle "weirongxu/plantuml-previewer.vim"
 
 " NeoBundle "tpope/vim-scriptease"
 
@@ -237,7 +242,8 @@ return l:counts.total == 0 ? 'OK' : printf(
 endfunction
 
 " minimal status line (displays git repo)
-set statusline=%<%f=%{LinterStatus()}\ %h%m%r%=%{fugitive#statusline()}\ \ %-14.(%l,%c%V%)\%p%%%{gutentags#statusline()}
+" set statusline=%<%f=%{LinterStatus()}\ %h%m%r%=%{fugitive#statusline()}\ \ %-14.(%l,%c%V%)\%p%%%{gutentags#statusline()}
+set statusline=%<%f=%{LinterStatus()}\ %h%m%r%=%{fugitive#statusline()}\ \ %-14.(%l,%c%V%)\%p%%
 
 "---- Case Motions -----"
 map <silent> w <Plug>CamelCaseMotion_w
@@ -305,14 +311,14 @@ abbrev dswaps clearswaps
 abbrev cswaps clearswaps
 
 " Completion des fichiers filepath '../' -> Ctrl+F pour trigger en insert mode
-autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
-autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
+" autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
+" autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
 inoremap <C-f> <C-x><C-f>
 
 "  used with Sefima/vim-nearest-complete-improved
-" set completefunc=NearestComplete
-" set completeopt=menu
-" set complete=.,w,b,u,t,i,kspell
+set completefunc=NearestComplete
+set completeopt=menu
+set complete=.,w,b,u,t,i,kspell
 
 inoremap <silent><expr> <C-n>      pumvisible() ? "\<C-n>" : "\<C-x><C-u>"
 " IMAP <EXpr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
@@ -368,6 +374,7 @@ let g:mkdp_command_for_global = 1
 " ==== Coc.vim ====
 set updatetime=300
 set noshowmode
+
 " remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -375,7 +382,47 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+" inoremap <silent><expr> <C-n>
+"             \ pumvisible() ? "\<C-n>" :
+"             \ <SID>check_back_space() ? "\<C-n>" :
+"             \ coc#refresh()
+
+
+" --- plantUML previewer for WSL ---- "
+ g:plantuml_previewer#plantuml_jar_path="/usr/bin/plantuml.jar"
+
+ command! PlantumlOpenCustom call PreviewPlantUML(1)
+ command! PlantumlSaveCustom call PreviewPlantUML(0)
+ command! PlantumlClearFolder call ClearPlantumlFolder()
+
+ function! g:PreviewPlantUML(preview)
+     let l:stamp = strftime('%s000')
+     let l:base_path = "~/Leo/plantuml/" . stamp . "/"
+     let l:file_url = "file:///C:/Users/Leo/plantuml/" . l:stamp . "/dist/index.html"
+
+     execute ":PlantumlOpen"
+     sleep 3500m
+     execute "! cp -R ~/.vim/bundle/plantuml-previewer.vim/viewer " . l:base_path
+     if a:preview
+         execute ":OpenBrowser " . l:file_url
+     endif
+ endfunction
+
+ function! g:ClearPlantumlFolder()
+     execute "rm -r -f ~/Leo/plantuml/*"
+ endfunction
+
+ nmap <leader>pus :PlantumlSaveCustom<CR><CR>
+ nmap <leader>puo :PlantumlOpenCustom<CR><CR>
+
+
+
+
+
