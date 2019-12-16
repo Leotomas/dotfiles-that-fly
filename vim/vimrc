@@ -57,6 +57,7 @@ NeoBundle 'wolf-dog/nighted.vim'
 NeoBundle 'jacoborus/tender.vim'
 NeoBundle 'andreypopp/vim-colors-plain'
 NeoBundle 'sjl/badwolf'
+NeoBundle "balanceiskey/vim-framer-syntax"
 " NeoBundle 'fxn/vim-monochrome'
 NeoBundle 'Lokaltog/vim-monotone'
 NeoBundle 'owickstrom/vim-colors-paramount'
@@ -93,12 +94,17 @@ NeoBundle "Sefima/vim-nearest-complete-improved"
 
 NeoBundle 'chrisbra/Colorizer'
 
+NeoBundle 'nelstrom/vim-visual-star-search'
+
 " ----- PlantUML preview ---- "
 NeoBundle "aklt/plantuml-syntax"
 NeoBundle "tyru/open-browser.vim"
 NeoBundle "weirongxu/plantuml-previewer.vim"
 
 " NeoBundle "tpope/vim-scriptease"
+"
+" ----- Powershell  --- "
+NeoBundle "PProvost/vim-ps1"
 
 call neobundle#end()
 
@@ -118,9 +124,9 @@ filetype plugin indent on
 NeoBundleCheck
 
 set bg=dark
-colo paramount
+" colo paramount
 " colo Base2Tone_ForestDark
-" colo base16-ashes
+colo base16-ashes
 " colo tender
 
 set rtp+=~/.fz
@@ -311,8 +317,8 @@ abbrev dswaps clearswaps
 abbrev cswaps clearswaps
 
 " Completion des fichiers filepath '../' -> Ctrl+F pour trigger en insert mode
-" autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
-" autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
+autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
+autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
 inoremap <C-f> <C-x><C-f>
 
 "  used with Sefima/vim-nearest-complete-improved
