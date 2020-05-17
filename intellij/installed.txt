@@ -1,0 +1,10 @@
+IdeaVIM
+com.arcticicestudio.nord.jetbrains
+com.dubreuia
+com.fernandojimenez.mattecarbon.theme
+com.intellij.lang.jsgraphql
+com.jensteichert.themes.nightowl
+com.vincentp.gruvbox-theme
+intellij.prettierJS
+izhangzhihao.rainbow.brackets
+org.dpytel.intellij.plugin.maventest

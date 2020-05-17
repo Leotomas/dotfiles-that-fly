@@ -1,0 +1,17 @@
+<keymap version="1" name="Windows copy" parent="$default">
+  <action id="CommentByBlockComment">
+    <keyboard-shortcut first-keystroke="shift ctrl colon" />
+  </action>
+  <action id="CommentByLineComment">
+    <keyboard-shortcut first-keystroke="ctrl colon" />
+  </action>
+  <action id="FileStructurePopup">
+    <keyboard-shortcut first-keystroke="ctrl f12" />
+    <keyboard-shortcut first-keystroke="alt r" />
+  </action>
+  <action id="JumpToLastWindow" />
+  <action id="RecentFiles">
+    <keyboard-shortcut first-keystroke="ctrl e" />
+    <keyboard-shortcut first-keystroke="alt e" />
+  </action>
+</keymap>

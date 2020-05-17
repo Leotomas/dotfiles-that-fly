@@ -1,0 +1,402 @@
+<application>
+  <component name="VimEditorSettings">
+    <editor />
+  </component>
+  <component name="VimHistorySettings">
+    <history>
+      <history-search>
+        <entry>valueText</entry>
+        <entry>valuete</entry>
+        <entry>ValueTe</entry>
+        <entry>marks</entry>
+        <entry>debugger</entry>
+        <entry>onChange</entry>
+        <entry>slider</entry>
+        <entry>Slider</entry>
+        <entry>pied</entry>
+        <entry>WALK</entry>
+        <entry>handle</entry>
+        <entry>NEUTR</entry>
+        <entry>Icoj</entry>
+        <entry>icon</entry>
+        <entry>transportation</entry>
+        <entry>annuler</entry>
+        <entry>clickEd</entry>
+        <entry encoding="base64">XDxzZXRFZGl0aW5nTWVzc2FnZVw+</entry>
+        <entry encoding="base64">XDxUb2dnbGVFZGl0TWVzc2FnZVw+</entry>
+        <entry>utils</entry>
+      </history-search>
+      <history-cmd>
+        <entry>/valuete</entry>
+        <entry>/ValueTe</entry>
+        <entry>/marks</entry>
+        <entry encoding="base64">JzwsJz4vZGVidWdnZXI=</entry>
+        <entry>/onChange</entry>
+        <entry>q</entry>
+        <entry>/slider</entry>
+        <entry>spl</entry>
+        <entry>/Slider</entry>
+        <entry>/pied</entry>
+        <entry>/WALK</entry>
+        <entry>/handle</entry>
+        <entry>/NEUTR</entry>
+        <entry>/Icoj</entry>
+        <entry>/icon</entry>
+        <entry>/transportation</entry>
+        <entry>w</entry>
+        <entry>/annuler</entry>
+        <entry>/clickEd</entry>
+        <entry>/utils</entry>
+      </history-cmd>
+      <history-expr />
+      <history-input />
+    </history>
+  </component>
+  <component name="VimKeySettings">
+    <shortcut-conflicts>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed W</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed P</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed D</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed U</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed S</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed F</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed H</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed J</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed K</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed A</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed X</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed L</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed Q</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed V</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed E</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed T</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed N</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed R</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed C</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed O</text>
+      </shortcut-conflict>
+    </shortcut-conflicts>
+  </component>
+  <component name="VimMarksSettings">
+    <globalmarks />
+    <filemarks>
+      <file name="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/components/UserSummary/index.tsx" timestamp="1589637529206">
+        <mark key="'" line="147" column="12" />
+        <mark key="[" line="172" column="30" />
+        <mark key="]" line="172" column="29" />
+        <mark key="." line="172" column="28" />
+        <mark key="^" line="172" column="29" />
+      </file>
+      <file name="$USER_HOME$/Documents/projects/coviflex/coviflex-front/public/locales/fr/translation.json" timestamp="1589651848176">
+        <mark key="'" line="347" column="12" />
+        <mark key="[" line="385" column="45" />
+        <mark key="]" line="386" column="39" />
+        <mark key="." line="386" column="38" />
+        <mark key="^" line="386" column="39" />
+      </file>
+      <file name="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" timestamp="1589651850064">
+        <mark key="'" line="134" column="20" />
+        <mark key="[" line="272" column="27" />
+        <mark key="]" line="272" column="52" />
+        <mark key="." line="272" column="51" />
+        <mark key="^" line="272" column="52" />
+      </file>
+      <file name="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserPage/getUser.graphql" timestamp="1589642141231">
+        <mark key="'" line="0" column="0" />
+        <mark key="[" line="8" column="11" />
+        <mark key="]" line="8" column="14" />
+        <mark key="." line="8" column="13" />
+        <mark key="^" line="8" column="14" />
+      </file>
+      <file name="/index.tsx" timestamp="1589557932868">
+        <mark key="'" line="0" column="0" />
+        <mark key="[" line="0" column="0" />
+        <mark key="]" line="192" column="27" />
+      </file>
+      <file name="/GraphQL.variables.json" timestamp="1589642164871">
+        <mark key="[" line="0" column="0" />
+      </file>
+      <file name="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserPage/index.tsx" timestamp="1589557952620">
+        <mark key="'" line="69" column="0" />
+        <mark key="[" line="10" column="18" />
+        <mark key="]" line="10" column="18" />
+        <mark key="." line="10" column="18" />
+      </file>
+      <file name="$USER_HOME$/Documents/projects/coviflex/coviflex-front/public/locales/en/translation.json" timestamp="1589651836048">
+        <mark key="'" line="368" column="22" />
+        <mark key="[" line="385" column="31" />
+        <mark key="]" line="386" column="33" />
+        <mark key="^" line="386" column="33" />
+        <mark key="." line="386" column="32" />
+      </file>
+      <file name="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/UserProfileFormInfos/index.tsx" timestamp="1589544319284">
+        <mark key="[" line="2" column="0" />
+        <mark key="]" line="2" column="0" />
+        <mark key="." line="2" column="0" />
+      </file>
+      <file name="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/TeamPages/TeamPage/TeamSummary/index.tsx" timestamp="1589548745291">
+        <mark key="'" line="15" column="9" />
+        <mark key="[" line="72" column="0" />
+        <mark key="]" line="76" column="41" />
+        <mark key="^" line="14" column="48" />
+        <mark key="." line="14" column="47" />
+      </file>
+      <file name="/Dummy.txt" timestamp="1589651999488">
+        <mark key="[" line="0" column="0" />
+        <mark key="]" line="0" column="0" />
+        <mark key="." line="0" column="0" />
+        <mark key="^" line="0" column="19" />
+      </file>
+      <file name="$USER_HOME$/Documents/projects/coviflex/coviflex-api/src/fixtures/utils.ts" timestamp="1589641831977">
+        <mark key="'" line="206" column="49" />
+        <mark key="[" line="3" column="8" />
+        <mark key="]" line="3" column="8" />
+        <mark key="." line="3" column="8" />
+        <mark key="^" line="236" column="34" />
+      </file>
+      <file name="$USER_HOME$/Documents/projects/coviflex/coviflex-api/src/fixtures/loadPolyconseil.ts" timestamp="1589641791677">
+        <mark key="'" line="23" column="2" />
+        <mark key="[" line="271" column="45" />
+        <mark key="]" line="272" column="41" />
+        <mark key="." line="272" column="40" />
+        <mark key="^" line="272" column="41" />
+      </file>
+      <file name="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/utils.tsx" timestamp="1589646589582">
+        <mark key="'" line="28" column="0" />
+        <mark key="[" line="63" column="0" />
+        <mark key="]" line="63" column="0" />
+        <mark key="^" line="62" column="17" />
+        <mark key="." line="63" column="0" />
+      </file>
+      <file name="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/components/UserForm/index.tsx" timestamp="1589558327483">
+        <mark key="'" line="176" column="11" />
+        <mark key="[" line="22" column="0" />
+        <mark key="]" line="39" column="2" />
+        <mark key="." line="191" column="0" />
+      </file>
+      <file name="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/InfosGroup/index.tsx" timestamp="1589639715472">
+        <mark key="'" line="80" column="14" />
+        <mark key="[" line="38" column="0" />
+        <mark key="]" line="38" column="0" />
+        <mark key="^" line="36" column="54" />
+        <mark key="." line="38" column="0" />
+      </file>
+      <file name="$USER_HOME$/Documents/projects/coviflex/coviflex-api/src/resolvers/UserQuery.ts" timestamp="1589642117165">
+        <mark key="'" line="211" column="19" />
+        <mark key="[" line="213" column="44" />
+        <mark key="]" line="213" column="47" />
+        <mark key="." line="213" column="46" />
+        <mark key="^" line="213" column="47" />
+      </file>
+      <file name="$USER_HOME$/Documents/projects/coviflex/coviflex-api/src/entity/User.ts" timestamp="1589641740617">
+        <mark key="[" line="62" column="0" />
+        <mark key="]" line="62" column="0" />
+        <mark key="^" line="148" column="1" />
+        <mark key="." line="62" column="0" />
+      </file>
+    </filemarks>
+    <jumps>
+      <jump line="22" column="0" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="94" column="13" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/index.tsx" />
+      <jump line="14" column="22" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/index.tsx" />
+      <jump line="28" column="63" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="2" column="0" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="39" column="0" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="69" column="13" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="52" column="0" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="43" column="0" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="5" column="63" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="59" column="17" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="12" column="7" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="63" column="16" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="0" column="0" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="44" column="8" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="47" column="28" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="150" column="12" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/components/UserSummary/index.tsx" />
+      <jump line="363" column="25" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/public/locales/fr/translation.json" />
+      <jump line="362" column="32" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/public/locales/en/translation.json" />
+      <jump line="67" column="0" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="50" column="0" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="54" column="0" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="109" column="0" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="2" column="13" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/public/locales/fr/translation.json" />
+      <jump line="20" column="31" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/public/locales/en/translation.json" />
+      <jump line="49" column="14" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="62" column="8" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/index.tsx" />
+      <jump line="41" column="2" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/InfosGroup/index.tsx" />
+      <jump line="74" column="2" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/InfosGroup/index.tsx" />
+      <jump line="40" column="2" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/InfosGroup/index.tsx" />
+      <jump line="86" column="44" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/InfosGroup/index.tsx" />
+      <jump line="81" column="13" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/InfosGroup/index.tsx" />
+      <jump line="80" column="14" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/InfosGroup/index.tsx" />
+      <jump line="29" column="8" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="97" column="49" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="89" column="27" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="92" column="37" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="40" column="9" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="37" column="0" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="62" column="0" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-api/src/entity/User.ts" />
+      <jump line="78" column="24" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-api/src/entity/User.ts" />
+      <jump line="264" column="20" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-api/src/fixtures/loadPolyconseil.ts" />
+      <jump line="23" column="2" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-api/src/fixtures/loadPolyconseil.ts" />
+      <jump line="213" column="19" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-api/src/fixtures/utils.ts" />
+      <jump line="214" column="17" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-api/src/fixtures/utils.ts" />
+      <jump line="205" column="50" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-api/src/fixtures/utils.ts" />
+      <jump line="199" column="8" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-api/src/fixtures/utils.ts" />
+      <jump line="200" column="49" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-api/src/fixtures/utils.ts" />
+      <jump line="65" column="20" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-api/src/entity/User.ts" />
+      <jump line="159" column="10" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-api/src/entity/User.ts" />
+      <jump line="13" column="0" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-api/src/entity/User.ts" />
+      <jump line="61" column="0" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-api/src/entity/User.ts" />
+      <jump line="130" column="5" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-api/src/entity/User.ts" />
+      <jump line="0" column="0" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-api/src/entity/User.ts" />
+      <jump line="142" column="10" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-api/src/entity/User.ts" />
+      <jump line="152" column="20" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-api/src/entity/User.ts" />
+      <jump line="14" column="0" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-api/src/entity/User.ts" />
+      <jump line="210" column="41" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-api/src/resolvers/UserQuery.ts" />
+      <jump line="211" column="19" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-api/src/resolvers/UserQuery.ts" />
+      <jump line="330" column="26" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/public/locales/en/translation.json" />
+      <jump line="365" column="32" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/public/locales/fr/translation.json" />
+      <jump line="370" column="20" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/public/locales/en/translation.json" />
+      <jump line="374" column="22" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/public/locales/en/translation.json" />
+      <jump line="99" column="22" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="105" column="18" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="139" column="42" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="152" column="57" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="20" column="0" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/utils.tsx" />
+      <jump line="48" column="0" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/utils.tsx" />
+      <jump line="0" column="0" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/utils.tsx" />
+      <jump line="40" column="9" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/utils.tsx" />
+      <jump line="25" column="0" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="1" column="0" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/utils.tsx" />
+      <jump line="28" column="0" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/utils.tsx" />
+      <jump line="68" column="22" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="373" column="17" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/public/locales/en/translation.json" />
+      <jump line="361" column="4" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/public/locales/en/translation.json" />
+      <jump line="354" column="20" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/public/locales/fr/translation.json" />
+      <jump line="347" column="12" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/public/locales/fr/translation.json" />
+      <jump line="147" column="20" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="30" column="13" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="142" column="20" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="70" column="4" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="325" column="0" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="311" column="40" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="307" column="34" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="302" column="40" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="298" column="34" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="293" column="40" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="289" column="34" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="284" column="40" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="279" column="34" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="275" column="37" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="368" column="22" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/public/locales/en/translation.json" />
+      <jump line="134" column="20" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/PreferencesGroup/index.tsx" />
+      <jump line="24" column="0" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/index.tsx" />
+      <jump line="70" column="24" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/index.tsx" />
+      <jump line="54" column="5" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/index.tsx" />
+      <jump line="61" column="55" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/index.tsx" />
+      <jump line="68" column="24" filename="$USER_HOME$/Documents/projects/coviflex/coviflex-front/src/pages/MainPages/pages/UsersPages/UserProfilePage/UserProfileForm/index.tsx" />
+    </jumps>
+  </component>
+  <component name="VimRegisterSettings">
+    <registers>
+      <register name="&quot;" type="4">
+        <text>transportation</text>
+      </register>
+      <register name="-" type="4">
+        <text>transportation</text>
+      </register>
+      <register name="/" type="4">
+        <text>utils</text>
+      </register>
+      <register name="0" type="2">
+        <text encoding="base64">ICAgIGV2ZW50OiBSZWFjdC5Nb3VzZUV2ZW50PEhUTUxFbGVtZW50PiwK</text>
+      </register>
+      <register name="1" type="2">
+        <text encoding="base64">ICAgIC8vIHNldFRyYW5zcG9ydGF0aW9uKHRyYW5zcG9ydGF0aW9uKTsK</text>
+      </register>
+      <register name="2" type="2">
+        <text encoding="base64">ICAgICAgICAgICAgICAgICAgICAgIAo=</text>
+      </register>
+      <register name="3" type="2">
+        <text encoding="base64">Cg==</text>
+      </register>
+      <register name="4" type="2">
+        <text encoding="base64">ICAgIAo=</text>
+      </register>
+      <register name="5" type="2">
+        <text encoding="base64">ICAgIHByb3BzLm9uRmllbGRDaGFuZ2UoIndvcmtNb2RlIiwgd29ya01vZGUpOwogICAgCg==</text>
+      </register>
+      <register name="6" type="2">
+        <text encoding="base64">ICAgIGV2ZW50OiBSZWFjdC4K</text>
+      </register>
+      <register name="7" type="2">
+        <text encoding="base64">ICAgICAgICAgICAgICAgICAgICA8VG9nZ2xlQnV0dG9uCiAgICAgICAgICAgICAgICAgICAgICB2YWx1ZT17VHJhbnNwb3J0YXRpb24uV2Fsa30KICAgICAgICAgICAgICAgICAgICAgIGFyaWEtbGFiZWw9InRyYW5zcG9ydGF0aW9uIHB1YmxpYyIKICAgICAgICAgICAgICAgICAgICA+CiAgICAgICAgICAgICAgICAgICAgICA8RGlyZWN0aW9uc1dhbGtJY29uIC8+CiAgICAgICAgICAgICAgICAgICAgICA8VHlwb2dyYXBoeSBub1dyYXA9e3RydWV9PgogICAgICAgICAgICAgICAgICAgICAgICB7dCgidXNlclByb2ZpbGUudHJhbnNwb3J0YXRpb25zLldBTEsiKX0KICAgICAgICAgICAgICAgICAgICAgIDwvVHlwb2dyYXBoeT4KICAgICAgICAgICAgICAgICAgICA8L1RvZ2dsZUJ1dHRvbj4K</text>
+      </register>
+      <register name="8" type="2">
+        <text encoding="base64">ICAgICAgICAgICAgICAgICAgICAgIDxEaXJlY3Rpb25zUmFpbHdheUljb24gLz4K</text>
+      </register>
+      <register name="9" type="2">
+        <text encoding="base64">ICAgICAgICAgICAgICAgICAgICAgIDxEaXJlY3Rpb25zQmlrZUljb24gLz4K</text>
+      </register>
+      <register name=":" type="4">
+        <text>w</text>
+      </register>
+    </registers>
+  </component>
+  <component name="VimSearchSettings">
+    <search>
+      <last-search>utils</last-search>
+      <last-offset />
+      <last-pattern>utils</last-pattern>
+      <last-dir>1</last-dir>
+      <show-last>true</show-last>
+    </search>
+  </component>
+  <component name="VimSettings">
+    <state version="6" enabled="true" />
+    <notifications>
+      <idea-join enabled="true" />
+      <idea-put enabled="false" />
+    </notifications>
+  </component>
+</application>
