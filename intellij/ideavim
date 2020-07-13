@@ -1,0 +1,28 @@
+imap jj <Esc>
+set timeoutlen=1000
+set visualbell
+set noerrorbells
+set smartcase
+set ignorecase
+set incsearch
+set easymotion
+set surround
+set multiple-cursors
+set commentary
+
+let mapleader = ","
+let g:mapleader = ","
+
+nmap <leader>q :q!<cr>
+nmap <leader>w :w!<cr>
+nmap <leader>q :q!<cr>
+nmap <leader>m :marks<cr>
+nmap <leader>fi :action FindInPath<cr>
+
+nnoremap F :action FindUsages<cr>
+nnoremap R :action RenameElement<cr>
+
+nmap <leader>s :action SaveAll<cr>
+nmap gd :action GotoDeclaration<cr>
+nmap <leader>b :action RecentFiles<cr>
+

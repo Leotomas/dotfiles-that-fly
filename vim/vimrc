@@ -5,129 +5,87 @@ if &compatible
 	set nocompatible               " Be iMproved
 endif
 
-" Required:
-set runtimepath+=~/.vim/bundle/neobundle.vim/
-set runtimepath+=~/Documents/projects/perso/dotfiles-that-fly/vim/
+call plug#begin("~/.vim/plugged")
 
-" Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-NeoBundle 'tpope/vim-pathogen'
-NeoBundle "Shougo/unite.vim"
-NeoBundle "neoclide/vim-node-rpc"
-NeoBundle "Shougo/unite-outline"
-" NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle "maxbrunsfeld/vim-yankstack"
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'jreybert/vimagit'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'cohama/agit.vim' " :Agit browse commits
-" NeoBundle 'int3/vim-extradite'
-NeoBundle 'christoomey/vim-conflicted'
-NeoBundle 'tpope/vim-rhubarb'
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'junegunn/fzf'
-NeoBundle 'junegunn/fzf.vim'
-NeoBundle 'junegunn/vim-peekaboo'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'bkad/CamelCaseMotion'
-NeoBundle 'tpope/vim-eunuch'
-NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'docunext/closetag.vim'
-NeoBundle 'rhysd/clever-f.vim'
-NeoBundle 'henrik/vim-indexed-search'
-NeoBundle 'kshenoy/vim-signature'
-NeoBundle 'gcmt/taboo.vim'
-NeoBundle "scrooloose/nerdtree"
-NeoBundle "ConradIrwin/vim-bracketed-paste"
-
-" Waka Waka hehe
-NeoBundle "wakatime/vim-wakatime"
+Plug 'tpope/vim-pathogen'
+Plug 'Shougo/unite.vim'
+Plug 'neoclide/vim-node-rpc'
+Plug 'Shougo/unite-outline'
+Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'tpope/vim-fugitive'
+Plug 'jreybert/vimagit'
+Plug 'airblade/vim-gitgutter'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'cohama/agit.vim' " :Agit browse commits
+Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-commentary'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-peekaboo'
+Plug 'tpope/vim-surround'
+Plug 'bkad/CamelCaseMotion'
+Plug 'tpope/vim-eunuch'
+Plug 'Raimondi/delimitMate'
+Plug 'docunext/closetag.vim'
+Plug 'rhysd/clever-f.vim'
+Plug 'henrik/vim-indexed-search'
+" shows maks in getter
+Plug 'kshenoy/vim-signature'
+Plug 'gcmt/taboo.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'tpope/vim-repeat'
 
 " --------- Themes --------
-NeoBundle "chriskempson/base16-vim"
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'Leotomas/vim-atom-dark'
-NeoBundle 'pgdouyon/vim-alayas'
-NeoBundle 'wolf-dog/nighted.vim'
-NeoBundle 'jacoborus/tender.vim'
-NeoBundle 'andreypopp/vim-colors-plain'
-NeoBundle 'sjl/badwolf'
-NeoBundle "balanceiskey/vim-framer-syntax"
-" NeoBundle 'fxn/vim-monochrome'
-NeoBundle 'Lokaltog/vim-monotone'
-NeoBundle 'owickstrom/vim-colors-paramount'
-NeoBundle 'hauleth/blame.vim'
-NeoBundle 'atelierbram/Base2Tone-vim'
-NeoBundle 'sainnhe/vim-color-forest-night'
-NeoBundle 'sainnhe/vim-color-vanilla-cake'
+Plug 'chriskempson/base16-vim'
+Plug 'jaredgorski/SpaceCamp'
+Plug 'Leotomas/vim-atom-dark'
+Plug 'pgdouyon/vim-yin-yang'
+Plug 'aditya-azad/candle-grey'
 
-NeoBundle 'rking/ag.vim'
-NeoBundle "tomtom/tlib_vim"
-NeoBundle "marcweber/vim-addon-mw-utils"
-NeoBundle "garbas/vim-snipmate"
-NeoBundle 'evidens/vim-twig'
-NeoBundle 'thaerkh/vim-workspace'
-
+Plug 'tomtom/tlib_vim'
+Plug 'marcweber/vim-addon-mw-utils'
+Plug 'garbas/vim-snipmate'
+Plug 'evidens/vim-twig'
+Plug 'thaerkh/vim-workspace'
+Plug 'jremmen/vim-ripgrep'
 
 "--- Markdown & writing ----
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'junegunn/goyo.vim'
-NeoBundle "iamcco/markdown-preview.nvim"
+Plug 'plasticboy/vim-markdown'
+Plug 'junegunn/goyo.vim'
+Plug 'iamcco/markdown-preview.nvim'
 
 " --------- JS --------- "
-NeoBundle 'jelera/vim-javascript-syntax'
+Plug 'jelera/vim-javascript-syntax'
 
-NeoBundleLazy 'w0rp/ale', {'autoload':{'filetypes':['javascript', 'vue', 'css', 'scss', 'sass']}}
-NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript', 'vue']}}
-NeoBundleLazy 'vim-scripts/JavaScript-Indent', {'autoload':{'filetypes':['javascript', 'vue']}}
-NeoBundleLazy 'heavenshell/vim-jsdoc', {'autoload':{'filetypes':['javascript', 'vue']}}
+" Plug 'w0rp/ale', {'autoload':{'filetypes':['javascript', 'vue', 'css', 'scss', 'sass']}}
+Plug 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript', 'vue']}}
+Plug 'vim-scripts/JavaScript-Indent', {'autoload':{'filetypes':['javascript', 'vue']}}
+" Plug 'HerringtonDarkholme/yats.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'heavenshell/vim-jsdoc', {'autoload':{'filetypes':['javascript', 'vue']}}
+Plug 'segeljakt/vim-stealth'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-NeoBundle "Sefima/vim-nearest-complete-improved"
+Plug 'chrisbra/Colorizer'
+Plug 'sjl/splice.vim'
 
-" NeoBundle "neoclide/coc.nvim"
-" NeoBundle "ludovicchabant/vim-gutentags"
-
-NeoBundle 'chrisbra/Colorizer'
-
-NeoBundle 'nelstrom/vim-visual-star-search'
+Plug 'nelstrom/vim-visual-star-search'
 
 " ----- PlantUML preview ---- "
-NeoBundle "aklt/plantuml-syntax"
-NeoBundle "tyru/open-browser.vim"
-NeoBundle "weirongxu/plantuml-previewer.vim"
+Plug 'aklt/plantuml-syntax'
+Plug 'tyru/open-browser.vim'
+Plug 'weirongxu/plantuml-previewer.vim'
 
-" NeoBundle "tpope/vim-scriptease"
-"
 " ----- Powershell  --- "
-NeoBundle "PProvost/vim-ps1"
-
-call neobundle#end()
-
-" Required:
-filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
+Plug 'PProvost/vim-ps1'
 
 
-" Required:
-filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
+call plug#end()
 
 set bg=dark
-" colo paramount
-" colo Base2Tone_ForestDark
-colo base16-ashes
-" colo tender
+colo spacecamp_lite
 
 set rtp+=~/.fz
 
@@ -158,13 +116,12 @@ set history=75
 set undolevels=75
 set title
 set nobackup
+set nowritebackup
 set path+=**
 " --- Tabs & indents
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
-" set softtabstop=0
-" set smarttab
 " -- Clipboard
 set clipboard=unnamedplus
 " --- code wrapping
@@ -191,9 +148,14 @@ set formatoptions+=j " Delete comment character when joining commented lines"
 " no buffer warning when unsaved plop
 set hidden
 
+" clipboard unnamedplus breaks paste in visual mode
+nnoremap <leader>= :BeautifyTs<CR>
+
 " set complete=.,b,u,]
 let mapleader = ","
 let g:mapleader = ","
+let maplocalleader=","
+let g:maplocalleader=","
 
 "stop using escape guys
 imap jj <esc>
@@ -211,14 +173,27 @@ nnoremap <Right> :vertical resize +2<CR>
 nnoremap <Up> :resize -2<CR>
 nnoremap <Down> :resize +2<CR>
 
-nmap <leader>y <Plug>yankstack_substitute_older_paste
-nmap <leader>Y <Plug>yankstack_substitute_new_paste
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+nnoremap <leader>gg :GitGutterSignsToggle<CR>
+let g:gitgutter_signs=0
+
+nmap <leader>yy <Plug>yankstack_substitute_older_paste
+nmap <leader>yp <Plug>yankstack_substitute_new_paste
 "
 nnoremap <leader><space> :Buffer<cr>
 nnoremap <leader>p :GFiles<cr>
 nnoremap <leader>l :Lines<cr>
-nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
+" nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
 nnoremap <leader>s :syntax on <cr>
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+set relativenumber
 
 " Press leader f to toggle identation based folds
 " let g:auto_folds_toggle = 0
@@ -234,22 +209,27 @@ nnoremap <leader>s :syntax on <cr>
 " nmap<leader>f :call ToggleAutoFolds()<CR><CR>
 
 " echo Ale's linter status in status line
-function! LinterStatus() abort
-let l:counts = ale#statusline#Count(bufnr(''))
+" function! LinterStatus() abort
+" let l:counts = ale#statusline#Count(bufnr(''))
 
-let l:all_errors = l:counts.error + l:counts.style_error
-let l:all_non_errors = l:counts.total - l:all_errors
-
-return l:counts.total == 0 ? 'OK' : printf(
-            \   '%d⚠  %d⨉ ',
-            \   all_non_errors,
-            \   all_errors
-            \)
-endfunction
+" let l:all_errors = l:counts.error + l:counts.style_error
+" let l:all_non_errors = l:counts.total - l:all_errors
+"
+" return l:counts.total == 0 ? 'OK' : printf(
+"             \   '%d⚠  %d⨉ ',
+"             \   all_non_errors,
+"             \   all_errors
+"             \)
+" endfunction
 
 " minimal status line (displays git repo)
 " set statusline=%<%f=%{LinterStatus()}\ %h%m%r%=%{fugitive#statusline()}\ \ %-14.(%l,%c%V%)\%p%%%{gutentags#statusline()}
-set statusline=%<%f=%{LinterStatus()}\ %h%m%r%=%{fugitive#statusline()}\ \ %-14.(%l,%c%V%)\%p%%
+" Your vimrc
+function! GitStatus()
+  let [a,m,r] = GitGutterGetHunkSummary()
+  return printf('+%d ~%d -%d', a, m, r)
+endfunction
+set statusline=%<%f\ [%{GitStatus()}]\ %h%m%r%=%{fugitive#statusline()}\ \ %-14.(%l,%c%V%)\%p%%
 
 "---- Case Motions -----"
 map <silent> w <Plug>CamelCaseMotion_w
@@ -261,8 +241,8 @@ map <silent> ge <Plug>CamelCaseMotion_ge
 nmap <C-b> :NERDTreeToggle<CR>
 nmap <C-f> :NERDTreeFind<CR>
 
-let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
-let g:ale_linter_aliases = {'vue': ['javascript', 'html', 'scss', 'eslint-plugin-vue']}
+" let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+" let g:ale_linter_aliases = {'vue': ['javascript', 'html', 'scss', 'eslint-plugin-vue']}
 
 "---- Removes Trailing Spaces on save ----"
 autocmd BufWritePre * %s/\s\+$//e
@@ -271,7 +251,8 @@ autocmd BufWritePre * %s/\s\+$//e
 autocmd BufNewFile,BufRead *.vue set filetype=vue.javascript
  au BufNewFile,BufRead *.vue syntax sync fromstart
 
-abbrev ee e **
+autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
+autocmd BufNewFile,BufRead *.jsx set filetype=typescript.tsx
 
 " --- JsDoc conf ---- "
 let g:jsdoc_allow_input_prompt = 1
@@ -284,20 +265,20 @@ let g:jsdoc_tags = {} | let g:jsdoc_tags['returns'] = 'return'
 map <leader>d :JsDoc <cr>
 
 " ---  Ale ----"
-let g:ale_lint_on_save=1
-let g:ale_lint_on_text_changed=0
-let g:ale_lint_on_enter=1
-let g:ale_lint_on_insert_leave=1
+" let g:ale_lint_on_save=1
+" let g:ale_lint_on_text_changed=0
+" let g:ale_lint_on_enter=1
+" let g:ale_lint_on_insert_leave=1
+"
+" " let g:ale_statusline_format = ['⨉', '⚠', '⬥']
+" let g:ale_sign_error="⨉"
+" let g:ale_sign_warning="!"
+" let g:ale_sign_column_always = 1
 
-" let g:ale_statusline_format = ['⨉', '⚠', '⬥']
-let g:ale_sign_error="⨉"
-let g:ale_sign_warning="!"
-let g:ale_sign_column_always = 1
-
-nnoremap <leader>ar :ALELint<CR>
-nnoremap <leader>aa :ALELint<CR>
-nnoremap <leader>ae :ALEEnable<CR>
-nnoremap <leader>ad :ALEDisable<CR>
+" nnoremap <leader>ar :ALELint<CR>
+" nnoremap <leader>aa :ALELint<CR>
+" nnoremap <leader>ae :ALEEnable<CR>
+" nnoremap <leader>ad :ALEDisable<CR>
 
 "Tagbag
 " let g:tagbar_ctags_bin='/usr/bin/ctags-exuberant'
@@ -317,14 +298,14 @@ abbrev dswaps clearswaps
 abbrev cswaps clearswaps
 
 " Completion des fichiers filepath '../' -> Ctrl+F pour trigger en insert mode
-autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
-autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
-inoremap <C-f> <C-x><C-f>
+" autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
+" autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
+" inoremap <C-f> <C-x><C-f>
 
 "  used with Sefima/vim-nearest-complete-improved
-set completefunc=NearestComplete
-set completeopt=menu
-set complete=.,w,b,u,t,i,kspell
+" set completefunc=NearestComplete
+" set completeopt=menu
+" set complete=.,w,b,u,t,i,kspell
 
 inoremap <silent><expr> <C-n>      pumvisible() ? "\<C-n>" : "\<C-x><C-u>"
 " IMAP <EXpr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
@@ -367,8 +348,8 @@ nnoremap <leader>kn :call AlternateSpellLang()<CR><CR>
 " fast command launch
 nnoremap <leader>! :!
 
-" vim conflicted
-set stl+=%{ConflictedVersion()}
+" " vim conflicted
+" set stl+=%{ConflictedVersion()}
 
 noremap <leader>cn ]c
 noremap <leader>cp [c
@@ -379,21 +360,39 @@ let g:mkdp_command_for_global = 1
 
 " ==== Coc.vim ====
 set updatetime=300
-set noshowmode
+" set noshowmode
 
 " remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+inoremap <silent><expr> <c-space> coc#refresh()
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+nmap <leader>R <Plug>(coc-rename)
+nmap <leader>r :CocList outline<CR>
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>ca :CocAction <CR>
+hi Spellbad term=reverse ctermfg=0 ctermbg=0 guifg=#1C2023 guibg=#C7AE95
 
 " Highlight symbol under cursor on CursorHold
 " autocmd CursorHold * silent call CocActionAsync('highlight')
-
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
+"
+" function! s:check_back_space() abort
+"     let col = col('.') - 1
+"     return !col || getline('.')[col - 1]  =~ '\s'
+" endfunction
 
 " inoremap <silent><expr> <C-n>
 "             \ pumvisible() ? "\<C-n>" :
@@ -402,7 +401,7 @@ endfunction
 
 
 " --- plantUML previewer for WSL ---- "
- g:plantuml_previewer#plantuml_jar_path="/usr/bin/plantuml.jar"
+"  T:plantuml_previewer#plantuml_jar_path="/usr/bin/plantuml.jar"
 
  command! PlantumlOpenCustom call PreviewPlantUML(1)
  command! PlantumlSaveCustom call PreviewPlantUML(0)
@@ -425,10 +424,50 @@ endfunction
      execute "rm -r -f ~/Leo/plantuml/*"
  endfunction
 
- nmap <leader>pus :PlantumlSaveCustom<CR><CR>
- nmap <leader>puo :PlantumlOpenCustom<CR><CR>
+"  nmap <leader>pus :PlantumlSaveCustom<CR><CR>
+"  nmap <leader>puo :PlantumlOpenCustom<CR><CR>
+
+function! g:Beautify()
+  :call CocAction('runCommand', 'tsserver.organizeImports')
+  :call CocAction('runCommand', 'tsserver.executeAutofix')
+  :call CocAction('runCommand', 'prettier.formatFile')
+  " :Prettier <CR>
+endfunction
+command! BeautifyTs call Beautify()
+nnoremap <leader>= :BeautifyTs<CR>
+
+nnoremap <leader>fi :Rg<space>
+
+" WSL yank support
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+    augroup END
+endif
 
 
+" vim splice 3-way & merging stuff
+let g:splice_initial_layout_grid=1
+let g:splice_initial_diff_grid=1
+abbrev dgR diffget REMOTE
+abbrev dgL diffget LOCAL
 
+" some spelling mistakes
+abbrev ocurrence occurrence
+abbrev occurrence occurrence
 
+" Search in all currently opened buffers
+function! ClearQuickfixList()
+  call setqflist([])
+endfunction
+function! Vimgrepall(pattern)
+  call ClearQuickfixList()
+  exe 'bufdo vimgrepadd ' . a:pattern . ' %'
+  cnext
+endfunction
+command! -nargs=1 Vim call Vimgrepall(<f-args>)
+
+vnoremap p "_dP"
 
