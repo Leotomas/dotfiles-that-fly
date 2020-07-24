@@ -1,8 +1,8 @@
-" Note: Skip initialization for vim-tiny or vim-small.
+
 if 0 | endif
 
 if &compatible
-	set nocompatible               " Be iMproved
+ set nocompatible " Be iMproved
 endif
 
 call plug#begin("~/.vim/plugged")
@@ -42,6 +42,7 @@ Plug 'jaredgorski/SpaceCamp'
 Plug 'Leotomas/vim-atom-dark'
 Plug 'pgdouyon/vim-yin-yang'
 Plug 'aditya-azad/candle-grey'
+Plug 'chuling/equinusocio-material.vim'
 
 Plug 'tomtom/tlib_vim'
 Plug 'marcweber/vim-addon-mw-utils'
@@ -49,11 +50,15 @@ Plug 'garbas/vim-snipmate'
 Plug 'evidens/vim-twig'
 Plug 'thaerkh/vim-workspace'
 Plug 'jremmen/vim-ripgrep'
+Plug 'luochen1990/rainbow'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 
 "--- Markdown & writing ----
 Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/goyo.vim'
 Plug 'iamcco/markdown-preview.nvim'
+Plug 'vimwiki/vimwiki'
 
 " --------- JS --------- "
 Plug 'jelera/vim-javascript-syntax'
@@ -78,27 +83,30 @@ Plug 'aklt/plantuml-syntax'
 Plug 'tyru/open-browser.vim'
 Plug 'weirongxu/plantuml-previewer.vim'
 
-" ----- Powershell  --- "
+" ----- Powershell --- "
 Plug 'PProvost/vim-ps1'
 
-
 call plug#end()
-
-set bg=dark
-colo spacecamp_lite
 
 set rtp+=~/.fz
 
 syntax enable
 set visualbell
 set encoding=utf-8
+
 " set t_Co=256
 set term=screen-256color
+set t_ut=
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 if (has("termguicolors"))
-    set termguicolors
+ set termguicolors
 endif
+
+colo atom-dark
+" colo spacecamp_lite
+set fillchars+=vert:│
+
 set noerrorbells
 set ignorecase
 set smartcase
@@ -111,7 +119,7 @@ set backspace=indent,eol,start
 set autoindent
 set copyindent
 highlight Search cterm=underline
-
+set tabpagemax=250
 set history=75
 set undolevels=75
 set title
@@ -130,11 +138,11 @@ set wildignore+=*/node_modules/*,*/vendor/*
 set linespace=3
 
 "Make vim faster
-set nocursorcolumn      " Don't paint cursor column
+set nocursorcolumn " Don't paint cursor column
 set nocursorline
-set lazyredraw          " Wait to redraw
+set lazyredraw " Wait to redraw
 set ttyfast
-set scrolljump=8        " Scroll 8 lines at a time at bottom/top
+set scrolljump=8 " Scroll 8 lines at a time at bottom/top
 let html_no_rendering=1 " Don't render italic, bold, links in HTML"
 " keep folds between sessions
 " :set sessionoptions+=folds
@@ -145,7 +153,7 @@ set fdl=1
 set nofen
 set formatoptions+=j " Delete comment character when joining commented lines"
 
-" no buffer warning when unsaved plop
+" no buffer warning when unsaved
 set hidden
 
 " clipboard unnamedplus breaks paste in visual mode
@@ -174,10 +182,10 @@ nnoremap <Up> :resize -2<CR>
 nnoremap <Down> :resize +2<CR>
 
 if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
+ " Recently vim can merge signcolumn and number column into one
+ set signcolumn=number
 else
-  set signcolumn=yes
+ set signcolumn=yes
 endif
 
 nnoremap <leader>gg :GitGutterSignsToggle<CR>
@@ -198,36 +206,22 @@ set relativenumber
 " Press leader f to toggle identation based folds
 " let g:auto_folds_toggle = 0
 " function! g:ToggleAutoFolds()
-"     if (g:auto_folds_toggle == 0)
-"         let g:auto_folds_toggle = 1
-"         set fen
-"     else
-"         let g:auto_folds_toggle = 0
-"         set nofen
-"     endif
+" if (g:auto_folds_toggle == 0)
+" let g:auto_folds_toggle = 1
+" set fen
+" else
+" let g:auto_folds_toggle = 0
+" set nofen
+" endif
 " endfunction
 " nmap<leader>f :call ToggleAutoFolds()<CR><CR>
-
-" echo Ale's linter status in status line
-" function! LinterStatus() abort
-" let l:counts = ale#statusline#Count(bufnr(''))
-
-" let l:all_errors = l:counts.error + l:counts.style_error
-" let l:all_non_errors = l:counts.total - l:all_errors
-"
-" return l:counts.total == 0 ? 'OK' : printf(
-"             \   '%d⚠  %d⨉ ',
-"             \   all_non_errors,
-"             \   all_errors
-"             \)
-" endfunction
 
 " minimal status line (displays git repo)
 " set statusline=%<%f=%{LinterStatus()}\ %h%m%r%=%{fugitive#statusline()}\ \ %-14.(%l,%c%V%)\%p%%%{gutentags#statusline()}
 " Your vimrc
 function! GitStatus()
-  let [a,m,r] = GitGutterGetHunkSummary()
-  return printf('+%d ~%d -%d', a, m, r)
+ let [a,m,r] = GitGutterGetHunkSummary()
+ return printf('+%d ~%d -%d', a, m, r)
 endfunction
 set statusline=%<%f\ [%{GitStatus()}]\ %h%m%r%=%{fugitive#statusline()}\ \ %-14.(%l,%c%V%)\%p%%
 
@@ -237,14 +231,12 @@ map <silent> b <Plug>CamelCaseMotion_b
 map <silent> e <Plug>CamelCaseMotion_e
 map <silent> ge <Plug>CamelCaseMotion_ge
 
-"--- Nedtree ----"
+"--- Nerdtree ----"
 nmap <C-b> :NERDTreeToggle<CR>
 nmap <C-f> :NERDTreeFind<CR>
 
-" let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
-" let g:ale_linter_aliases = {'vue': ['javascript', 'html', 'scss', 'eslint-plugin-vue']}
-
-"---- Removes Trailing Spaces on save ----"
+"---- White spaces ----"
+" Removes Trailing Spaces on save
 autocmd BufWritePre * %s/\s\+$//e
 
 " --- auto set type is js for vue files ----
@@ -264,53 +256,18 @@ let g:jsdoc_tags = {} | let g:jsdoc_tags['returns'] = 'return'
 
 map <leader>d :JsDoc <cr>
 
-" ---  Ale ----"
-" let g:ale_lint_on_save=1
-" let g:ale_lint_on_text_changed=0
-" let g:ale_lint_on_enter=1
-" let g:ale_lint_on_insert_leave=1
-"
-" " let g:ale_statusline_format = ['⨉', '⚠', '⬥']
-" let g:ale_sign_error="⨉"
-" let g:ale_sign_warning="!"
-" let g:ale_sign_column_always = 1
-
-" nnoremap <leader>ar :ALELint<CR>
-" nnoremap <leader>aa :ALELint<CR>
-" nnoremap <leader>ae :ALEEnable<CR>
-" nnoremap <leader>ad :ALEDisable<CR>
-
-"Tagbag
-" let g:tagbar_ctags_bin='/usr/bin/ctags-exuberant'
-
 "Validation d'un JSON -> leader jv
 abbrev validateJson :%!jq .
 abbrev validatejson :%!jq .
 abbrev vjson validatejson
 noremap <leader>jv :%!jq .<cr>
 
-" abbrev eslintfix !node node_modules/eslint/bin/eslint.js --fix %
-" abbrev eslint !node node_modules/eslint/bin/eslint.js  %
-
 " whenever vim crashes it's handy to delete swaps
 abbrev clearswaps !rm ~/.vim/swap/*
 abbrev dswaps clearswaps
 abbrev cswaps clearswaps
 
-" Completion des fichiers filepath '../' -> Ctrl+F pour trigger en insert mode
-" autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
-" autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
-" inoremap <C-f> <C-x><C-f>
-
-"  used with Sefima/vim-nearest-complete-improved
-" set completefunc=NearestComplete
-" set completeopt=menu
-" set complete=.,w,b,u,t,i,kspell
-
-inoremap <silent><expr> <C-n>      pumvisible() ? "\<C-n>" : "\<C-x><C-u>"
-" IMAP <EXpr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
-" imap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
-" imap <expr> <ESC>       pumvisible() ? "\<C-y><ESC>" : "\<ESC>"
+inoremap <silent><expr> <C-n> pumvisible() ? "\<C-n>" : "\<C-x><C-u>"
 
 " leader tn -> tab new tmux like
 noremap <leader>tc :tabnew<CR>
@@ -330,15 +287,15 @@ noremap <leader>gc :Gcommit<CR>
 let g:c_spelllang = "fr"
 let &spelllang=g:c_spelllang
 function! AlternateSpellLang()
-    if (g:c_spelllang == "fr")
-        let g:c_spelllang = "en_us"
-    elseif (g:c_spelllang == "en_us")
-        let g:c_spelllang = "en_us,fr"
-    elseif (g:c_spelllang == "en_us,fr")
-        let g:c_spelllang = "fr"
-    endif
-    echo "spelllang is now " . g:c_spelllang
-    let &spelllang=g:c_spelllang
+ if (g:c_spelllang == "fr")
+ let g:c_spelllang = "en_us"
+ elseif (g:c_spelllang == "en_us")
+ let g:c_spelllang = "en_us,fr"
+ elseif (g:c_spelllang == "en_us,fr")
+ let g:c_spelllang = "fr"
+ endif
+ echo "spelllang is now " . g:c_spelllang
+ let &spelllang=g:c_spelllang
 endfunction
 
 nnoremap <leader>ks :set spell!<CR>
@@ -347,20 +304,15 @@ nnoremap <leader>kn :call AlternateSpellLang()<CR><CR>
 
 " fast command launch
 nnoremap <leader>! :!
-
-" " vim conflicted
-" set stl+=%{ConflictedVersion()}
-
 noremap <leader>cn ]c
 noremap <leader>cp [c
 
 " vim-markdown
 let g:mkdp_command_for_global = 1
 
-
 " ==== Coc.vim ====
 set updatetime=300
-" set noshowmode
+set noshowmode
 
 " remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
@@ -372,66 +324,61 @@ inoremap <silent><expr> <c-space> coc#refresh()
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+ if (index(['vim','help'], &filetype) >= 0)
+ execute 'h '.expand('<cword>')
+ else
+ call CocAction('doHover')
+ endif
 endfunction
 nmap <leader>R <Plug>(coc-rename)
 nmap <leader>r :CocList outline<CR>
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>f <Plug>(coc-format-selected)
+nmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>ca :CocAction <CR>
 hi Spellbad term=reverse ctermfg=0 ctermbg=0 guifg=#1C2023 guibg=#C7AE95
 
-" Highlight symbol under cursor on CursorHold
-" autocmd CursorHold * silent call CocActionAsync('highlight')
-"
-" function! s:check_back_space() abort
-"     let col = col('.') - 1
-"     return !col || getline('.')[col - 1]  =~ '\s'
-" endfunction
-
-" inoremap <silent><expr> <C-n>
-"             \ pumvisible() ? "\<C-n>" :
-"             \ <SID>check_back_space() ? "\<C-n>" :
-"             \ coc#refresh()
-
-
 " --- plantUML previewer for WSL ---- "
-"  T:plantuml_previewer#plantuml_jar_path="/usr/bin/plantuml.jar"
+" T:plantuml_previewer#plantuml_jar_path="/usr/bin/plantuml.jar"
 
  command! PlantumlOpenCustom call PreviewPlantUML(1)
  command! PlantumlSaveCustom call PreviewPlantUML(0)
  command! PlantumlClearFolder call ClearPlantumlFolder()
 
- function! g:PreviewPlantUML(preview)
-     let l:stamp = strftime('%s000')
-     let l:base_path = "~/Leo/plantuml/" . stamp . "/"
-     let l:file_url = "file:///C:/Users/Leo/plantuml/" . l:stamp . "/dist/index.html"
+ " --- Toggle Gdiff with gutter signs "
+ command! -nargs=1 Ggdiff call DisplayDiff(<f-args>)
+ function! g:DisplayDiff(rev)
+   execute ":Gdiff " . a:rev
+   let g:gitgutter_diff_base= "'" . a:rev . "'"
+   execute ":GitGutterSignsEnable"
+ endfunction
 
-     execute ":PlantumlOpen"
-     sleep 3500m
-     execute "! cp -R ~/.vim/bundle/plantuml-previewer.vim/viewer " . l:base_path
-     if a:preview
-         execute ":OpenBrowser " . l:file_url
-     endif
+abbrev ggdif Ggdiff
+
+ function! g:PreviewPlantUML(preview)
+   let l:stamp = strftime('%s000')
+   let l:base_path = "~/Leo/plantuml/" . stamp . "/"
+   let l:file_url = "file:///C:/Users/Leo/plantuml/" . l:stamp . "/dist/index.html"
+
+   execute ":PlantumlOpen"
+   sleep 3500m
+   execute "! cp -R ~/.vim/bundle/plantuml-previewer.vim/viewer " . l:base_path
+   if a:preview
+     execute ":OpenBrowser " . l:file_url
+   endif
  endfunction
 
  function! g:ClearPlantumlFolder()
-     execute "rm -r -f ~/Leo/plantuml/*"
+   execute "rm -r -f ~/Leo/plantuml/*"
  endfunction
 
-"  nmap <leader>pus :PlantumlSaveCustom<CR><CR>
-"  nmap <leader>puo :PlantumlOpenCustom<CR><CR>
+nmap <leader>pus :PlantumlSaveCustom<CR><CR>
+nmap <leader>puo :PlantumlOpenCustom<CR><CR>
 
 function! g:Beautify()
-  :call CocAction('runCommand', 'tsserver.organizeImports')
-  :call CocAction('runCommand', 'tsserver.executeAutofix')
-  :call CocAction('runCommand', 'prettier.formatFile')
-  " :Prettier <CR>
+ :call CocAction('runCommand', 'tsserver.organizeImports')
+ :call CocAction('runCommand', 'tsserver.executeAutofix')
+ :call CocAction('runCommand', 'prettier.formatFile')
 endfunction
 command! BeautifyTs call Beautify()
 nnoremap <leader>= :BeautifyTs<CR>
@@ -439,14 +386,16 @@ nnoremap <leader>= :BeautifyTs<CR>
 nnoremap <leader>fi :Rg<space>
 
 " WSL yank support
-let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+let s:clip = '/mnt/c/Windows/System32/clip.exe' " change this path according to your mount point
 if executable(s:clip)
-    augroup WSLYank
-        autocmd!
-        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
-    augroup END
+ augroup WSLYank
+ autocmd!
+ autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+ augroup END
 endif
 
+" force reload buffer
+nnoremap <leader>e :edit!<CR>
 
 " vim splice 3-way & merging stuff
 let g:splice_initial_layout_grid=1
@@ -458,16 +407,25 @@ abbrev dgL diffget LOCAL
 abbrev ocurrence occurrence
 abbrev occurrence occurrence
 
-" Search in all currently opened buffers
-function! ClearQuickfixList()
-  call setqflist([])
-endfunction
-function! Vimgrepall(pattern)
-  call ClearQuickfixList()
-  exe 'bufdo vimgrepadd ' . a:pattern . ' %'
-  cnext
-endfunction
-command! -nargs=1 Vim call Vimgrepall(<f-args>)
+" let g:airline_theme='minimalist'
+" let g:airline_section_x=''
+" let g:airline_skip_empty_sections = 1
 
-vnoremap p "_dP"
+" colors for vimdiff
+hi DiffAdd      ctermfg=NONE          ctermbg=Green
+hi DiffChange   ctermfg=NONE          ctermbg=NONE
+hi DiffDelete   ctermfg=LightBlue     ctermbg=Red
+hi DiffText     ctermfg=Yellow        ctermbg=Red
+
+hi DiffText     ctermfg=Yellow        ctermbg=Red
+
+" WIKI config
+"<leader> ww to go to subfolder
+let g:vimwiki_list = [{'path': '~/wiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+map <silent> <leader>fw :FZF ~/wiki<cr>
+map <leader>rw :Rg ~/wiki <Left><Left><Left><Left><Left><Left><Left><Left><Space>
+
+
+
 

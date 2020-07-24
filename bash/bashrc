@@ -130,6 +130,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+zet() {
+  vim "+Zet $*"
+}
+
 alias mh="sudo ~/go/bin/MailHog -smtp-bind-addr 0.0.0.0:25 -api-bind-addr=0.0.0.0:8025"
 alias lfix="npm run lint:fix"
 alias gs="git status"
@@ -137,6 +141,14 @@ alias conflicts="git diff --name-only --diff-filter=U"
 alias conflict="conflicts"
 alias gcon="conflicts"
 alias gmerge="git mergetool --tool=splice"
+alias gcom="git commit"
+alias gcommit="git commit"
+alias gpush="git push"
+alias gpu="git push"
+alias gadd="git add"
+alias ga.="git add ."
+alias python=python2
+alias uuidv4="cat /proc/sys/kernel/random/uuid"
 ###-begin-npm-completion-###
 #
 # npm command completion script
@@ -197,4 +209,8 @@ elif type compctl &>/dev/null; then
   compctl -K _npm_completion npm
 fi
 ###-end-npm-completion-###
+
+### AUTOJUMP
+[[ -s /home/leo/.autojump/etc/profile.d/autojump.sh ]] && source /home/leo/.autojump/etc/profile.d/autojump.sh
+
 eval "$(starship init bash)"
