@@ -55,10 +55,12 @@ Plug 'luochen1990/rainbow'
 " Plug 'vim-airline/vim-airline-themes'
 
 "--- Markdown & writing ----
-Plug 'plasticboy/vim-markdown'
+Plug 'pbrisbin/vim-mkdir'
+Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'junegunn/goyo.vim'
-Plug 'iamcco/markdown-preview.nvim'
-Plug 'vimwiki/vimwiki'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
+" Plug 'vimwiki/vimwiki'
 
 " --------- JS --------- "
 Plug 'jelera/vim-javascript-syntax'
@@ -419,13 +421,34 @@ hi DiffText     ctermfg=Yellow        ctermbg=Red
 
 hi DiffText     ctermfg=Yellow        ctermbg=Red
 
-" WIKI config
-"<leader> ww to go to subfolder
-let g:vimwiki_list = [{'path': '~/wiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
-map <silent> <leader>fw :FZF ~/wiki<cr>
-map <leader>rw :Rg ~/wiki <Left><Left><Left><Left><Left><Left><Left><Left><Space>
+" WIKI config LEADER N
+map <silent><leader>nn :edit ~/wiki/index.md<CR>
+map <silent> <leader>np :FZF ~/wiki<cr>
+map <leader>nfi :Rg ~/wiki <Left><Left><Left><Left><Left><Left><Left><Left><Space>
+let g:vim_markdown_autowrite = 1
 
+command! -nargs=* Zet call Zettel(<f-args>)
+
+func! Zettel(...)
+
+  " build the file name
+  let l:sep = ''
+  if len(a:000) > 0
+    let l:sep = '-'
+  endif
+  let l:fname = expand('~/wiki/') . strftime("%F-%H%M") .  l:sep . join(a:000, '-') . '.md'
+
+  " edit the new file
+  exec "e " . l:fname
+
+  " enter the title and timestamp (using ultisnips) in
+  " the new file
+  if len(a:000) > 0
+    exec "normal ggO\<c-r>=strftime('%Y-%m-%d %H:%M')\<cr> " . join(a:000) . "\<cr>\<esc>G"
+  else
+    exec "normal ggO\<c-r>=strftime('%Y-%m-%d %H:%M')\<cr>\<cr>\<esc>G"
+  endif
+endfunc
 
 
 
