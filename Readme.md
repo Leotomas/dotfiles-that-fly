@@ -4,9 +4,11 @@
 No-nonsense dotfiles that work on Windows and WSL(2). Featuring :
 
 - Efficient vim configuration
+- An efficient git merge workflow with vim
 - Clipboard sharing between vim, tmux and windows
-- Some handy bash aliases
+- Some handy bash aliases, fzf completion
 - A high contrast color scheme
+- Personal Wiki with Zettelkasten support (use `:Zet some new note` from vim or `vet some other new note` from the shell)
 
 ![WSLTTY Windows](https://raw.githubusercontent.com/Leotomas/dotfiles-that-fly/master/docs/setup.PNG)
 
