@@ -213,4 +213,9 @@ fi
 ### AUTOJUMP
 [[ -s /home/leo/.autojump/etc/profile.d/autojump.sh ]] && source /home/leo/.autojump/etc/profile.d/autojump.sh
 
+## FZF use `wor**` to trigger
+export FZF_COMPLETION_TRIGGER='~~'
+source /usr/share/doc/fzf/examples/key-bindings.bash
+source /home/leo/.completions/fzf-completion.bash
+
 eval "$(starship init bash)"
