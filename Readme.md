@@ -28,9 +28,10 @@ This is my current setup with WSL2 and wsltty.
 
 - python
 - docker
-- wsl2
+- wsl2 with Ubuntu 20.04
 - wsltty
-- datagrip
+- pgadmin
+- mailhog
 
 ### WSLTTY2
 
