@@ -149,6 +149,7 @@ alias gadd="git add"
 alias ga.="git add ."
 alias python=python2
 alias uuidv4="cat /proc/sys/kernel/random/uuid"
+
 ###-begin-npm-completion-###
 #
 # npm command completion script
@@ -218,5 +219,8 @@ fi
 export FZF_COMPLETION_TRIGGER='**'
 source /usr/share/doc/fzf/examples/key-bindings.bash
 source /home/leo/.completions/fzf-completion.bash
+
+# other bash config
+source /home/leo/.config/bash/bashrc-confidential.sh
 
 eval "$(starship init bash)"

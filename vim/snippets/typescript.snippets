@@ -12,7 +12,10 @@ snippet info "console.info"
 	console.info(${1});
 
 snippet cljson "console.log json"
-	console.log(JSON.stringify(${1}, null, 4));
+	console.info(JSON.stringify(${1}, null, 4));
+
+snippet cljosn
+	console.info(JSON.stringify(${1}, null, 4));
 
 snippet promise "Promise"
 	new Promise((resolve, reject) => {
