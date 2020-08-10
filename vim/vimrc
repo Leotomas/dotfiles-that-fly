@@ -203,6 +203,7 @@ nnoremap <leader>l :Lines<cr>
 nnoremap <leader>s :syntax on <cr>
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
+set number
 set relativenumber
 
 " Press leader f to toggle identation based folds
@@ -409,10 +410,6 @@ abbrev dgL diffget LOCAL
 " some spelling mistakes
 abbrev ocurrence occurrence
 abbrev occurrence occurrence
-
-" let g:airline_theme='minimalist'
-" let g:airline_section_x=''
-" let g:airline_skip_empty_sections = 1
 
 " colors for vimdiff
 hi DiffAdd      ctermfg=NONE          ctermbg=Green
