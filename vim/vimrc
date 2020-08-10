@@ -338,6 +338,7 @@ nmap <leader>r :CocList outline<CR>
 xmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>ca :CocAction <CR>
+nnoremap <silent><nowait> <leader>cd  :<C-u>CocList --normal diagnostics<cr>
 hi Spellbad term=reverse ctermfg=0 ctermbg=0 guifg=#1C2023 guibg=#C7AE95
 
 " --- plantUML previewer for WSL ---- "
