@@ -134,6 +134,10 @@ zet() {
   vim "+Zet $*"
 }
 
+scratch() {
+  vim "+Scratch"
+}
+
 alias mh="sudo ~/go/bin/MailHog -smtp-bind-addr 0.0.0.0:25 -api-bind-addr=0.0.0.0:8025"
 alias lfix="npm run lint:fix"
 alias gs="git status"
@@ -147,8 +151,13 @@ alias gpush="git push"
 alias gpu="git push"
 alias gadd="git add"
 alias ga.="git add ."
-alias python=python2
+alias gtodo="git diff origin/master -GTODO"
+# alias python=python2
+
 alias uuidv4="cat /proc/sys/kernel/random/uuid"
+alias mdserv="markserv"
+alias mkdserv="markserv"
+alias scr="scratch"
 
 ###-begin-npm-completion-###
 #

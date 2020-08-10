@@ -450,5 +450,11 @@ func! Zettel(...)
   endif
 endfunc
 
+command Scratch call Scratchpad()
 
+func! Scratchpad()
+  exec "e ~/.scratchpad.txt"
+  exec "normal Go\<esc>o\<esc>$i=====>\<space>\<esc>"
+  exec "normal a\<c-r>=strftime('%Y-%m-%d %H:%M')\<cr>\<cr>\<esc>G"
+endfunc
 
