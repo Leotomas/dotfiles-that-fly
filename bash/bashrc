@@ -158,6 +158,10 @@ alias uuidv4="cat /proc/sys/kernel/random/uuid"
 alias mdserv="markserv"
 alias mkdserv="markserv"
 alias scr="scratch"
+alias lastbackup="ssh leo stat /home/debian/backups/saved.saved"
+alias backuplast="lastbackup"
+alias backup="sh ~/backup.sh"
+
 
 ###-begin-npm-completion-###
 #
