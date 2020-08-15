@@ -29,20 +29,17 @@ Plug 'Raimondi/delimitMate'
 Plug 'docunext/closetag.vim'
 Plug 'rhysd/clever-f.vim'
 Plug 'henrik/vim-indexed-search'
-" shows maks in getter
+Plug 'dyng/ctrlsf.vim'
+" shows maks in gutter
 Plug 'kshenoy/vim-signature'
 Plug 'gcmt/taboo.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'tpope/vim-repeat'
 
 " --------- Themes --------
-Plug 'chriskempson/base16-vim'
-Plug 'jaredgorski/SpaceCamp'
 Plug 'Leotomas/vim-atom-dark'
-Plug 'pgdouyon/vim-yin-yang'
-Plug 'aditya-azad/candle-grey'
-Plug 'chuling/equinusocio-material.vim'
 
 Plug 'tomtom/tlib_vim'
 Plug 'marcweber/vim-addon-mw-utils'
@@ -51,8 +48,6 @@ Plug 'evidens/vim-twig'
 Plug 'thaerkh/vim-workspace'
 Plug 'jremmen/vim-ripgrep'
 Plug 'luochen1990/rainbow'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 
 "--- Markdown & writing ----
 Plug 'pbrisbin/vim-mkdir'
@@ -65,10 +60,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 " --------- JS --------- "
 Plug 'jelera/vim-javascript-syntax'
 
-" Plug 'w0rp/ale', {'autoload':{'filetypes':['javascript', 'vue', 'css', 'scss', 'sass']}}
 Plug 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript', 'vue']}}
 Plug 'vim-scripts/JavaScript-Indent', {'autoload':{'filetypes':['javascript', 'vue']}}
-" Plug 'HerringtonDarkholme/yats.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'heavenshell/vim-jsdoc', {'autoload':{'filetypes':['javascript', 'vue']}}
@@ -106,7 +99,6 @@ if (has("termguicolors"))
 endif
 
 colo atom-dark
-" colo spacecamp_lite
 set fillchars+=vert:│
 
 set noerrorbells
@@ -336,8 +328,6 @@ endfunction
 nmap <leader>R <Plug>(coc-rename)
 nmap <leader>r :CocList outline<CR>
 " Formatting selected code.
-xmap <leader>f <Plug>(coc-format-selected)
-nmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>ca :CocAction <CR>
 nnoremap <silent><nowait> <leader>cd  :<C-u>CocList --normal diagnostics<cr>
 hi Spellbad term=reverse ctermfg=0 ctermbg=0 guifg=#1C2023 guibg=#C7AE95
