@@ -342,8 +342,10 @@ hi Spellbad term=reverse ctermfg=0 ctermbg=0 guifg=#1C2023 guibg=#C7AE95
 
  " --- Toggle Gdiff with gutter signs "
  command! -nargs=1 Ggdiff call DisplayDiff(<f-args>)
+ command! Ggdiffm call DisplayDiff("origin/master")
+
  function! g:DisplayDiff(rev)
-   execute ":Gdiff " . a:rev
+   execute ":Gvdiff " . a:rev
    let g:gitgutter_diff_base= "'" . a:rev . "'"
    execute ":GitGutterSignsEnable"
  endfunction
