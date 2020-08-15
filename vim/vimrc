@@ -229,6 +229,7 @@ map <silent> ge <Plug>CamelCaseMotion_ge
 "--- Nerdtree ----"
 nmap <C-b> :NERDTreeToggle<CR>
 nmap <C-f> :NERDTreeFind<CR>
+let NERDTreeShowHidden=1
 
 "---- White spaces ----"
 " Removes Trailing Spaces on save
