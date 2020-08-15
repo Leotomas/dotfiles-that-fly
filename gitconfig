@@ -12,9 +12,6 @@
   cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
   trustExitCode = true
 
-[pager]
-  diff = "vim -c '%sm/\\e.\\{-}m//ge' -c 'set ft=diff' -c 'normal gg' -"
-
 [alias]
   stat = !git diff --stat $(git merge-base HEAD \"$REVIEW_BASE\")
   files = !git diff --name-only $(git merge-base HEAD \"$REVIEW_BASE\")
