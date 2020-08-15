@@ -449,3 +449,14 @@ func! Scratchpad()
   exec "normal a\<c-r>=strftime('%Y-%m-%d %H:%M')\<cr>\<cr>\<esc>G"
 endfunc
 
+" :w!! to save as sudo
+cmap w!! w !sudo tee % >/dev/null
+
+" p to preview, o/enter to open
+nmap <leader>a :CtrlSF -R ""<Left>
+nmap <leader>A <Plug>CtrlSFCwordPath -W<CR><Plug>CtrlSFFocus<CR>
+
+nmap // :BLines!<CR>
+
+" Shows Git history for the current buffer
+command! FileHistory execute ":BCommits!"
