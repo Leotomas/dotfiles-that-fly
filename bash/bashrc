@@ -40,6 +40,23 @@ case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
+function git_added_diff_grep {
+  fpath="/tmp/git-grep-$(cat /proc/sys/kernel/random/uuid)"
+  fpath_o="/tmp/git-grep-$(cat /proc/sys/kernel/random/uuid)"
+  git diff origin/master > $fpath
+  node ~/.config/scripts/git-added-diff-grep.js $fpath $1 $2 > $fpath_o
+  rm $fpath
+  echo "Do you want to open the diff with vim? [y/n]"
+  read with_vim
+  echo ": $with_vim"
+  if [[ "$with_vim" = "y" ]]
+  then
+    vim $fpath_o -c "/$1" -c "execute 'normal gg'" -c "set norelativenumber" -c "set nu"
+  else
+    grep --color -E "^|$1" $fpath_o
+  fi
+}
+
 
 # Leo, handles WSL2 Xserver forwarding
 export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
@@ -153,7 +170,6 @@ alias gadd="git add"
 alias ga.="git add ."
 alias gtodo="git diff origin/master -GTODO"
 # alias python=python2
-
 alias uuidv4="cat /proc/sys/kernel/random/uuid"
 alias mdserv="markserv"
 alias mkdserv="markserv"
@@ -161,6 +177,15 @@ alias scr="scratch"
 alias lastbackup="ssh leo stat /home/debian/backups/saved.saved"
 alias backuplast="lastbackup"
 alias backup="sh ~/backup.sh"
+alias ..="cd .."
+alias ...="cd ../../"
+alias .3="cd ../../../"
+alias .4="cd ../../../../"
+alias .5="cd ../../../../../"
+alias cp="cp -i"
+alias gdg="git_added_diff_grep"
+alias diffgrep="git_added_diff_grep"
+alias dgrep="git_added_diff_grep"
 
 
 ###-begin-npm-completion-###
